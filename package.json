@@ -1,19 +1,4 @@
 {
-  "name": "portfolio",
-  "private": true,
-  "type": "module",
-  "imports": {
-    "#/*": "./src/*"
-  },
-  "scripts": {
-    "dev": "vite dev --port 3000",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest run",
-    "format": "biome format",
-    "lint": "biome lint",
-    "check": "biome check"
-  },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "latest",
@@ -28,7 +13,7 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.5",
+    "@biomejs/biome": "^2.4.15",
     "@tailwindcss/typography": "^0.5.16",
     "@tanstack/devtools-vite": "latest",
     "@testing-library/dom": "^10.4.1",
@@ -37,10 +22,34 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^6.0.1",
+    "husky": "^9.1.7",
     "jsdom": "^28.1.0",
     "typescript": "^6.0.2",
+    "ultracite": "^7.7.0",
     "vite": "^8.0.0",
     "vitest": "^4.1.5"
+  },
+  "name": "portfolio",
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "format": "biome format",
+    "lint": "biome lint",
+    "check": "ultracite check",
+    "fix": "ultracite fix",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,jsonc,css}": [
+      "npx ultracite fix"
+    ]
+  },
+  "type": "module",
+  "private": true,
+  "imports": {
+    "#/*": "./src/*"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

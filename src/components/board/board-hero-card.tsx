@@ -7,7 +7,6 @@ interface BoardHeroCardProps {
 	children?: ReactNode;
 }
 
-/** Figma-style frame from https://www.spacing.co/ blank cell. */
 export const BoardHeroCard = ({ children }: BoardHeroCardProps) => (
 	<div className="flex h-fit w-fit items-center justify-center overflow-visible">
 		<motion.div

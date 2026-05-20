@@ -1,8 +1,9 @@
-import { AnimatePresence, motion } from "motion/react";
 import { Pause, Play } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { type MouseEvent, useState } from "react";
 
 import { BoardAlbumMusicNotes } from "#/components/board/board-album-music-notes";
+import { BoardAlbumTooltip } from "#/components/board/board-album-tooltip";
 import { BoardVinylDisc } from "#/components/board/board-vinyl-disc";
 import { useAlbumAudio } from "#/hooks/use-album-audio";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
@@ -15,6 +16,8 @@ import { cn } from "#/lib/utils";
 
 const ALBUM_COVER_SRC = "/bad-bunny-dakiti.jpeg";
 const ALBUM_AUDIO_SRC = "/bad-bunny-dakiti.mp3";
+const TRACK_TITLE = "DÁKITI";
+const TRACK_ARTIST = "Bad Bunny";
 
 export const BoardAlbumCard = () => {
 	const [isHovered, setIsHovered] = useState(false);
@@ -61,6 +64,12 @@ export const BoardAlbumCard = () => {
 			onMouseLeave={() => setIsHovered(false)}
 		>
 			<BoardAlbumMusicNotes active={isPlaying} />
+
+			<BoardAlbumTooltip
+				artist={TRACK_ARTIST}
+				title={TRACK_TITLE}
+				visible={isHovered}
+			/>
 
 			<div className="relative size-full overflow-visible rounded-lg shadow-lg">
 				<motion.div

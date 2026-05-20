@@ -1,15 +1,26 @@
 import { Link } from "@tanstack/react-router";
-import type { CSSProperties } from "react";
+import { motion } from "motion/react";
 
-const fadeInClass =
-	"animate-board-fade-in opacity-0 [animation-fill-mode:both]";
+import { boardEaseOut } from "#/lib/motion-config";
+
+const fadeUp = {
+	initial: { opacity: 0, y: 15 },
+	animate: { opacity: 1, y: 0 },
+};
+
+const fadeTransition = (delay: number) => ({
+	delay,
+	duration: 0.6,
+	ease: boardEaseOut,
+});
 
 export const BoardHeroContent = () => (
 	<>
 		<div className="w-full space-y-9">
-			<p
-				className={`${fadeInClass} m-0 flex items-center justify-between`}
-				style={{ "--delay": "0s" } as CSSProperties}
+			<motion.p
+				className="m-0 flex items-center justify-between"
+				{...fadeUp}
+				transition={fadeTransition(0)}
 			>
 				<span className="font-semibold text-2xl tracking-tight">Killian</span>
 				<span
@@ -18,34 +29,34 @@ export const BoardHeroContent = () => (
 				>
 					K
 				</span>
-			</p>
-			<p
-				className={`${fadeInClass} m-0 leading-relaxed`}
-				style={{ "--delay": "0.2s" } as CSSProperties}
+			</motion.p>
+			<motion.p
+				className="m-0 leading-relaxed"
+				{...fadeUp}
+				transition={fadeTransition(0.2)}
 			>
 				Développeur full-stack. Je conçois et construis des produits web clairs,
 				performants et agréables à utiliser — du prototype au déploiement.
-			</p>
-			<p
-				className={`${fadeInClass} m-0 leading-relaxed`}
-				style={{ "--delay": "0.4s" } as CSSProperties}
+			</motion.p>
+			<motion.p
+				className="m-0 leading-relaxed"
+				{...fadeUp}
+				transition={fadeTransition(0.4)}
 			>
 				Je m&apos;intéresse autant à l&apos;expérience utilisateur qu&apos;à la
 				qualité du code : architecture simple, interfaces soignées, et attention
 				aux détails qui font la différence.
-			</p>
-			<p
-				className={`${fadeInClass} m-0 leading-relaxed`}
-				style={{ "--delay": "0.45s" } as CSSProperties}
+			</motion.p>
+			<motion.p
+				className="m-0 leading-relaxed"
+				{...fadeUp}
+				transition={fadeTransition(0.45)}
 			>
 				Ce portfolio est un espace de travail interactif — explore le board,
 				découvre mes projets et contacte-moi si tu veux collaborer.
-			</p>
+			</motion.p>
 		</div>
-		<div
-			className={`${fadeInClass} mt-9`}
-			style={{ "--delay": "0.6s" } as CSSProperties}
-		>
+		<motion.div className="mt-9" {...fadeUp} transition={fadeTransition(0.6)}>
 			<div className="flex flex-wrap items-center gap-1">
 				<Link
 					className="inline-flex h-9 w-fit items-center justify-center whitespace-nowrap rounded-full bg-foreground px-4 py-1 font-medium text-[13px] text-white no-underline transition-colors hover:bg-foreground/90"
@@ -77,6 +88,6 @@ export const BoardHeroContent = () => (
 					</svg>
 				</a>
 			</div>
-		</div>
+		</motion.div>
 	</>
 );

@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import type { ReactNode } from "react";
 
 import { BoardFrameCorner } from "#/components/board/board-frame-corner";
@@ -6,9 +7,15 @@ interface BoardHeroCardProps {
 	children?: ReactNode;
 }
 
+/** Figma-style frame from https://www.spacing.co/ blank cell. */
 export const BoardHeroCard = ({ children }: BoardHeroCardProps) => (
 	<div className="flex h-fit w-fit items-center justify-center overflow-visible">
-		<div className="animate-board-scale-in cursor-grab hover:cursor-default">
+		<motion.div
+			animate={{ filter: "blur(0px)", opacity: 1, scale: 1 }}
+			className="cursor-grab hover:cursor-default"
+			initial={{ filter: "blur(5px)", opacity: 0, scale: 0.95 }}
+			transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+		>
 			<div className="relative w-full max-w-[95vw] rounded-[4px] border border-blue-400 bg-white p-6 text-neutral-900 sm:w-[485px] md:p-8">
 				<BoardFrameCorner position="top-left" />
 				<BoardFrameCorner position="top-right" />
@@ -16,6 +23,6 @@ export const BoardHeroCard = ({ children }: BoardHeroCardProps) => (
 				<BoardFrameCorner position="bottom-right" />
 				{children}
 			</div>
-		</div>
+		</motion.div>
 	</div>
 );

@@ -1,3 +1,4 @@
+import { BoardAlbumCard } from "#/components/board/board-album-card";
 import { BoardHeroCard } from "#/components/board/board-hero-card";
 import { BoardHeroContent } from "#/components/board/board-hero-content";
 import type { BoardGridArea } from "#/lib/board-grid-config";
@@ -7,6 +8,21 @@ interface BoardGridCellProps {
 }
 
 export const BoardGridCell = ({ area }: BoardGridCellProps) => {
+	if (area === "g20") {
+		return (
+			<div
+				className="relative h-full w-full overflow-visible rounded-xl"
+				data-area="g20"
+				data-clickable="false"
+				style={{ gridArea: "g20" }}
+			>
+				<div className="relative flex h-full w-full items-center justify-center overflow-visible bg-transparent">
+					<BoardAlbumCard />
+				</div>
+			</div>
+		);
+	}
+
 	if (area === "blank") {
 		return (
 			<div

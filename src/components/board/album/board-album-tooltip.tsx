@@ -38,7 +38,9 @@ export const BoardAlbumTooltip = ({
 					transition={tooltipMotion.enter}
 				>
 					<p className="m-0 font-medium text-[13px] leading-tight">{title}</p>
-					<p className="m-0 text-[11px] text-white/75 leading-tight">{artist}</p>
+					<p className="m-0 text-[11px] text-white/75 leading-tight">
+						{artist}
+					</p>
 				</motion.div>
 			) : null}
 		</AnimatePresence>

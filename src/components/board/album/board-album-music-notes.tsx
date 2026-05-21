@@ -1,8 +1,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useId, useState } from "react";
-
-import { boardEaseOut } from "#/lib/motion-config";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { boardEaseOut } from "#/lib/motion-config";
 
 const NOTE_SYMBOLS = ["♪", "♫", "♬", "♩"] as const;
 
@@ -47,8 +46,7 @@ const polarOffset = (angleDeg: number, distance: number) => {
 
 const createNote = (id: number): FloatingNote => {
 	const angle = Math.random() * 360;
-	const distance =
-		NOTE_TRAVEL_MIN_PX + Math.random() * NOTE_TRAVEL_RANGE_PX;
+	const distance = NOTE_TRAVEL_MIN_PX + Math.random() * NOTE_TRAVEL_RANGE_PX;
 	const { x: endX, y: endY } = polarOffset(angle, distance);
 
 	return {
@@ -92,15 +90,6 @@ export const BoardAlbumMusicNotes = ({ active }: BoardAlbumMusicNotesProps) => {
 			<AnimatePresence>
 				{notes.map((note) => (
 					<motion.span
-						className="absolute top-1/2 left-1/2 font-semibold text-xl leading-none"
-						exit={{ opacity: 0, scale: 0.5 }}
-						initial={{
-							opacity: 0,
-							rotate: 0,
-							scale: 0.35,
-							x: "-50%",
-							y: "-50%",
-						}}
 						animate={{
 							opacity: prefersReducedMotion ? [0, 1, 0] : [0, 1, 1, 0],
 							rotate: note.spin,
@@ -109,6 +98,15 @@ export const BoardAlbumMusicNotes = ({ active }: BoardAlbumMusicNotesProps) => {
 								: [0.35, 1.2, 1.05, 0.85],
 							x: `calc(-50% + ${note.endX}px)`,
 							y: `calc(-50% + ${note.endY}px)`,
+						}}
+						className="absolute top-1/2 left-1/2 font-semibold text-xl leading-none"
+						exit={{ opacity: 0, scale: 0.5 }}
+						initial={{
+							opacity: 0,
+							rotate: 0,
+							scale: 0.35,
+							x: "-50%",
+							y: "-50%",
 						}}
 						key={`${instanceId}-${note.id}`}
 						style={{

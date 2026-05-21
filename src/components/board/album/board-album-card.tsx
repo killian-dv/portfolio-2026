@@ -2,9 +2,9 @@ import { Pause, Play } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { type MouseEvent, useState } from "react";
 
-import { BoardAlbumMusicNotes } from "#/components/board/board-album-music-notes";
-import { BoardAlbumTooltip } from "#/components/board/board-album-tooltip";
-import { BoardVinylDisc } from "#/components/board/board-vinyl-disc";
+import { BoardAlbumMusicNotes } from "#/components/board/album/board-album-music-notes";
+import { BoardAlbumTooltip } from "#/components/board/album/board-album-tooltip";
+import { BoardVinylDisc } from "#/components/board/album/board-vinyl-disc";
 import { useAlbumAudio } from "#/hooks/use-album-audio";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
 import {

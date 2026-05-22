@@ -1,4 +1,5 @@
 import { BoardAlbumCard } from "#/components/board/album/board-album-card";
+import { BoardCalendarWidgetCard } from "#/components/board/calendar/board-calendar-widget-card";
 import { BoardHeroCard } from "#/components/board/hero/board-hero-card";
 import { BoardHeroContent } from "#/components/board/hero/board-hero-content";
 import { BoardStockChartCard } from "#/components/board/stock-chart/board-stock-chart-card";
@@ -24,6 +25,19 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 		);
 	}
 
+	if (area === "g31") {
+		return (
+			<div
+				className="relative overflow-visible rounded-xl"
+				data-area="g31"
+				data-clickable="false"
+				style={{ gridArea: "g31" }}
+			>
+				<BoardCalendarWidgetCard />
+			</div>
+		);
+	}
+
 	if (area === "g42") {
 		return (
 			<div
@@ -32,9 +46,7 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 				data-clickable="false"
 				style={{ gridArea: "g42" }}
 			>
-				<div className="relative flex h-full w-full items-center justify-center overflow-visible bg-transparent">
-					<BoardStockChartCard />
-				</div>
+				<BoardStockChartCard />
 			</div>
 		);
 	}

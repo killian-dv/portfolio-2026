@@ -3,6 +3,7 @@ import { BoardCalendarWidgetCard } from "#/components/board/calendar/board-calen
 import { BoardHeroCard } from "#/components/board/hero/board-hero-card";
 import { BoardHeroContent } from "#/components/board/hero/board-hero-content";
 import { BoardStockChartCard } from "#/components/board/stock-chart/board-stock-chart-card";
+import { BoardCroissantStamp } from "#/components/board/stamp/board-croissant-stamp";
 import type { BoardGridArea } from "#/lib/board-grid-config";
 
 interface BoardGridCellProps {
@@ -10,6 +11,21 @@ interface BoardGridCellProps {
 }
 
 export const BoardGridCell = ({ area }: BoardGridCellProps) => {
+	if (area === "g3") {
+		return (
+			<div
+				className="relative h-full w-full overflow-visible rounded-xl"
+				data-area="g3"
+				data-clickable="false"
+				style={{ gridArea: "g3" }}
+			>
+				<div className="relative flex h-full w-full items-center justify-center overflow-visible bg-transparent">
+					<BoardCroissantStamp />
+				</div>
+			</div>
+		);
+	}
+
 	if (area === "g20") {
 		return (
 			<div

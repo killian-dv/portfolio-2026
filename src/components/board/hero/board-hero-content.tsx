@@ -25,7 +25,7 @@ export const BoardHeroContent = () => (
 				<span className="font-semibold text-2xl tracking-tight">Killian</span>
 				<span
 					aria-hidden
-					className="flex size-8 items-center justify-center rounded-md bg-foreground/5 font-medium text-foreground/70 text-sm"
+					className="flex size-8 items-center justify-center rounded-md bg-primary/5 font-medium text-primary/70 text-sm"
 				>
 					K
 				</span>
@@ -59,7 +59,7 @@ export const BoardHeroContent = () => (
 		<motion.div className="mt-9" {...fadeUp} transition={fadeTransition(0.6)}>
 			<div className="flex flex-wrap items-center gap-1">
 				<Link
-					className="inline-flex h-9 w-fit items-center justify-center whitespace-nowrap rounded-full bg-foreground px-4 py-1 font-medium text-[13px] text-white no-underline transition-colors hover:bg-foreground/90"
+					className="inline-flex h-9 w-fit items-center justify-center whitespace-nowrap rounded-full bg-primary px-4 py-1 font-medium text-[13px] text-white no-underline transition-colors hover:bg-primary/90"
 					to="/about"
 				>
 					En savoir plus

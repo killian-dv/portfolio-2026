@@ -21,11 +21,15 @@
   --font-sans: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-muted-foreground: var(--muted-foreground);
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #202A40;
+  --foreground: #1c1c1e;
+  --primary: #202a40;
+  --muted-foreground: #a3a3a3;
   --border: #e5e7eb;
 }
 

@@ -23,6 +23,10 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-emirates-brand: var(--emirates-brand);
+  --color-boarding-pass-surface: var(--boarding-pass-surface);
+  --color-boarding-pass-surface-end: var(--boarding-pass-surface-end);
 }
 
 :root {
@@ -31,6 +35,9 @@
   --primary: #202a40;
   --muted-foreground: #a3a3a3;
   --border: #e5e7eb;
+  --emirates-brand: #c8102e;
+  --boarding-pass-surface: #fbf9f8;
+  --boarding-pass-surface-end: #f7f4f4;
 }
 
 @layer base {

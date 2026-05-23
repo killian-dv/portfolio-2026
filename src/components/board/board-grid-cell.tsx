@@ -1,9 +1,10 @@
 import { BoardAlbumCard } from "#/components/board/album/board-album-card";
+import { BoardBoardingPassCard } from "#/components/board/boarding-pass/board-boarding-pass-card";
 import { BoardCalendarWidgetCard } from "#/components/board/calendar/board-calendar-widget-card";
 import { BoardHeroCard } from "#/components/board/hero/board-hero-card";
 import { BoardHeroContent } from "#/components/board/hero/board-hero-content";
-import { BoardStockChartCard } from "#/components/board/stock-chart/board-stock-chart-card";
 import { BoardCroissantStamp } from "#/components/board/stamp/board-croissant-stamp";
+import { BoardStockChartCard } from "#/components/board/stock-chart/board-stock-chart-card";
 import type { BoardGridArea } from "#/lib/board-grid-config";
 
 interface BoardGridCellProps {
@@ -36,6 +37,21 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 			>
 				<div className="relative flex h-full w-full items-center justify-center overflow-visible bg-transparent">
 					<BoardAlbumCard />
+				</div>
+			</div>
+		);
+	}
+
+	if (area === "g28") {
+		return (
+			<div
+				className="relative h-full w-full overflow-visible rounded-xl"
+				data-area="g28"
+				data-clickable="false"
+				style={{ gridArea: "g28" }}
+			>
+				<div className="relative flex h-full w-full items-center justify-center overflow-visible bg-transparent">
+					<BoardBoardingPassCard />
 				</div>
 			</div>
 		);

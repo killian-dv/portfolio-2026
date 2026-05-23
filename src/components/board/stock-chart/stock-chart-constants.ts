@@ -4,7 +4,7 @@ export const STOCK_PRICES = [
 ] as const;
 
 export const OPENING_PRICE = STOCK_PRICES[0];
-export const LAST_PRICE = STOCK_PRICES.at(-1) ?? 190.1;
+export const LAST_PRICE: number = STOCK_PRICES.at(-1) ?? 190.1;
 
 export const NVIDIA_GREEN = "#76B900";
 export const STOCK_POSITIVE = "#76B900";

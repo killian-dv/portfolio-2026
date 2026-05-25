@@ -1,5 +1,9 @@
 import type { RefObject } from "react";
-
+import {
+	type ContributionWeekCell,
+	getWeekColumnKey,
+	isFutureContributionSlot,
+} from "#/components/board/github-contributions/build-contribution-weeks";
 import { GithubContributionCell } from "#/components/board/github-contributions/github-contribution-cell";
 import {
 	GITHUB_CONTRIBUTIONS_CELL_GAP_PX,
@@ -9,7 +13,6 @@ import type {
 	ContributionHover,
 	HoveredContributionCell,
 } from "#/components/board/github-contributions/use-github-contributions-interaction";
-import type { GithubContributionDay } from "#/lib/github-contributions-api";
 import { cn } from "#/lib/utils";
 
 interface GithubContributionGridProps {
@@ -18,7 +21,7 @@ interface GithubContributionGridProps {
 	isLoading: boolean;
 	onCellHover: (hover: ContributionHover | null) => void;
 	prefersReducedMotion: boolean;
-	weeks: GithubContributionDay[][];
+	weeks: ContributionWeekCell[][];
 }
 
 const SKELETON_WEEKS = 53;
@@ -77,21 +80,33 @@ export const GithubContributionGrid = ({
 			{weeks.map((week, col) => (
 				<div
 					className="flex flex-col"
-					key={week[0]?.date || `week-${col}`}
+					key={getWeekColumnKey(week)}
 					style={{ gap: GITHUB_CONTRIBUTIONS_CELL_GAP_PX }}
 				>
-					{week.map((day, row) => (
-						<GithubContributionCell
-							cardRef={cardRef}
-							col={col}
-							day={day}
-							hoveredCell={hoveredCell}
-							key={day.date}
-							onHover={onCellHover}
-							prefersReducedMotion={prefersReducedMotion}
-							row={row}
-						/>
-					))}
+					{week.map((cell) =>
+						isFutureContributionSlot(cell) ? (
+							<div
+								aria-hidden
+								className="shrink-0"
+								key={cell.slotId}
+								style={{
+									width: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
+									height: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
+								}}
+							/>
+						) : (
+							<GithubContributionCell
+								cardRef={cardRef}
+								col={col}
+								day={cell}
+								hoveredCell={hoveredCell}
+								key={cell.date}
+								onHover={onCellHover}
+								prefersReducedMotion={prefersReducedMotion}
+								row={new Date(`${cell.date}T12:00:00`).getDay()}
+							/>
+						)
+					)}
 				</div>
 			))}
 		</div>

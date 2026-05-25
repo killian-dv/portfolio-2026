@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Suspense } from "react";
-
+import type { ContributionWeekCell } from "#/components/board/github-contributions/build-contribution-weeks";
 import { GithubContributionGrid } from "#/components/board/github-contributions/github-contribution-grid";
 import {
 	GITHUB_CONTRIBUTIONS_CARD_HEIGHT_PX,
@@ -12,7 +12,6 @@ import { GithubContributionsRadialHighlight } from "#/components/board/github-co
 import { GithubContributionsTooltip } from "#/components/board/github-contributions/github-contributions-tooltip";
 import { useGithubContributionsData } from "#/components/board/github-contributions/use-github-contributions-data";
 import { useGithubContributionsInteraction } from "#/components/board/github-contributions/use-github-contributions-interaction";
-import type { GithubContributionDay } from "#/lib/github-contributions-api";
 import { cn } from "#/lib/utils";
 
 type GithubContributionsInteraction = ReturnType<
@@ -24,7 +23,7 @@ interface GithubContributionsCardBodyProps {
 	isLoading: boolean;
 	loadState: "ready" | "error";
 	trailingYearTotal: number;
-	weeks: GithubContributionDay[][];
+	weeks: ContributionWeekCell[][];
 }
 
 const GithubContributionsCardBody = ({

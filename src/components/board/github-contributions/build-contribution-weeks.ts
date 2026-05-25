@@ -22,15 +22,8 @@ const startOfWeek = (date: Date) => {
 	return copy;
 };
 
-/** Saturday at or after `date`. */
-const endOfWeek = (date: Date) => {
-	const copy = atNoon(date);
-	copy.setDate(copy.getDate() + (6 - copy.getDay()));
-	return copy;
-};
-
 export interface TrailingYearData {
-	/** Full Sun–Sat weeks for the graph — every cell has a date. */
+	/** Sun–Sat grid days through today; leading week padding may be empty (level 0). */
 	displayDays: GithubContributionDay[];
 	/** Sum over the last 365 calendar days ending today. */
 	trailingYearTotal: number;
@@ -46,7 +39,6 @@ export const buildTrailingYearData = (
 	coreStart.setDate(coreStart.getDate() - (TRAILING_YEAR_DAY_COUNT - 1));
 
 	const displayStart = startOfWeek(coreStart);
-	const displayEnd = endOfWeek(end);
 
 	const byDate = new Map(
 		contributions
@@ -58,7 +50,7 @@ export const buildTrailingYearData = (
 	const cursor = new Date(displayStart);
 	let trailingYearTotal = 0;
 
-	while (cursor <= displayEnd) {
+	while (cursor <= end) {
 		const key = formatContributionDate(cursor);
 		const entry = byDate.get(key) ?? { count: 0, date: key, level: 0 };
 		displayDays.push(entry);
@@ -73,17 +65,54 @@ export const buildTrailingYearData = (
 	return { displayDays, trailingYearTotal };
 };
 
-/** 7 rows per column; `displayDays` length must be a multiple of 7. */
+const WEEKDAY_KEYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"] as const;
+
+export interface FutureContributionSlot {
+	kind: "future";
+	slotId: string;
+}
+
+/** A week column slot: contribution day or empty (future days in the current week). */
+export type ContributionWeekCell =
+	| GithubContributionDay
+	| FutureContributionSlot;
+
+export const isFutureContributionSlot = (
+	cell: ContributionWeekCell
+): cell is FutureContributionSlot => "kind" in cell && cell.kind === "future";
+
+export const getWeekColumnKey = (week: ContributionWeekCell[]): string => {
+	const sunday = week[0];
+	if (sunday && !isFutureContributionSlot(sunday)) {
+		return `week-${sunday.date}`;
+	}
+	return "week-unknown";
+};
+
+/** Seven rows per column (Sun–Sat); the current week may end with future slots. */
 export const buildContributionWeeks = (
 	days: GithubContributionDay[]
-): GithubContributionDay[][] => {
+): ContributionWeekCell[][] => {
 	if (days.length === 0) {
 		return [];
 	}
 
-	const weeks: GithubContributionDay[][] = [];
+	const weeks: ContributionWeekCell[][] = [];
 	for (let index = 0; index < days.length; index += 7) {
-		weeks.push(days.slice(index, index + 7));
+		const week: ContributionWeekCell[] = days.slice(index, index + 7);
+		const firstDay = week[0];
+		const weekSunday =
+			firstDay && !isFutureContributionSlot(firstDay)
+				? firstDay.date
+				: undefined;
+		while (week.length < 7 && weekSunday) {
+			const weekday = WEEKDAY_KEYS[week.length];
+			week.push({
+				kind: "future",
+				slotId: `${weekSunday}-${weekday}`,
+			});
+		}
+		weeks.push(week);
 	}
 	return weeks;
 };

@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Suspense } from "react";
 
 import { GithubContributionGrid } from "#/components/board/github-contributions/github-contribution-grid";
 import {
@@ -11,12 +12,114 @@ import { GithubContributionsRadialHighlight } from "#/components/board/github-co
 import { GithubContributionsTooltip } from "#/components/board/github-contributions/github-contributions-tooltip";
 import { useGithubContributionsData } from "#/components/board/github-contributions/use-github-contributions-data";
 import { useGithubContributionsInteraction } from "#/components/board/github-contributions/use-github-contributions-interaction";
+import type { GithubContributionDay } from "#/lib/github-contributions-api";
 import { cn } from "#/lib/utils";
 
-export const BoardGithubContributionsCard = () => {
+type GithubContributionsInteraction = ReturnType<
+	typeof useGithubContributionsInteraction
+>;
+
+interface GithubContributionsCardBodyProps {
+	interaction: GithubContributionsInteraction;
+	isLoading: boolean;
+	loadState: "ready" | "error";
+	trailingYearTotal: number;
+	weeks: GithubContributionDay[][];
+}
+
+const GithubContributionsCardBody = ({
+	interaction,
+	isLoading,
+	loadState,
+	trailingYearTotal,
+	weeks,
+}: GithubContributionsCardBodyProps) => (
+	<article
+		className={cn(
+			"relative flex h-full w-full flex-col overflow-hidden rounded-[20px]",
+			"border border-black/[0.06] bg-[#fafbfa]",
+			"px-5 py-4",
+			"shadow-[0_1px_0_0_rgba(255,255,255,0.9)_inset,0_14px_36px_-22px_rgba(0,0,0,0.18)]"
+		)}
+		style={{
+			boxShadow: interaction.isHovered
+				? "0 1px 0 0 rgba(255,255,255,0.95) inset, 0 22px 48px -24px rgba(0,0,0,0.16)"
+				: "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 14px 36px -22px rgba(0,0,0,0.18)",
+		}}
+	>
+		<GithubContributionsRadialHighlight
+			glowOpacity={interaction.glowOpacity}
+			pointerX={interaction.springX}
+			pointerY={interaction.springY}
+		/>
+
+		<div
+			aria-hidden
+			className="pointer-events-none absolute inset-0 rounded-[20px] bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(79,191,154,0.06),transparent_58%)]"
+		/>
+
+		<GithubContributionsHeader isHovered={interaction.isHovered} />
+
+		<div className="relative z-10 mt-3 min-h-0 flex-1">
+			<GithubContributionGrid
+				cardRef={interaction.cardRef}
+				hoveredCell={interaction.hover?.cell ?? null}
+				isLoading={isLoading}
+				onCellHover={interaction.handleCellHover}
+				prefersReducedMotion={interaction.prefersReducedMotion}
+				weeks={weeks}
+			/>
+		</div>
+
+		<div className="relative z-10 mt-2">
+			<GithubContributionsFooter
+				isLoading={isLoading}
+				trailingYearTotal={trailingYearTotal}
+			/>
+		</div>
+
+		{loadState === "error" ? (
+			<p className="absolute inset-x-5 bottom-4 z-20 m-0 text-[#8a9490] text-[12px]">
+				Unable to load contributions
+			</p>
+		) : null}
+	</article>
+);
+
+const BoardGithubContributionsCardContent = ({
+	interaction,
+}: {
+	interaction: GithubContributionsInteraction;
+}) => {
 	const data = useGithubContributionsData();
+
+	return (
+		<GithubContributionsCardBody
+			interaction={interaction}
+			isLoading={false}
+			loadState={data.loadState}
+			trailingYearTotal={data.trailingYearTotal}
+			weeks={data.weeks}
+		/>
+	);
+};
+
+const BoardGithubContributionsCardFallback = ({
+	interaction,
+}: {
+	interaction: GithubContributionsInteraction;
+}) => (
+	<GithubContributionsCardBody
+		interaction={interaction}
+		isLoading
+		loadState="ready"
+		trailingYearTotal={0}
+		weeks={[]}
+	/>
+);
+
+export const BoardGithubContributionsCard = () => {
 	const interaction = useGithubContributionsInteraction();
-	const isLoading = data.loadState === "loading" || data.loadState === "idle";
 
 	return (
 		<motion.div
@@ -31,56 +134,13 @@ export const BoardGithubContributionsCard = () => {
 				width: GITHUB_CONTRIBUTIONS_CARD_WIDTH_PX,
 			}}
 		>
-			<article
-				className={cn(
-					"relative flex h-full w-full flex-col overflow-hidden rounded-[20px]",
-					"border border-black/[0.06] bg-[#fafbfa]",
-					"px-5 py-4",
-					"shadow-[0_1px_0_0_rgba(255,255,255,0.9)_inset,0_14px_36px_-22px_rgba(0,0,0,0.18)]"
-				)}
-				style={{
-					boxShadow: interaction.isHovered
-						? "0 1px 0 0 rgba(255,255,255,0.95) inset, 0 22px 48px -24px rgba(0,0,0,0.16)"
-						: "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 14px 36px -22px rgba(0,0,0,0.18)",
-				}}
+			<Suspense
+				fallback={
+					<BoardGithubContributionsCardFallback interaction={interaction} />
+				}
 			>
-				<GithubContributionsRadialHighlight
-					glowOpacity={interaction.glowOpacity}
-					pointerX={interaction.springX}
-					pointerY={interaction.springY}
-				/>
-
-				<div
-					aria-hidden
-					className="pointer-events-none absolute inset-0 rounded-[20px] bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(79,191,154,0.06),transparent_58%)]"
-				/>
-
-				<GithubContributionsHeader isHovered={interaction.isHovered} />
-
-				<div className="relative z-10 mt-3 min-h-0 flex-1">
-					<GithubContributionGrid
-						cardRef={interaction.cardRef}
-						hoveredCell={interaction.hover?.cell ?? null}
-						isLoading={isLoading}
-						onCellHover={interaction.handleCellHover}
-						prefersReducedMotion={interaction.prefersReducedMotion}
-						weeks={data.weeks}
-					/>
-				</div>
-
-				<div className="relative z-10 mt-2">
-					<GithubContributionsFooter
-						isLoading={isLoading}
-						trailingYearTotal={data.trailingYearTotal}
-					/>
-				</div>
-
-				{data.loadState === "error" ? (
-					<p className="absolute inset-x-5 bottom-4 z-20 m-0 text-[#8a9490] text-[12px]">
-						Unable to load contributions
-					</p>
-				) : null}
-			</article>
+				<BoardGithubContributionsCardContent interaction={interaction} />
+			</Suspense>
 
 			<GithubContributionsTooltip hover={interaction.hover} />
 		</motion.div>

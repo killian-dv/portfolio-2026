@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { use, useMemo } from "react";
 
 import {
 	buildContributionWeeks,
@@ -10,56 +10,40 @@ import {
 	type GithubContributionsResponse,
 } from "#/lib/github-contributions-api";
 
-type LoadState = "idle" | "loading" | "ready" | "error";
+type GithubContributionsLoadResult =
+	| { status: "ready"; response: GithubContributionsResponse }
+	| { status: "error" };
+
+let loadResultPromise: Promise<GithubContributionsLoadResult> | null = null;
+
+const getGithubContributionsLoadResult = () => {
+	loadResultPromise ??= fetchGithubContributions(GITHUB_CONTRIBUTIONS_USERNAME)
+		.then((response) => ({ status: "ready" as const, response }))
+		.catch(() => ({ status: "error" as const }));
+
+	return loadResultPromise;
+};
+
+export type GithubContributionsLoadState = "ready" | "error";
 
 export const useGithubContributionsData = () => {
-	const [loadState, setLoadState] = useState<LoadState>("idle");
-	const [response, setResponse] = useState<GithubContributionsResponse | null>(
-		null
-	);
-
-	useEffect(() => {
-		let cancelled = false;
-
-		const load = async () => {
-			setLoadState("loading");
-			try {
-				const data = await fetchGithubContributions(
-					GITHUB_CONTRIBUTIONS_USERNAME
-				);
-				if (!cancelled) {
-					setResponse(data);
-					setLoadState("ready");
-				}
-			} catch {
-				if (!cancelled) {
-					setLoadState("error");
-				}
-			}
-		};
-
-		load();
-
-		return () => {
-			cancelled = true;
-		};
-	}, []);
+	const result = use(getGithubContributionsLoadResult());
 
 	const trailingYear = useMemo(() => {
-		if (!response) {
+		if (result.status !== "ready") {
 			return { trailingYearTotal: 0, weeks: [] };
 		}
 		const { displayDays, trailingYearTotal } = buildTrailingYearData(
-			response.contributions
+			result.response.contributions
 		);
 		return {
 			trailingYearTotal,
 			weeks: buildContributionWeeks(displayDays),
 		};
-	}, [response]);
+	}, [result]);
 
 	return {
-		loadState,
+		loadState: result.status,
 		trailingYearTotal: trailingYear.trailingYearTotal,
 		weeks: trailingYear.weeks,
 	};

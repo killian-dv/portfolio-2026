@@ -1,4 +1,5 @@
 import { BoardAlbumCard } from "#/components/board/album/board-album-card";
+import { BoardExperiences } from "#/components/board/board-experiences/board-experiences";
 import { BoardBoardingPassCard } from "#/components/board/boarding-pass/board-boarding-pass-card";
 import { BoardCalendarWidgetCard } from "#/components/board/calendar/board-calendar-widget-card";
 import { BoardGithubContributionsCard } from "#/components/board/github-contributions/board-github-contributions-card";
@@ -93,6 +94,21 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 				style={{ gridArea: "g42" }}
 			>
 				<BoardStockChartCard />
+			</div>
+		);
+	}
+
+	if (area === "g17") {
+		return (
+			<div
+				className="relative h-full w-full overflow-visible rounded-xl"
+				data-area="g17"
+				data-clickable="false"
+				style={{ gridArea: "g17" }}
+			>
+				<div className="relative flex h-full w-full items-start justify-start overflow-visible bg-transparent">
+					<BoardExperiences />
+				</div>
 			</div>
 		);
 	}

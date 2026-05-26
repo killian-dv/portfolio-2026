@@ -1,5 +1,6 @@
 import { BoardAlbumCard } from "#/components/board/album/board-album-card";
 import { BoardExperiences } from "#/components/board/board-experiences/board-experiences";
+import { BoardProjects } from "#/components/board/board-projects/board-projects";
 import { BoardBoardingPassCard } from "#/components/board/boarding-pass/board-boarding-pass-card";
 import { BoardCalendarWidgetCard } from "#/components/board/calendar/board-calendar-widget-card";
 import { BoardGithubContributionsCard } from "#/components/board/github-contributions/board-github-contributions-card";
@@ -85,13 +86,13 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 		);
 	}
 
-	if (area === "g42") {
+	if (area === "g29") {
 		return (
 			<div
 				className="relative h-full w-full overflow-visible rounded-xl"
-				data-area="g42"
+				data-area="g29"
 				data-clickable="false"
-				style={{ gridArea: "g42" }}
+				style={{ gridArea: "g29" }}
 			>
 				<BoardStockChartCard />
 			</div>
@@ -109,6 +110,20 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 				<div className="relative flex h-full w-full items-start justify-start overflow-visible bg-transparent">
 					<BoardExperiences />
 				</div>
+			</div>
+		);
+	}
+
+	if (area === "g42") {
+		return (
+			<div
+				className="pointer-events-none relative z-30 h-full w-full overflow-visible rounded-xl"
+				data-area="g42"
+				data-clickable="false"
+				style={{ gridArea: "g42" }}
+			>
+				{/* Anchor cell only — projects layer is absolute and may overflow neighbors. */}
+				<BoardProjects className="absolute top-0 right-0" />
 			</div>
 		);
 	}

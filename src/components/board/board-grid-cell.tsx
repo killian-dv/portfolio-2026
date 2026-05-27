@@ -1,4 +1,5 @@
 import { BoardAlbumCard } from "#/components/board/album/board-album-card";
+import { BoardCertifications } from "#/components/board/board-certifications/board-certifications";
 import { BoardExperiences } from "#/components/board/board-experiences/board-experiences";
 import { BoardProjects } from "#/components/board/board-projects/board-projects";
 import { BoardBoardingPassCard } from "#/components/board/boarding-pass/board-boarding-pass-card";
@@ -58,13 +59,13 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 		);
 	}
 
-	if (area === "g28") {
+	if (area === "g9") {
 		return (
 			<div
 				className="relative h-full w-full overflow-visible rounded-xl"
-				data-area="g28"
+				data-area="g9"
 				data-clickable="false"
-				style={{ gridArea: "g28" }}
+				style={{ gridArea: "g9" }}
 			>
 				<div className="relative flex h-full w-full items-center justify-center overflow-visible bg-transparent">
 					<BoardBoardingPassCard />
@@ -95,6 +96,21 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 				style={{ gridArea: "g29" }}
 			>
 				<BoardStockChartCard />
+			</div>
+		);
+	}
+
+	if (area === "g28") {
+		return (
+			<div
+				className="pointer-events-none relative z-20 h-full w-full overflow-visible rounded-xl"
+				data-area="g28"
+				data-clickable="false"
+				style={{ gridArea: "g28" }}
+			>
+				<div className="relative flex h-full w-full items-start justify-start overflow-visible bg-transparent">
+					<BoardCertifications />
+				</div>
 			</div>
 		);
 	}

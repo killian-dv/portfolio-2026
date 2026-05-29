@@ -16,6 +16,7 @@ export const boardHandwrittenLabelVariants = cva(
 					"text-[#c23e3e]",
 					"[text-shadow:0_0.5px_0_rgba(194,62,62,0.35),0_1px_2px_rgba(194,62,62,0.1)]",
 				],
+				neutral: "text-[#3d3d3d]",
 			},
 		},
 		defaultVariants: {

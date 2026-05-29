@@ -1,0 +1,218 @@
+import type { FavoriteTool } from "#/components/board/board-favorite-tools/favorite-tools.types";
+import arcIcon from "#/components/board/board-favorite-tools/icons/arc.svg";
+import baseUiIcon from "#/components/board/board-favorite-tools/icons/base-ui.svg";
+import cursorIcon from "#/components/board/board-favorite-tools/icons/cursor.svg";
+import figmaIcon from "#/components/board/board-favorite-tools/icons/figma.svg";
+import githubIcon from "#/components/board/board-favorite-tools/icons/github.svg";
+import motionIcon from "#/components/board/board-favorite-tools/icons/motion.svg";
+import n8nIcon from "#/components/board/board-favorite-tools/icons/n8n.svg";
+import nextjsIcon from "#/components/board/board-favorite-tools/icons/nextdotjs.svg";
+import notionIcon from "#/components/board/board-favorite-tools/icons/notion.svg";
+import reactIcon from "#/components/board/board-favorite-tools/icons/react.svg";
+import tailwindIcon from "#/components/board/board-favorite-tools/icons/tailwind-css.svg";
+import tanstackIcon from "#/components/board/board-favorite-tools/icons/tanstack.svg";
+import typescriptIcon from "#/components/board/board-favorite-tools/icons/typescript.svg";
+import vercelIcon from "#/components/board/board-favorite-tools/icons/vercel.svg";
+
+type FavoriteToolSeed = Omit<FavoriteTool, "iconScale" | "stickerVariant"> & {
+	iconScale?: number;
+	stickerVariant?: FavoriteTool["stickerVariant"];
+};
+
+const withDefaults = ({
+	iconScale = 1,
+	stickerVariant = "light",
+	...tool
+}: FavoriteToolSeed): FavoriteTool => ({
+	...tool,
+	iconScale,
+	stickerVariant,
+});
+
+export const favoriteTools: FavoriteTool[] = [
+	withDefaults({
+		id: "react",
+		name: "React",
+		iconSrc: reactIcon,
+		iconScale: 0.92,
+		note: "daily driver",
+		notePlacement: "bottom",
+		rotation: -5.5,
+		x: 328,
+		y: 72,
+		stickerBackground: "#dff7fb",
+		glowColor: "34, 211, 238",
+	}),
+	withDefaults({
+		id: "cursor",
+		name: "Cursor",
+		iconSrc: cursorIcon,
+		iconScale: 0.88,
+		note: "can't go back",
+		notePlacement: "left",
+		rotation: -8,
+		x: 96,
+		y: 148,
+		stickerBackground: "#1c1c1e",
+		stickerVariant: "dark",
+		glowColor: "100, 116, 139",
+	}),
+	withDefaults({
+		id: "arc",
+		name: "Arc",
+		iconSrc: arcIcon,
+		note: "best browser",
+		notePlacement: "right",
+		rotation: 5,
+		x: 196,
+		y: 108,
+		stickerBackground: "#e5edff",
+		glowColor: "59, 130, 246",
+	}),
+	withDefaults({
+		id: "figma",
+		name: "Figma",
+		iconSrc: figmaIcon,
+		iconScale: 0.68,
+		note: "pixel perfection",
+		notePlacement: "left",
+		rotation: -6.5,
+		x: 512,
+		y: 68,
+		stickerBackground: "#f3e8ff",
+		glowColor: "167, 139, 250",
+	}),
+	withDefaults({
+		id: "typescript",
+		name: "TypeScript",
+		iconSrc: typescriptIcon,
+		iconScale: 0.9,
+		note: "worth the typing",
+		notePlacement: "left",
+		rotation: 7,
+		x: 448,
+		y: 148,
+		stickerBackground: "#e0edff",
+		glowColor: "59, 130, 246",
+	}),
+	withDefaults({
+		id: "motion",
+		name: "Motion",
+		iconSrc: motionIcon,
+		iconScale: 0.78,
+		note: "static is boring",
+		notePlacement: "right",
+		rotation: 6,
+		x: 592,
+		y: 148,
+		stickerBackground: "#111111",
+		stickerVariant: "dark",
+		glowColor: "167, 139, 250",
+	}),
+	withDefaults({
+		id: "nextjs",
+		name: "Next.js",
+		iconSrc: nextjsIcon,
+		iconScale: 0.9,
+		note: "shipping fast",
+		notePlacement: "bottom",
+		rotation: 4,
+		x: 268,
+		y: 208,
+		stickerBackground: "#ececec",
+		glowColor: "148, 163, 184",
+	}),
+	withDefaults({
+		id: "tanstack",
+		name: "TanStack",
+		iconSrc: tanstackIcon,
+		iconScale: 0.88,
+		note: "data done right",
+		notePlacement: "right",
+		rotation: -3.5,
+		x: 608,
+		y: 248,
+		stickerBackground: "#ffedd5",
+		glowColor: "251, 146, 60",
+	}),
+	withDefaults({
+		id: "github",
+		name: "GitHub",
+		iconSrc: githubIcon,
+		iconScale: 0.9,
+		note: "commit. commit. commit.",
+		notePlacement: "left",
+		rotation: 3,
+		x: 528,
+		y: 268,
+		stickerBackground: "#eef1f4",
+		glowColor: "148, 163, 184",
+	}),
+	withDefaults({
+		id: "tailwind",
+		name: "Tailwind",
+		iconSrc: tailwindIcon,
+		iconScale: 0.92,
+		note: "no CSS debates",
+		notePlacement: "right",
+		rotation: -3,
+		x: 96,
+		y: 268,
+		stickerBackground: "#e0fdfa",
+		glowColor: "34, 211, 238",
+	}),
+	withDefaults({
+		id: "vercel",
+		name: "Vercel",
+		iconSrc: vercelIcon,
+		iconScale: 0.82,
+		note: "deploy and chill",
+		notePlacement: "left",
+		rotation: 2,
+		x: 268,
+		y: 328,
+		stickerBackground: "#111111",
+		stickerVariant: "dark",
+		glowColor: "30, 30, 30",
+	}),
+	withDefaults({
+		id: "notion",
+		name: "Notion",
+		iconSrc: notionIcon,
+		iconScale: 0.9,
+		note: "second brain",
+		notePlacement: "top",
+		rotation: -4,
+		x: 408,
+		y: 308,
+		stickerBackground: "#f5f4f0",
+		glowColor: "30, 30, 30",
+	}),
+	withDefaults({
+		id: "n8n",
+		name: "n8n",
+		iconSrc: n8nIcon,
+		iconScale: 0.9,
+		note: "automate everything",
+		notePlacement: "bottom",
+		rotation: -7,
+		x: 348,
+		y: 368,
+		stickerBackground: "#ffedd8",
+		glowColor: "251, 146, 60",
+	}),
+	withDefaults({
+		id: "base-ui",
+		name: "Base UI",
+		iconSrc: baseUiIcon,
+		iconScale: 0.88,
+		note: "accessibility first",
+		notePlacement: "right",
+		rotation: 4.5,
+		x: 552,
+		y: 348,
+		stickerBackground: "#111111",
+		stickerVariant: "dark",
+		glowColor: "96, 165, 250",
+	}),
+];

@@ -29,6 +29,8 @@
   --color-emirates-brand: var(--emirates-brand);
   --color-boarding-pass-surface: var(--boarding-pass-surface);
   --color-boarding-pass-surface-end: var(--boarding-pass-surface-end);
+  --color-board-ai-bookmark-paper: var(--board-ai-bookmark-paper);
+  --color-board-ai-bookmark-pin: var(--board-ai-bookmark-pin);
 }
 
 :root {
@@ -40,6 +42,13 @@
   --emirates-brand: #c8102e;
   --boarding-pass-surface: #fbf9f8;
   --boarding-pass-surface-end: #f7f4f4;
+  --board-ai-bookmark-paper: #fafaf9;
+  --board-ai-bookmark-pin: #c44545;
+  --board-ai-bookmark-shadow-idle: drop-shadow(0 0 1px rgb(0 0 0 / 0.14))
+    drop-shadow(0 2px 6px rgb(0 0 0 / 0.1)) drop-shadow(0 12px 24px rgb(0 0 0 / 0.14));
+  --board-ai-bookmark-shadow-hover: drop-shadow(0 0 1px rgb(0 0 0 / 0.16))
+    drop-shadow(0 4px 10px rgb(0 0 0 / 0.12))
+    drop-shadow(0 18px 34px rgb(0 0 0 / 0.2));
 }
 
 @layer base {
@@ -87,6 +96,78 @@ body {
     linear-gradient(90deg, #efefef6f 1px, transparent 0),
     linear-gradient(180deg, #efefef6f 1px, transparent 0);
   background-size: 20px 20px;
+}
+
+.board-ai-bookmark-paper {
+  position: relative;
+  background-color: var(--board-ai-bookmark-paper);
+  background-image: radial-gradient(
+    ellipse 85% 50% at 50% -15%,
+    rgb(255 255 255 / 0.55),
+    transparent 58%
+  );
+  filter: var(--board-ai-bookmark-shadow-idle);
+  transition: filter 0.25s ease-out;
+}
+
+.board-ai-bookmark-paper[data-hovered="true"] {
+  filter: var(--board-ai-bookmark-shadow-hover);
+}
+
+.board-ai-bookmark-paper::before {
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgb(0 0 0 / 0.02) 0px,
+      transparent 1px,
+      transparent 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgb(0 0 0 / 0.014) 0px,
+      transparent 1px,
+      transparent 4px
+    );
+  content: "";
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  pointer-events: none;
+  position: absolute;
+}
+
+.board-ai-bookmark-paper::after {
+  background: linear-gradient(to top, rgb(0 0 0 / 0.05), transparent);
+  bottom: 0;
+  content: "";
+  height: 18%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+.board-ai-bookmark-pin {
+  position: relative;
+}
+
+.board-ai-bookmark-pin::before {
+  background-color: var(--board-ai-bookmark-pin);
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.38), inset 0 1px 0 rgb(255 255 255 / 0.35);
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.board-ai-bookmark-pin::after {
+  background-color: color-mix(in srgb, var(--foreground) 28%, transparent);
+  content: "";
+  height: 6px;
+  left: 50%;
+  position: absolute;
+  top: 7px;
+  transform: translateX(-50%);
+  width: 1px;
 }
 
 .board-grid-template {

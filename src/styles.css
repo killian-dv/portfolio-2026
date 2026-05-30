@@ -53,6 +53,14 @@
   --board-sticky-note-sage: #b2dcc8;
   --board-sticky-note-shadow: drop-shadow(0 0 1px rgb(0 0 0 / 0.1))
     drop-shadow(0 2px 5px rgb(0 0 0 / 0.08)) drop-shadow(0 10px 20px rgb(0 0 0 / 0.1));
+  --board-slack-message-surface: #f8f8f8;
+  --board-slack-message-border: #e8e8e8;
+  --board-slack-message-sender: #1d1c1d;
+  --board-slack-message-body: #1d1c1d;
+  --board-slack-message-timestamp: #616061;
+  --board-slack-message-avatar: #7c5cff;
+  --board-slack-message-shadow: drop-shadow(0 0 1px rgb(0 0 0 / 0.06))
+    drop-shadow(0 1px 3px rgb(0 0 0 / 0.06));
 }
 
 @layer base {
@@ -242,6 +250,34 @@ body {
   height: 14px;
   transform: rotate(-2deg);
   width: 44px;
+}
+
+.board-slack-message {
+  filter: var(--board-slack-message-shadow);
+}
+
+.board-slack-message__surface {
+  background-color: var(--board-slack-message-surface);
+  border: 1px solid var(--board-slack-message-border);
+  border-radius: 8px;
+}
+
+.board-slack-message__avatar {
+  background-color: var(--board-slack-message-avatar);
+}
+
+.board-slack-message__sender {
+  color: var(--board-slack-message-sender);
+}
+
+.board-slack-message__timestamp {
+  color: var(--board-slack-message-timestamp);
+  font-weight: 400;
+}
+
+.board-slack-message__body {
+  color: var(--board-slack-message-body);
+  font-weight: 400;
 }
 
 .board-grid-template {

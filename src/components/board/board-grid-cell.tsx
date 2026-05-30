@@ -4,6 +4,7 @@ import { BoardCertifications } from "#/components/board/board-certifications/boa
 import { BoardExperiences } from "#/components/board/board-experiences/board-experiences";
 import { BoardFavoriteTools } from "#/components/board/board-favorite-tools/board-favorite-tools";
 import { BoardProjects } from "#/components/board/board-projects/board-projects";
+import { BoardSlackMessage } from "#/components/board/board-slack-message/board-slack-message";
 import { BoardStickyNote } from "#/components/board/board-sticky-notes/board-sticky-note";
 import { stickyNotesById } from "#/components/board/board-sticky-notes/sticky-notes.data";
 import { BoardBoardingPassCard } from "#/components/board/boarding-pass/board-boarding-pass-card";
@@ -48,6 +49,19 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 					className="top-[40px] right-[32px] z-10"
 					note={stickyNotesById["learn-build"]}
 				/>
+			</div>
+		);
+	}
+
+	if (area === "g4") {
+		return (
+			<div
+				className="relative h-full w-full overflow-visible rounded-xl"
+				data-area="g4"
+				data-clickable="false"
+				style={{ gridArea: "g4" }}
+			>
+				<BoardSlackMessage className="absolute top-[56px] left-[20px] z-10" />
 			</div>
 		);
 	}

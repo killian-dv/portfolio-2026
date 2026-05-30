@@ -1,4 +1,5 @@
 import { BoardAlbumCard } from "#/components/board/album/board-album-card";
+import { BoardAgentTerminal } from "#/components/board/board-agent-terminal/board-agent-terminal";
 import { BoardAiBookmarks } from "#/components/board/board-ai-bookmarks/board-ai-bookmarks";
 import { BoardCertifications } from "#/components/board/board-certifications/board-certifications";
 import { BoardExperiences } from "#/components/board/board-experiences/board-experiences";
@@ -176,6 +177,19 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 				<div className="relative flex h-full w-full items-start justify-start overflow-visible bg-transparent">
 					<BoardFavoriteTools />
 				</div>
+			</div>
+		);
+	}
+
+	if (area === "g34") {
+		return (
+			<div
+				className="relative h-full w-full overflow-visible rounded-xl"
+				data-area="g34"
+				data-clickable="false"
+				style={{ gridArea: "g34" }}
+			>
+				<BoardAgentTerminal className="absolute bottom-[28px] left-[22px] z-10" />
 			</div>
 		);
 	}

@@ -31,6 +31,33 @@
   --color-boarding-pass-surface-end: var(--boarding-pass-surface-end);
   --color-board-ai-bookmark-paper: var(--board-ai-bookmark-paper);
   --color-board-ai-bookmark-pin: var(--board-ai-bookmark-pin);
+  --color-board-agent-terminal-bg: var(--board-agent-terminal-bg);
+  --color-board-agent-terminal-border: var(--board-agent-terminal-border);
+  --color-board-agent-terminal-border-hover: var(
+    --board-agent-terminal-border-hover
+  );
+  --color-board-agent-terminal-user: var(--board-agent-terminal-user);
+  --color-board-agent-terminal-user-text: var(--board-agent-terminal-user-text);
+  --color-board-agent-terminal-ai-prompt: var(--board-agent-terminal-ai-prompt);
+  --color-board-agent-terminal-ai: var(--board-agent-terminal-ai);
+  --color-board-agent-terminal-bullet: var(--board-agent-terminal-bullet);
+  --color-board-agent-terminal-bullet-accent: var(
+    --board-agent-terminal-bullet-accent
+  );
+  --color-board-agent-terminal-cursor: var(--board-agent-terminal-cursor);
+  --color-board-agent-terminal-scanline: var(--board-agent-terminal-scanline);
+  --color-board-slack-message-surface: var(--board-slack-message-surface);
+  --color-board-slack-message-border: var(--board-slack-message-border);
+  --color-board-slack-message-foreground: var(--board-slack-message-foreground);
+  --color-board-slack-message-muted: var(--board-slack-message-muted);
+  --color-board-slack-message-avatar: var(--board-slack-message-avatar);
+  --drop-shadow-board-agent-terminal: var(--board-agent-terminal-drop-shadow);
+  --drop-shadow-board-agent-terminal-hover: var(
+    --board-agent-terminal-drop-shadow-hover
+  );
+  --drop-shadow-board-slack-message: var(--board-slack-message-drop-shadow);
+  --shadow-board-agent-terminal-idle: var(--board-agent-terminal-shadow-idle);
+  --shadow-board-agent-terminal-hover: var(--board-agent-terminal-shadow-hover);
 }
 
 :root {
@@ -53,14 +80,32 @@
   --board-sticky-note-sage: #b2dcc8;
   --board-sticky-note-shadow: drop-shadow(0 0 1px rgb(0 0 0 / 0.1))
     drop-shadow(0 2px 5px rgb(0 0 0 / 0.08)) drop-shadow(0 10px 20px rgb(0 0 0 / 0.1));
+  --board-agent-terminal-bg: #10131a;
+  --board-agent-terminal-border: rgb(72 88 120 / 0.28);
+  --board-agent-terminal-border-hover: rgb(72 88 120 / 0.45);
+  --board-agent-terminal-user: #9aa7bd;
+  --board-agent-terminal-user-text: #c5d0e3;
+  --board-agent-terminal-ai-prompt: rgb(127 147 178 / 0.95);
+  --board-agent-terminal-ai: #8fd9b4;
+  --board-agent-terminal-bullet: #7f93b2;
+  --board-agent-terminal-bullet-accent: rgb(110 231 183 / 0.55);
+  --board-agent-terminal-cursor: #6ee7b7;
+  --board-agent-terminal-scanline: rgb(110 231 183 / 0.16);
+  --board-agent-terminal-drop-shadow: 0 0 1px rgb(0 0 0 / 0.2),
+    0 6px 18px rgb(0 0 0 / 0.28);
+  --board-agent-terminal-drop-shadow-hover: 0 0 1px rgb(0 0 0 / 0.24),
+    0 10px 26px rgb(0 0 0 / 0.36);
+  --board-agent-terminal-shadow-idle: 0 0 0 1px rgb(56 189 148 / 0.06),
+    0 10px 28px -14px rgb(0 0 0 / 0.55);
+  --board-agent-terminal-shadow-hover: 0 0 0 1px rgb(56 189 148 / 0.22),
+    0 0 28px -4px rgb(45 212 191 / 0.2), 0 18px 40px -16px rgb(0 0 0 / 0.62);
   --board-slack-message-surface: #f8f8f8;
   --board-slack-message-border: #e8e8e8;
-  --board-slack-message-sender: #1d1c1d;
-  --board-slack-message-body: #1d1c1d;
-  --board-slack-message-timestamp: #616061;
+  --board-slack-message-foreground: #1d1c1d;
+  --board-slack-message-muted: #616061;
   --board-slack-message-avatar: #7c5cff;
-  --board-slack-message-shadow: drop-shadow(0 0 1px rgb(0 0 0 / 0.06))
-    drop-shadow(0 1px 3px rgb(0 0 0 / 0.06));
+  --board-slack-message-drop-shadow: 0 0 1px rgb(0 0 0 / 0.06),
+    0 1px 3px rgb(0 0 0 / 0.06);
 }
 
 @layer base {
@@ -250,34 +295,6 @@ body {
   height: 14px;
   transform: rotate(-2deg);
   width: 44px;
-}
-
-.board-slack-message {
-  filter: var(--board-slack-message-shadow);
-}
-
-.board-slack-message__surface {
-  background-color: var(--board-slack-message-surface);
-  border: 1px solid var(--board-slack-message-border);
-  border-radius: 8px;
-}
-
-.board-slack-message__avatar {
-  background-color: var(--board-slack-message-avatar);
-}
-
-.board-slack-message__sender {
-  color: var(--board-slack-message-sender);
-}
-
-.board-slack-message__timestamp {
-  color: var(--board-slack-message-timestamp);
-  font-weight: 400;
-}
-
-.board-slack-message__body {
-  color: var(--board-slack-message-body);
-  font-weight: 400;
 }
 
 .board-grid-template {

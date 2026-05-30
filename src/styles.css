@@ -49,6 +49,10 @@
   --board-ai-bookmark-shadow-hover: drop-shadow(0 0 1px rgb(0 0 0 / 0.16))
     drop-shadow(0 4px 10px rgb(0 0 0 / 0.12))
     drop-shadow(0 18px 34px rgb(0 0 0 / 0.2));
+  --board-sticky-note-yellow: #efe29a;
+  --board-sticky-note-sage: #b2dcc8;
+  --board-sticky-note-shadow: drop-shadow(0 0 1px rgb(0 0 0 / 0.1))
+    drop-shadow(0 2px 5px rgb(0 0 0 / 0.08)) drop-shadow(0 10px 20px rgb(0 0 0 / 0.1));
 }
 
 @layer base {
@@ -168,6 +172,76 @@ body {
   top: 7px;
   transform: translateX(-50%);
   width: 1px;
+}
+
+.board-sticky-note {
+  border-radius: 1px;
+  filter: var(--board-sticky-note-shadow);
+}
+
+.board-sticky-note--yellow {
+  background-color: var(--board-sticky-note-yellow);
+  background-image: radial-gradient(
+    ellipse 90% 55% at 50% -12%,
+    rgb(255 255 255 / 0.34),
+    transparent 58%
+  );
+}
+
+.board-sticky-note--sage {
+  background-color: var(--board-sticky-note-sage);
+  background-image: radial-gradient(
+    ellipse 90% 55% at 50% -12%,
+    rgb(255 255 255 / 0.36),
+    transparent 58%
+  );
+}
+
+.board-sticky-note::before {
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgb(0 0 0 / 0.018) 0px,
+      transparent 1px,
+      transparent 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgb(0 0 0 / 0.012) 0px,
+      transparent 1px,
+      transparent 4px
+    );
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.45;
+  pointer-events: none;
+  position: absolute;
+}
+
+.board-sticky-note::after {
+  background: linear-gradient(to top, rgb(0 0 0 / 0.04), transparent);
+  border-radius: inherit;
+  bottom: 0;
+  content: "";
+  height: 22%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+.board-sticky-note-tape {
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 0.62) 0%,
+    rgb(255 255 255 / 0.38) 100%
+  );
+  border: 1px solid rgb(255 255 255 / 0.55);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+  height: 14px;
+  transform: rotate(-2deg);
+  width: 44px;
 }
 
 .board-grid-template {

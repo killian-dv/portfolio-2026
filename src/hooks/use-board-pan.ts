@@ -1,6 +1,10 @@
 import { useEffect, useRef } from "react";
 
-import { BOARD_HEIGHT_PX, BOARD_WIDTH_PX } from "#/lib/board-grid-config";
+import {
+	BOARD_HEIGHT_PX,
+	BOARD_WIDTH_PX,
+	getBoardCanvasLayoutScale,
+} from "#/lib/board-grid-config";
 
 interface Position {
 	x: number;
@@ -42,6 +46,7 @@ export const useBoardPan = (enabled = true) => {
 		height: 0,
 		deviceScale: 1,
 	});
+	const layoutScaleRef = useRef(1);
 	const enabledRef = useRef(enabled);
 
 	enabledRef.current = enabled;
@@ -50,8 +55,11 @@ export const useBoardPan = (enabled = true) => {
 
 	const clampPosition = (x: number, y: number): Position => {
 		const scale = getScale();
-		const maxX = (BOARD_WIDTH_PX - viewportRef.current.width) * scale;
-		const maxY = (BOARD_HEIGHT_PX - viewportRef.current.height) * scale;
+		const layoutScale = layoutScaleRef.current;
+		const boardWidth = BOARD_WIDTH_PX * layoutScale;
+		const boardHeight = BOARD_HEIGHT_PX * layoutScale;
+		const maxX = (boardWidth - viewportRef.current.width) * scale;
+		const maxY = (boardHeight - viewportRef.current.height) * scale;
 
 		return {
 			x: clamp(x, maxX > 0 ? -maxX / 2 : 0, maxX > 0 ? maxX / 2 : 0),
@@ -157,11 +165,17 @@ export const useBoardPan = (enabled = true) => {
 	// biome-ignore lint/correctness/useExhaustiveDependencies: listeners mount once; state lives in refs
 	useEffect(() => {
 		const updateViewport = () => {
+			const width = window.innerWidth;
 			viewportRef.current = {
-				width: window.innerWidth,
+				width,
 				height: window.innerHeight,
 				deviceScale: 1,
 			};
+			layoutScaleRef.current = getBoardCanvasLayoutScale(width);
+			positionRef.current = clampPosition(
+				positionRef.current.x,
+				positionRef.current.y
+			);
 			applyTransform();
 		};
 

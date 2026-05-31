@@ -1,3 +1,16 @@
+/** Visual scale of `BoardCanvas` below Tailwind `md` (768px). */
+export const BOARD_CANVAS_MOBILE_LAYOUT_SCALE = 0.82;
+
+/** Tailwind `md` min-width — keep in sync with `md:scale-100` on BoardCanvas. */
+export const BOARD_MD_MIN_WIDTH_PX = 768;
+
+export const getBoardCanvasLayoutScale = (
+	viewportWidth: number = typeof window === "undefined"
+		? BOARD_MD_MIN_WIDTH_PX
+		: window.innerWidth
+) =>
+	viewportWidth >= BOARD_MD_MIN_WIDTH_PX ? 1 : BOARD_CANVAS_MOBILE_LAYOUT_SCALE;
+
 export const BOARD_CELL_SIZE_PX = 360;
 export const BOARD_GRID_COLS = 8;
 export const BOARD_GRID_ROWS = 6;

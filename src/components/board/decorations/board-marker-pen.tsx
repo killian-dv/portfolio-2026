@@ -131,7 +131,6 @@ export const BoardMarkerPen = ({
 	const uid = useId().replace(/:/g, "");
 	const capGrad = `board-marker-cap-${uid}`;
 	const barrelGrad = `board-marker-barrel-${uid}`;
-	const gripGrad = `board-marker-grip-${uid}`;
 	const nibGrad = `board-marker-nib-${uid}`;
 	const barrel = BARREL_GRADIENT[color];
 	const layout = MARKER_POSES[pose];
@@ -210,10 +209,6 @@ export const BoardMarkerPen = ({
 						<stop offset="45%" stopColor={barrel.mid} />
 						<stop offset="100%" stopColor={barrel.bottom} />
 					</linearGradient>
-					<linearGradient id={gripGrad} x1="0" x2="1" y1="0" y2="0">
-						<stop offset="0%" stopColor="#1a1e26" />
-						<stop offset="100%" stopColor="#2e3540" />
-					</linearGradient>
 					<linearGradient id={nibGrad} x1="0" x2="1" y1="0" y2="1">
 						<stop offset="0%" stopColor="#2a3038" />
 						<stop offset="100%" stopColor="#15181e" />
@@ -227,7 +222,7 @@ export const BoardMarkerPen = ({
 					fill={`url(#${barrelGrad})`}
 					height="18"
 					rx="2"
-					width="88"
+					width="136"
 					x="14"
 					y="5"
 				/>
@@ -235,69 +230,10 @@ export const BoardMarkerPen = ({
 					fill="rgb(255 255 255 / 0.14)"
 					height="3"
 					rx="1"
-					width="72"
+					width="120"
 					x="22"
 					y="7"
 				/>
-
-				<rect
-					fill={`url(#${gripGrad})`}
-					height="18"
-					rx="2"
-					width="48"
-					x="102"
-					y="5"
-				/>
-				<line
-					stroke="rgb(255 255 255 / 0.07)"
-					strokeWidth="0.8"
-					x1="108"
-					x2="108"
-					y1="8"
-					y2="20"
-				/>
-				<line
-					stroke="rgb(255 255 255 / 0.07)"
-					strokeWidth="0.8"
-					x1="115"
-					x2="115"
-					y1="8"
-					y2="20"
-				/>
-				<line
-					stroke="rgb(255 255 255 / 0.07)"
-					strokeWidth="0.8"
-					x1="122"
-					x2="122"
-					y1="8"
-					y2="20"
-				/>
-				<line
-					stroke="rgb(255 255 255 / 0.07)"
-					strokeWidth="0.8"
-					x1="129"
-					x2="129"
-					y1="8"
-					y2="20"
-				/>
-				<line
-					stroke="rgb(255 255 255 / 0.07)"
-					strokeWidth="0.8"
-					x1="136"
-					x2="136"
-					y1="8"
-					y2="20"
-				/>
-				<line
-					stroke="rgb(255 255 255 / 0.07)"
-					strokeWidth="0.8"
-					x1="143"
-					x2="143"
-					y1="8"
-					y2="20"
-				/>
-
-				<rect fill="#8e96a8" height="18" rx="1" width="4" x="150" y="5" />
 			</svg>
 		</div>
 	);

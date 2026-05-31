@@ -1,5 +1,5 @@
-import { Penflow } from "penflow/react";
-import { useEffect, useState } from "react";
+import type { PenflowProps } from "penflow/react";
+import { type ComponentType, useEffect, useState } from "react";
 
 import { heroSignature } from "#/components/board/hero/board-hero.data";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
@@ -8,8 +8,17 @@ const SIGNATURE_PLAY_DELAY_MS = 900;
 
 export const BoardHeroSignature = () => {
 	const prefersReducedMotion = usePrefersReducedMotion();
+	const [Penflow, setPenflow] = useState<ComponentType<PenflowProps> | null>(
+		null
+	);
 	const [playheadKey, setPlayheadKey] = useState(0);
 	const [isReady, setIsReady] = useState(prefersReducedMotion);
+
+	useEffect(() => {
+		import("penflow/react").then(({ Penflow: PenflowComponent }) => {
+			setPenflow(() => PenflowComponent);
+		});
+	}, []);
 
 	useEffect(() => {
 		if (prefersReducedMotion) {
@@ -26,6 +35,10 @@ export const BoardHeroSignature = () => {
 	}, [prefersReducedMotion]);
 
 	if (!isReady) {
+		return null;
+	}
+
+	if (!Penflow) {
 		return null;
 	}
 

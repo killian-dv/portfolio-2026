@@ -298,13 +298,7 @@ body {
 }
 
 .board-grid-template {
-  grid-template-areas:
-    "g1 g2 g3 g30 g30 g6 g7 g7"
-    "g4 g29 g31 g28 g28 g8 g36 g37"
-    "g9 g11 g42 blank blank g17 g17 g14"
-    "g15 g10 g16 blank blank g17 g17 g18"
-    "g44 g20 g40 g21 g21 g23 g26 g24"
-    "g33 g25 g39 g22 g22 g34 g35 g35";
+  /* grid-template-areas is set inline from board-grid-config.ts */
   grid-template-rows: repeat(6, 360px);
   grid-template-columns: repeat(8, 360px);
 }

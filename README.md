@@ -1,204 +1,96 @@
-Welcome to your new TanStack Start app! 
+# Portfolio — Killian David
 
-# Getting Started
+Interactive portfolio board built with [TanStack Start](https://tanstack.com/start), React 19, and Tailwind CSS.
 
-To run this application:
+Production: [https://killian-david.fr](https://killian-david.fr)
+
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-# Building For Production
+The dev server runs at [http://localhost:3000](http://localhost:3000).
 
-To build this application for production:
+## Deployment (Cloudflare Workers)
+
+This site is deployed on **Cloudflare Workers**, not a traditional Node server or static host.
+
+- **[`@cloudflare/vite-plugin`](https://developers.cloudflare.com/workers/vite-plugin/)** — wires the Vite build to the Workers runtime (SSR via the `ssr` Vite environment).
+- **[Wrangler](https://developers.cloudflare.com/workers/wrangler/)** — CLI used to build and publish the worker.
+- **[`wrangler.jsonc`](./wrangler.jsonc)** — worker config (`portfolio-2026`, `nodejs_compat`, server entry `@tanstack/react-start/server-entry`).
+
+### Prerequisites
+
+1. A [Cloudflare](https://dash.cloudflare.com/) account with Workers enabled.
+2. Authenticate Wrangler once on your machine:
+
+   ```bash
+   npx wrangler login
+   ```
+
+### Automatic deploy (Git → Cloudflare)
+
+Production updates are driven by **Cloudflare’s Git integration**, not GitHub Actions (there is no `.github/workflows` in this repo).
+
+When the repo is connected in the Cloudflare dashboard (**Workers & Pages** → `portfolio-2026` → **Settings** → **Builds**):
+
+1. A **push to the production branch** (typically `main`) triggers a new build and deploy.
+2. Cloudflare runs the build in its environment and publishes a **new worker version** (not a server restart — Workers are serverless).
+3. If the build fails, the **previous deployment stays live**.
+
+Source repo: [github.com/killian-dv/portfolio-2026](https://github.com/killian-dv/portfolio-2026)
+
+After pushing, check **Workers & Pages** → **Deployments** in the dashboard: a deployment tied to your commit should appear. If nothing shows up, verify the Git connection, production branch, and build settings.
+
+Suggested build settings in Cloudflare:
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build` |
+| Node version | Match your local setup (see `package.json` engines if added) |
+
+Optional: set `VITE_SITE_URL` in the Cloudflare project’s **Environment variables** for production builds.
+
+### Manual deploy
+
+For one-off deploys from your machine (without going through Git):
 
 ```bash
-npm run build
+npm run deploy
 ```
 
-## Testing
+This runs `vite build` then `wrangler deploy`, publishing the worker to your Cloudflare account. DNS and custom domains (e.g. `killian-david.fr`) are configured in the Cloudflare dashboard for that worker.
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+### Other useful commands
+
+| Command | Description |
+| --- | --- |
+| `npm run build` | Production build only (no deploy) |
+| `npm run preview` | Preview the production build locally |
+| `npm run cf-typegen` | Generate Wrangler/Workers TypeScript types |
+
+## Environment
+
+Optional: set `VITE_SITE_URL` at build time for canonical URLs and Open Graph metadata (defaults to `https://killian-david.fr`). See [`src/lib/site-seo.ts`](./src/lib/site-seo.ts).
+
+## Quality checks
 
 ```bash
-npm run test
+npm run test      # Vitest
+npm run typecheck # TypeScript
+npm run lint      # Biome
+npm run check     # Ultracite (format + lint)
 ```
 
-## Styling
+## Stack
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+- [TanStack Router](https://tanstack.com/router) — file-based routing in `src/routes`
+- [Tailwind CSS](https://tailwindcss.com/) v4
+- [Biome](https://biomejs.dev/) + [Ultracite](https://www.ultracite.ai/) — lint and format
 
-### Removing Tailwind CSS
+## Learn more
 
-If you prefer not to use Tailwind CSS:
-
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Uninstall the packages: `npm install @tailwindcss/vite tailwindcss -D`
-
-## Linting & Formatting
-
-This project uses [Biome](https://biomejs.dev/) for linting and formatting. The following scripts are available:
-
-
-```bash
-npm run lint
-npm run format
-npm run check
-```
-
-
-
-## Routing
-
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
-```
-
-Then anywhere in your JSX you can use it like so:
-
-```tsx
-<Link to="/about">About</Link>
-```
-
-This will create a link that will navigate to the `/about` route.
-
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
-```
-
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
-## Server Functions
-
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
-
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
-
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
-
-## API Routes
-
-You can create API routes by using the `server` property in your route definitions:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
-
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-# Demo files
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
+- [TanStack Start docs](https://tanstack.com/start)
+- [Cloudflare Workers docs](https://developers.cloudflare.com/workers/)

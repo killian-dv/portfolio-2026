@@ -1,3 +1,8 @@
+import { BOARD_CELL_SIZE_PX } from "#/lib/board-grid-config";
+
+/** Fixed square footprint — matches one board cell (placement no longer stretches the slot). */
+export const STOCK_CHART_CARD_SIZE_PX = BOARD_CELL_SIZE_PX;
+
 /** Starts elevated, soft dip mid-day, light wiggle on recovery, then close. */
 export const STOCK_PRICES = [
 	187.8, 187.2, 186.6, 184.4, 183.4, 184.8, 186.2, 185.4, 187.4, 188.6, 190.1,

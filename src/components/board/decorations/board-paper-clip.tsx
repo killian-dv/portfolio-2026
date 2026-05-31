@@ -49,7 +49,7 @@ export const BoardPaperClip = ({
 		<svg
 			aria-hidden
 			className={cn(
-				"board-desk-tack board-desk-object board-desk-object--nudge-hover block shrink-0",
+				"board-desk-object board-desk-object--static block shrink-0",
 				className
 			)}
 			height={size}

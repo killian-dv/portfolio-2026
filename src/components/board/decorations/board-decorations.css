@@ -33,3 +33,18 @@
 .board-desk-tack:hover {
 	transform: translateY(-0.5px);
 }
+
+/* Desk clutter — no hover motion (clips, markers, pin piles). */
+.board-desk-object--static,
+.board-desk-object--static:hover {
+	--board-desk-rotate-hover-adjust: 0deg;
+	filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.06))
+		drop-shadow(0 3px 8px rgb(0 0 0 / 0.1));
+	transform: rotate(var(--board-desk-rotate));
+	transition: none;
+}
+
+.board-desk-object--static.board-desk-tack:hover,
+.board-desk-object--static:hover .board-desk-tack {
+	transform: rotate(var(--board-desk-rotate));
+}

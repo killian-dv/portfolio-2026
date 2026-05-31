@@ -8,6 +8,8 @@ import {
 } from "#/components/board/board-certifications/board-certifications-constants";
 import { CERTIFICATIONS } from "#/components/board/board-certifications/certifications.data";
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
+import { BoardHandwrittenAnnotation } from "#/components/board/decorations/board-handwritten-annotation";
+
 export const BoardCertifications = () => {
 	const stopBoardPan = useCallback((event: MouseEvent) => {
 		event.stopPropagation();
@@ -33,6 +35,12 @@ export const BoardCertifications = () => {
 			>
 				{BOARD_CERTIFICATIONS_TITLE}
 			</BoardHandwrittenLabel>
+
+			<BoardHandwrittenAnnotation
+				className="right-[190px] bottom-[40px]"
+				rotationDeg={-4.5}
+				text="always learning"
+			/>
 
 			{CERTIFICATIONS.map((certification) => (
 				<BoardCertificationCard

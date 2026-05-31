@@ -5,10 +5,7 @@ import { cn } from "#/lib/utils";
 
 export const BOARD_HANDWRITTEN_ANNOTATION_TEXTS = [
 	"always learning",
-	"details matter",
-	"ship > perfect",
 	"frontend craft",
-	"currently obsessed with AI",
 	"one more iteration",
 	"worth bookmarking",
 ] as const;

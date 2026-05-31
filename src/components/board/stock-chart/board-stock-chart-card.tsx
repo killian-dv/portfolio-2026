@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 
 import { StockChartArea } from "#/components/board/stock-chart/stock-chart-area";
 import { StockChartCardShell } from "#/components/board/stock-chart/stock-chart-card-shell";
+import { STOCK_CHART_CARD_SIZE_PX } from "#/components/board/stock-chart/stock-chart-constants";
 import { StockChartHeader } from "#/components/board/stock-chart/stock-chart-header";
 import { useStockChartInteraction } from "#/components/board/stock-chart/use-stock-chart-interaction";
 
@@ -10,10 +11,14 @@ export const BoardStockChartCard = () => {
 
 	return (
 		<motion.div
-			className="relative h-full w-full cursor-default select-none"
+			className="relative shrink-0 cursor-default select-none"
 			onMouseDown={interaction.stopBoardPan}
 			ref={interaction.cardRef}
-			style={{ transform: interaction.parallaxTransform }}
+			style={{
+				height: STOCK_CHART_CARD_SIZE_PX,
+				width: STOCK_CHART_CARD_SIZE_PX,
+				transform: interaction.parallaxTransform,
+			}}
 		>
 			<StockChartCardShell>
 				<StockChartHeader

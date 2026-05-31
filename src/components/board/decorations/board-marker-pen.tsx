@@ -12,6 +12,14 @@ export type BoardMarkerPenColor =
 	| "purple"
 	| "black";
 
+/** Relative cap / barrel layout — each pose reads differently on the desk. */
+export type BoardMarkerPenPose =
+	| "default"
+	| "flipped"
+	| "dropped-cap"
+	| "scattered"
+	| "upright";
+
 const BARREL_GRADIENT: Record<
 	BoardMarkerPenColor,
 	{ top: string; mid: string; bottom: string }
@@ -24,19 +32,99 @@ const BARREL_GRADIENT: Record<
 	black: { top: "#4a4f58", mid: "#32363e", bottom: "#22252a" },
 };
 
+const MARKER_WIDTH = 168;
+const MARKER_HEIGHT = 52;
+
+interface PartLayout {
+	className: string;
+	style?: CSSProperties;
+}
+
+interface PoseLayout {
+	barrel: PartLayout;
+	cap: PartLayout;
+	height: number;
+	width: number;
+}
+
+const MARKER_POSES: Record<BoardMarkerPenPose, PoseLayout> = {
+	default: {
+		width: MARKER_WIDTH,
+		height: MARKER_HEIGHT,
+		cap: {
+			className: "absolute top-0 right-[2px] block",
+			style: { transform: "rotate(11deg)", transformOrigin: "70% 50%" },
+		},
+		barrel: {
+			className: "absolute bottom-[2px] left-0 block",
+			style: { transform: "rotate(-1.5deg)", transformOrigin: "12% 50%" },
+		},
+	},
+	flipped: {
+		width: MARKER_WIDTH,
+		height: MARKER_HEIGHT,
+		cap: {
+			className: "absolute top-[2px] left-[6px] block",
+			style: { transform: "rotate(-32deg)", transformOrigin: "25% 45%" },
+		},
+		barrel: {
+			className: "absolute right-[2px] bottom-[4px] block",
+			style: {
+				transform: "rotate(6deg) scaleX(-1)",
+				transformOrigin: "88% 50%",
+			},
+		},
+	},
+	"dropped-cap": {
+		width: MARKER_WIDTH,
+		height: MARKER_HEIGHT + 18,
+		cap: {
+			className: "absolute top-[22px] left-[18px] block",
+			style: { transform: "rotate(48deg)", transformOrigin: "50% 50%" },
+		},
+		barrel: {
+			className: "absolute right-[8px] bottom-[2px] block",
+			style: { transform: "rotate(-22deg)", transformOrigin: "18% 55%" },
+		},
+	},
+	scattered: {
+		width: MARKER_WIDTH + 12,
+		height: MARKER_HEIGHT + 24,
+		cap: {
+			className: "absolute top-[30px] right-[8px] block",
+			style: { transform: "rotate(-24deg)", transformOrigin: "55% 40%" },
+		},
+		barrel: {
+			className: "absolute bottom-[10px] left-[20px] block",
+			style: { transform: "rotate(16deg)", transformOrigin: "6% 62%" },
+		},
+	},
+	upright: {
+		width: 58,
+		height: 172,
+		cap: {
+			className: "absolute top-[6px] left-1/2 block -translate-x-[42%]",
+			style: { transform: "rotate(94deg)", transformOrigin: "50% 50%" },
+		},
+		barrel: {
+			className: "absolute bottom-[4px] left-1/2 block -translate-x-1/2",
+			style: { transform: "rotate(91deg)", transformOrigin: "50% 85%" },
+		},
+	},
+};
+
 interface BoardMarkerPenProps {
 	className?: string;
 	color?: BoardMarkerPenColor;
+	pose?: BoardMarkerPenPose;
 	rotationDeg?: number;
 	style?: CSSProperties;
 }
 
-const MARKER_WIDTH = 168;
-const MARKER_HEIGHT = 52;
-
 export const BoardMarkerPen = ({
 	className,
 	color = "blue",
+	pose = "default",
 	rotationDeg = -22,
 	style,
 }: BoardMarkerPenProps) => {
@@ -46,29 +134,30 @@ export const BoardMarkerPen = ({
 	const gripGrad = `board-marker-grip-${uid}`;
 	const nibGrad = `board-marker-nib-${uid}`;
 	const barrel = BARREL_GRADIENT[color];
+	const layout = MARKER_POSES[pose];
 
 	return (
 		<div
 			aria-hidden
 			className={cn(
-				"board-desk-object board-desk-object--nudge-hover pointer-events-auto absolute z-10",
+				"board-desk-object board-desk-object--static pointer-events-none absolute z-10",
 				className
 			)}
 			style={
 				{
 					...style,
 					"--board-desk-rotate": `${rotationDeg}deg`,
-					width: MARKER_WIDTH,
-					height: MARKER_HEIGHT,
+					width: layout.width,
+					height: layout.height,
 				} as CSSProperties
 			}
 		>
 			{/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative desk object */}
 			<svg
 				aria-hidden
-				className="absolute top-0 right-[2px] block"
+				className={layout.cap.className}
 				height={22}
-				style={{ transform: "rotate(11deg)", transformOrigin: "70% 50%" }}
+				style={layout.cap.style}
 				viewBox="0 0 44 22"
 				width={44}
 				xmlns="http://www.w3.org/2000/svg"
@@ -108,9 +197,9 @@ export const BoardMarkerPen = ({
 			{/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative desk object */}
 			<svg
 				aria-hidden
-				className="absolute bottom-[2px] left-0 block"
+				className={layout.barrel.className}
 				height={28}
-				style={{ transform: "rotate(-1.5deg)", transformOrigin: "12% 50%" }}
+				style={layout.barrel.style}
 				viewBox="0 0 156 28"
 				width={156}
 				xmlns="http://www.w3.org/2000/svg"

@@ -29,7 +29,7 @@ export const BoardAiBookmarks = () => {
 			}}
 		>
 			<BoardHandwrittenAnnotation
-				className="right-[18px] bottom-[12px]"
+				className="right-[18px] bottom-[60px]"
 				rotationDeg={-3.5}
 				text="worth bookmarking"
 			/>

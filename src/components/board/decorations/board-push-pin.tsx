@@ -24,6 +24,7 @@ const PIN_HEAD: Record<BoardPushPinColor, string> = {
 interface BoardPushPinProps {
 	className?: string;
 	color?: BoardPushPinColor;
+	interactive?: boolean;
 	size?: number;
 	style?: CSSProperties;
 }
@@ -31,6 +32,7 @@ interface BoardPushPinProps {
 export const BoardPushPin = ({
 	className,
 	color = "red",
+	interactive = false,
 	size = 14,
 	style,
 }: BoardPushPinProps) => {
@@ -41,7 +43,9 @@ export const BoardPushPin = ({
 		<svg
 			aria-hidden
 			className={cn(
-				"board-desk-tack block shrink-0 transition-transform duration-200 ease-out hover:-translate-y-px hover:rotate-[2deg]",
+				"board-desk-tack block shrink-0",
+				interactive &&
+					"transition-transform duration-200 ease-out hover:-translate-y-px hover:rotate-[2deg]",
 				className
 			)}
 			height={size}

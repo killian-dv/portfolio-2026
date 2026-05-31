@@ -30,7 +30,7 @@ export const BoardBoardingPassCard = () => {
 	return (
 		<motion.div
 			animate={interaction.motionState}
-			className="relative shrink-0 overflow-visible"
+			className="relative shrink-0 cursor-default overflow-visible"
 			onMouseDown={interaction.stopBoardPan}
 			onMouseEnter={interaction.handlePointerEnter}
 			onMouseLeave={interaction.handlePointerLeave}

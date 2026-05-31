@@ -18,7 +18,7 @@ export const BoardCalendarWidgetCard = () => {
 	return (
 		<motion.div
 			animate={interaction.motionState}
-			className="relative shrink-0"
+			className="relative shrink-0 cursor-default"
 			onMouseDown={interaction.stopBoardPan}
 			onMouseEnter={interaction.handlePointerEnter}
 			onMouseLeave={interaction.handlePointerLeave}

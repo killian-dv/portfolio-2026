@@ -23,7 +23,7 @@ interface BoardAgentTerminalProps {
 }
 
 const TERMINAL_ROOT_CLASS =
-	"group relative shrink-0 select-none transition-[filter] duration-[280ms] ease-out drop-shadow-board-agent-terminal";
+	"group relative shrink-0 cursor-default select-none transition-[filter] duration-[280ms] ease-out drop-shadow-board-agent-terminal";
 
 const TERMINAL_ROOT_HOVER_CLASS = "drop-shadow-board-agent-terminal-hover";
 

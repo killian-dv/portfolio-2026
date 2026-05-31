@@ -1,0 +1,72 @@
+.board-sticky-note {
+	border-radius: 1px;
+	filter: drop-shadow(0 0 1px rgb(0 0 0 / 0.1))
+		drop-shadow(0 2px 5px rgb(0 0 0 / 0.08))
+		drop-shadow(0 10px 20px rgb(0 0 0 / 0.1));
+}
+
+.board-sticky-note--yellow {
+	background-color: #efe29a;
+	background-image: radial-gradient(
+		ellipse 90% 55% at 50% -12%,
+		rgb(255 255 255 / 0.34),
+		transparent 58%
+	);
+}
+
+.board-sticky-note--sage {
+	background-color: #b2dcc8;
+	background-image: radial-gradient(
+		ellipse 90% 55% at 50% -12%,
+		rgb(255 255 255 / 0.36),
+		transparent 58%
+	);
+}
+
+.board-sticky-note::before {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	content: "";
+	background-image:
+		repeating-linear-gradient(
+			0deg,
+			rgb(0 0 0 / 0.018) 0px,
+			transparent 1px,
+			transparent 3px
+		),
+		repeating-linear-gradient(
+			90deg,
+			rgb(0 0 0 / 0.012) 0px,
+			transparent 1px,
+			transparent 4px
+		);
+	border-radius: inherit;
+	mix-blend-mode: multiply;
+	opacity: 0.45;
+}
+
+.board-sticky-note::after {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 22%;
+	pointer-events: none;
+	content: "";
+	background: linear-gradient(to top, rgb(0 0 0 / 0.04), transparent);
+	border-radius: inherit;
+}
+
+.board-sticky-note-tape {
+	width: 44px;
+	height: 14px;
+	background: linear-gradient(
+		180deg,
+		rgb(255 255 255 / 0.62) 0%,
+		rgb(255 255 255 / 0.38) 100%
+	);
+	border: 1px solid rgb(255 255 255 / 0.55);
+	box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+	transform: rotate(-2deg);
+}

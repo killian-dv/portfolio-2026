@@ -38,13 +38,13 @@ export const BoardCalendarWidgetCard = () => {
 			<motion.article
 				className={cn(
 					"absolute inset-0 z-10 flex flex-col overflow-hidden rounded-[22px]",
-					"border border-black/[0.06] bg-white",
-					"shadow-[0_1px_0_0_rgba(255,255,255,0.8)_inset,0_16px_32px_-20px_rgba(0,0,0,0.2)]"
+					"border border-board-widget-border bg-white",
+					"shadow-board-calendar-idle"
 				)}
 				style={{
 					boxShadow: interaction.isHovered
-						? "0 1px 0 0 rgba(255,255,255,0.85) inset, 0 22px 44px -22px rgba(0,0,0,0.16)"
-						: "0 1px 0 0 rgba(255,255,255,0.8) inset, 0 16px 32px -20px rgba(0,0,0,0.2)",
+						? "var(--board-calendar-shadow-hover)"
+						: undefined,
 				}}
 			>
 				<CalendarWidgetRadialHighlight

@@ -20,7 +20,10 @@ export const GITHUB_CONTRIBUTIONS_CELL_SPRING = {
 	mass: 0.55,
 };
 
-/** Premium emerald / mint — levels 1–4, not GitHub greens. */
+/**
+ * Premium emerald / mint — levels 1–4, not GitHub greens.
+ * Level 3–4 align with `--board-github-accent` / `--board-github-accent-deep` in styles.css.
+ */
 export const GITHUB_CONTRIBUTION_LEVEL_COLORS = [
 	"#c8ebe0",
 	"#8fd9c4",

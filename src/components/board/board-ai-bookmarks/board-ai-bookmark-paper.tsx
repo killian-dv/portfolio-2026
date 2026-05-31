@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 import type { MouseEvent } from "react";
 
+import "./board-ai-bookmarks.css";
+
 import type { AiBookmark } from "#/components/board/board-ai-bookmarks/ai-bookmarks.data";
 import {
 	BOARD_AI_BOOKMARK_PAPER_SPRING,

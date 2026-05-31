@@ -57,7 +57,7 @@ export const GithubContributionGrid = ({
 					<div className="flex flex-col gap-[3px]" key={weekId}>
 						{SKELETON_ROW_IDS.map((rowId, rowIndex) => (
 							<div
-								className="animate-pulse rounded-[3px] bg-[#e8ecea]"
+								className="animate-pulse rounded-[3px] bg-board-github-skeleton"
 								key={`${weekId}-${rowId}`}
 								style={{
 									width: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,

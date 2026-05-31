@@ -36,14 +36,14 @@ const GithubContributionsCardBody = ({
 	<article
 		className={cn(
 			"relative flex h-full w-full flex-col overflow-hidden rounded-[20px]",
-			"border border-black/[0.06] bg-[#fafbfa]",
+			"border border-board-widget-border bg-[#fafbfa]",
 			"px-5 py-4",
-			"shadow-[0_1px_0_0_rgba(255,255,255,0.9)_inset,0_14px_36px_-22px_rgba(0,0,0,0.18)]"
+			"shadow-board-github-idle"
 		)}
 		style={{
 			boxShadow: interaction.isHovered
-				? "0 1px 0 0 rgba(255,255,255,0.95) inset, 0 22px 48px -24px rgba(0,0,0,0.16)"
-				: "0 1px 0 0 rgba(255,255,255,0.9) inset, 0 14px 36px -22px rgba(0,0,0,0.18)",
+				? "var(--board-github-shadow-hover)"
+				: undefined,
 		}}
 	>
 		<GithubContributionsRadialHighlight
@@ -54,7 +54,7 @@ const GithubContributionsCardBody = ({
 
 		<div
 			aria-hidden
-			className="pointer-events-none absolute inset-0 rounded-[20px] bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(79,191,154,0.06),transparent_58%)]"
+			className="pointer-events-none absolute inset-0 rounded-[20px] bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,color-mix(in_srgb,var(--board-github-accent)_6%,transparent),transparent_58%)]"
 		/>
 
 		<GithubContributionsHeader isHovered={interaction.isHovered} />

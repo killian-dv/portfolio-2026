@@ -17,7 +17,7 @@ export const GithubContributionsHeader = ({
 			animate={{ opacity: isHovered ? 1 : 0.88 }}
 			className={cn(
 				"group inline-flex items-center gap-1.5",
-				"font-medium text-[#1a1f1c] text-[13px] tracking-[-0.01em]"
+				"font-medium text-[13px] text-board-github-foreground tracking-[-0.01em]"
 			)}
 			href={GITHUB_PROFILE_URL}
 			rel="noopener noreferrer"
@@ -29,7 +29,7 @@ export const GithubContributionsHeader = ({
 				<span
 					aria-hidden
 					className={cn(
-						"absolute -bottom-px left-0 h-px w-full origin-left bg-[#1a1f1c]/35",
+						"absolute -bottom-px left-0 h-px w-full origin-left bg-board-github-foreground/35",
 						"scale-x-0 transition-transform duration-300 ease-out",
 						"group-hover:scale-x-100"
 					)}
@@ -37,7 +37,7 @@ export const GithubContributionsHeader = ({
 			</span>
 			<ArrowUpRight
 				aria-hidden
-				className="size-3.5 text-[#1a1f1c]/45 transition-transform duration-300 ease-out group-hover:translate-x-px group-hover:-translate-y-px group-hover:text-[#1a1f1c]/70"
+				className="size-3.5 text-board-github-foreground/45 transition-transform duration-300 ease-out group-hover:translate-x-px group-hover:-translate-y-px group-hover:text-board-github-foreground/70"
 				strokeWidth={2}
 			/>
 		</motion.a>

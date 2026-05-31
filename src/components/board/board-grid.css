@@ -1,0 +1,5 @@
+.board-grid-template {
+	/* grid-template-areas is set inline from board-grid-config.ts */
+	grid-template-rows: repeat(6, 360px);
+	grid-template-columns: repeat(8, 360px);
+}

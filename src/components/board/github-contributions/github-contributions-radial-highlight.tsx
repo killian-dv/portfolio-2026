@@ -26,7 +26,7 @@ export const GithubContributionsRadialHighlight = ({
 				translateY: "-50%",
 				opacity: glowOpacity,
 				background:
-					"radial-gradient(circle at center, rgba(79,191,154,0.22) 0%, rgba(143,217,196,0.08) 42%, transparent 72%)",
+					"radial-gradient(circle at center, color-mix(in srgb, var(--board-github-accent) 22%, transparent) 0%, color-mix(in srgb, var(--board-github-accent) 8%, white) 42%, transparent 72%)",
 				filter: "blur(14px)",
 			}}
 		/>

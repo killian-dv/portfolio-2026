@@ -13,7 +13,7 @@ const PAPER_LAYERS = [0, 1] as const;
 
 const paperBaseClass = cn(
 	"absolute inset-0 rounded-[22px] border border-black/[0.04]",
-	"bg-[#fafafa] shadow-[0_8px_24px_-16px_rgba(0,0,0,0.18)]"
+	"bg-board-surface-subtle shadow-board-paper-stack"
 );
 
 /** Two offset sheets behind the card — fan apart on hover. */

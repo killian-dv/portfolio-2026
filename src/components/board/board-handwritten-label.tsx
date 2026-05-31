@@ -9,14 +9,14 @@ export const boardHandwrittenLabelVariants = cva(
 		variants: {
 			variant: {
 				blue: [
-					"text-[#2f5fae]",
+					"text-board-handwritten-blue",
 					"[text-shadow:0_0.5px_0_rgba(47,95,174,0.35),0_1px_2px_rgba(47,95,174,0.1)]",
 				],
 				red: [
-					"text-[#c23e3e]",
+					"text-board-handwritten-red",
 					"[text-shadow:0_0.5px_0_rgba(194,62,62,0.35),0_1px_2px_rgba(194,62,62,0.1)]",
 				],
-				neutral: "text-[#3d3d3d]",
+				neutral: "text-board-handwritten-neutral",
 			},
 		},
 		defaultVariants: {

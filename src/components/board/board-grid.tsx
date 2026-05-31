@@ -1,3 +1,5 @@
+import "./board-grid.css";
+
 import { BoardGridCell } from "#/components/board/board-grid-cell";
 import {
 	BOARD_GRID_AREAS,

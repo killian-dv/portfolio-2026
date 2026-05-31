@@ -3,8 +3,6 @@ import { motion } from "motion/react";
 import type { MouseEvent } from "react";
 
 import {
-	BOARD_CERTIFICATION_CARD_SHADOW_HOVER,
-	BOARD_CERTIFICATION_CARD_SHADOW_IDLE,
 	BOARD_CERTIFICATION_CARD_SPRING,
 	BOARD_CERTIFICATION_CARD_WIDTH_PX,
 	BOARD_CERTIFICATION_MAX_SKILLS,
@@ -20,7 +18,7 @@ interface BoardCertificationCardProps {
 }
 
 const cardClassName = cn(
-	"group absolute z-10 cursor-default overflow-hidden rounded-xl border border-black/[0.06] bg-white",
+	"group absolute z-10 cursor-default overflow-hidden rounded-xl border border-board-widget-border bg-white",
 	"outline-none focus-within:ring-2 focus-within:ring-black/10 focus-within:ring-offset-2 focus-within:ring-offset-transparent"
 );
 
@@ -52,8 +50,8 @@ export const BoardCertificationCard = ({
 				y: isInteractive ? -4 : 0,
 				rotate: isInteractive ? hoverRotateDeg : idleRotateDeg,
 				boxShadow: isInteractive
-					? BOARD_CERTIFICATION_CARD_SHADOW_HOVER
-					: BOARD_CERTIFICATION_CARD_SHADOW_IDLE,
+					? "var(--board-widget-shadow-hover)"
+					: "var(--board-widget-shadow-idle)",
 			}}
 			className={cardClassName}
 			onMouseDown={(event) => {

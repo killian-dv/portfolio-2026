@@ -12,7 +12,7 @@ export type BoardPushPinColor =
 	| "white";
 
 const PIN_HEAD: Record<BoardPushPinColor, string> = {
-	red: "#c44545",
+	red: "var(--board-pin-red)",
 	blue: "#3d6eb5",
 	yellow: "#d4a82a",
 	green: "#4a8f5c",

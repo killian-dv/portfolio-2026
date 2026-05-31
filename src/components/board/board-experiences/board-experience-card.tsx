@@ -24,10 +24,10 @@ export const BoardExperienceCard = ({
 		// biome-ignore lint/a11y/noNoninteractiveElementInteractions: board pan surface
 		<article
 			className={cn(
-				"absolute z-10 cursor-default overflow-hidden rounded-[16px] border border-black/[0.06] px-4 py-3.5",
-				"shadow-[0_1px_0_0_rgba(255,255,255,0.85)_inset,0_12px_28px_-18px_rgba(0,0,0,0.2)]",
+				"absolute z-10 cursor-default overflow-hidden rounded-[16px] border border-board-widget-border px-4 py-3.5",
+				"shadow-board-widget-idle",
 				"transition-colors duration-200 ease-out",
-				showHover ? "bg-[#fafafa]" : "bg-white"
+				showHover ? "bg-board-surface-subtle" : "bg-white"
 			)}
 			onMouseDown={onMouseDown}
 			onMouseEnter={() => setIsHovered(true)}

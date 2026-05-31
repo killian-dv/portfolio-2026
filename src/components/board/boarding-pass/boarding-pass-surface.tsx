@@ -2,7 +2,7 @@ export const BoardingPassSurface = () => (
 	<>
 		<div
 			aria-hidden
-			className="pointer-events-none absolute inset-0 bg-linear-to-br from-background via-boarding-pass-surface to-boarding-pass-surface-end"
+			className="pointer-events-none absolute inset-0 bg-linear-to-br from-background via-[#fbf9f8] to-[#f7f4f4]"
 		/>
 		<div
 			aria-hidden

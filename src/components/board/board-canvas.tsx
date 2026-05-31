@@ -1,4 +1,6 @@
 import { BoardGrid } from "#/components/board/board-grid";
+import "./board-canvas.css";
+
 import { BOARD_HEIGHT_PX, BOARD_WIDTH_PX } from "#/lib/board-grid-config";
 
 export const BoardCanvas = () => (

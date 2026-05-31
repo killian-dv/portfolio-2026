@@ -1,4 +1,7 @@
 import type { CSSProperties } from "react";
+
+import "./board-sticky-notes.css";
+
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
 import type { StickyNote } from "#/components/board/board-sticky-notes/sticky-notes.data";
 import { cn } from "#/lib/utils";

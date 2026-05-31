@@ -11,9 +11,9 @@ export const GithubContributionsFooter = ({
 	trailingYearTotal,
 }: GithubContributionsFooterProps) => (
 	<footer className="relative z-10">
-		<p className="m-0 font-normal text-[#6b7470] text-[12px] tracking-[-0.01em]">
+		<p className="m-0 font-normal text-[12px] text-board-github-muted tracking-[-0.01em]">
 			{isLoading ? (
-				<span className="inline-block h-3.5 w-48 animate-pulse rounded bg-[#e8ecea]" />
+				<span className="inline-block h-3.5 w-48 animate-pulse rounded bg-board-github-skeleton" />
 			) : (
 				<>
 					<span className="text-[#3d4843] tabular-nums">

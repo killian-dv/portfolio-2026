@@ -102,7 +102,7 @@ export const GithubContributionCell = ({
 			aria-label={`${day.count} contributions on ${day.date}`}
 			className={cn(
 				"relative shrink-0 cursor-default rounded-[3px] border-0 p-0",
-				"focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#4fbf9a]/50 focus-visible:outline-offset-1"
+				"focus-visible:outline focus-visible:outline-2 focus-visible:outline-board-github-accent/50 focus-visible:outline-offset-1"
 			)}
 			data-contribution-cell
 			onBlur={handleLeave}
@@ -113,7 +113,7 @@ export const GithubContributionCell = ({
 				height: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
 				backgroundColor: color,
 				boxShadow: isDirectHover
-					? "0 0 0 1px rgba(31,157,114,0.25), 0 0 14px rgba(79,191,154,0.35)"
+					? "0 0 0 1px color-mix(in srgb, var(--board-github-accent-deep) 25%, transparent), 0 0 14px color-mix(in srgb, var(--board-github-accent) 35%, transparent)"
 					: undefined,
 			}}
 			transition={

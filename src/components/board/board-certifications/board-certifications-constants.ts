@@ -19,9 +19,3 @@ export const BOARD_CERTIFICATION_LAMINATE_SPRING = {
 	damping: 30,
 	mass: 0.85,
 };
-
-export const BOARD_CERTIFICATION_CARD_SHADOW_IDLE =
-	"0 1px 0 0 rgba(255,255,255,0.85) inset, 0 12px 28px -18px rgba(0,0,0,0.2)";
-
-export const BOARD_CERTIFICATION_CARD_SHADOW_HOVER =
-	"0 1px 0 0 rgba(255,255,255,0.92) inset, 0 16px 32px -14px rgba(0,0,0,0.22)";

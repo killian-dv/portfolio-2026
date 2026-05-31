@@ -12,7 +12,7 @@ interface FavoriteToolAnnotationProps {
 }
 
 const ANNOTATION_BASE_CLASS =
-	"pointer-events-none absolute font-caveat font-medium text-[1.05rem] italic text-[#3d3d3d] transition-opacity duration-200";
+	"pointer-events-none absolute font-caveat font-medium text-[1.05rem] italic text-board-handwritten-neutral transition-opacity duration-200";
 
 const placementStyle: Record<FavoriteToolNotePlacement, CSSProperties> = {
 	top: {

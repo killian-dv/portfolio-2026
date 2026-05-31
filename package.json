@@ -27,6 +27,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "husky": "^9.1.7",
     "jsdom": "^28.1.0",
+    "playwright": "^1.60.0",
     "typescript": "^6.0.2",
     "ultracite": "^7.7.0",
     "vite": "^8.0.0",
@@ -43,7 +44,8 @@
     "check": "ultracite check",
     "fix": "ultracite fix",
     "prepare": "husky",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "og:image": "node scripts/capture-og-image.mjs"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,jsonc,css}": [

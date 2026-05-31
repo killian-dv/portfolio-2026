@@ -2,7 +2,7 @@ import { GITHUB_PROFILE_URL } from "#/components/board/github-contributions/gith
 
 export const heroProfile = {
 	src: "/my-notion-face-transparent.png",
-	alt: "Killian",
+	alt: "Portrait of Killian David, front-end developer",
 } as const;
 
 export const heroSocialLinks = [

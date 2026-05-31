@@ -6,9 +6,9 @@ export const BoardHeroHeader = () => (
 		as="header"
 		className="mb-4 flex items-center justify-between gap-4"
 	>
-		<p className="m-0 font-semibold text-2xl leading-none tracking-tight">
+		<h1 className="m-0 font-semibold text-2xl leading-none tracking-tight">
 			Hey, I&apos;m Killian.
-		</p>
+		</h1>
 		<img
 			alt={heroProfile.alt}
 			className="h-16 w-16 shrink-0 object-contain object-center"

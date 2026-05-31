@@ -3,6 +3,7 @@ import { type MouseEvent, useCallback, useRef, useState } from "react";
 
 import { BOARD_CERTIFICATION_LAMINATE_SPRING } from "#/components/board/board-certifications/board-certifications-constants";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 const noMotionSpring = { duration: 0 } as const;
 
@@ -47,9 +48,7 @@ export const useBoardCertificationCardInteraction = (idleRotateDeg: number) => {
 		pointerY.set(0.5);
 	}, [laminateActive, pointerX, pointerY]);
 
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	const isInteractive = isHovered && !prefersReducedMotion;
 

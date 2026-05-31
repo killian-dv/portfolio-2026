@@ -24,8 +24,6 @@ const getGithubContributionsLoadResult = () => {
 	return loadResultPromise;
 };
 
-export type GithubContributionsLoadState = "ready" | "error";
-
 export const useGithubContributionsData = () => {
 	const result = use(getGithubContributionsLoadResult());
 

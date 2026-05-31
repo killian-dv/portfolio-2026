@@ -1,4 +1,4 @@
-import { type MouseEvent, useCallback, useMemo } from "react";
+import { useMemo } from "react";
 
 import { BoardFavoriteToolSticker } from "#/components/board/board-favorite-tools/board-favorite-tool-sticker";
 import {
@@ -9,16 +9,14 @@ import {
 import { BoardFavoriteToolsZoneContext } from "#/components/board/board-favorite-tools/board-favorite-tools-zone-context";
 import { favoriteTools } from "#/components/board/board-favorite-tools/favorite-tools.data";
 import { getFavoriteToolsClusterCenterX } from "#/components/board/board-favorite-tools/favorite-tools-layout";
-import { useBoardFavoriteToolsZone } from "#/components/board/board-favorite-tools/use-board-favorite-tools-zone";
+import { useFavoriteToolsZoneState } from "#/components/board/board-favorite-tools/use-board-favorite-tools-zone";
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
 import { BoardHandwrittenAnnotation } from "#/components/board/decorations/board-handwritten-annotation";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 export const BoardFavoriteTools = () => {
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
-
-	const zone = useBoardFavoriteToolsZone();
+	const stopBoardPan = useStopBoardPan();
+	const zone = useFavoriteToolsZoneState();
 	const iconClusterCenterX = useMemo(
 		() => getFavoriteToolsClusterCenterX(favoriteTools),
 		[]

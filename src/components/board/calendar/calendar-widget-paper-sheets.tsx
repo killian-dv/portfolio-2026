@@ -1,9 +1,7 @@
 import { motion } from "motion/react";
 
-import {
-	calendarPaperTransition,
-	calendarPaperVariants,
-} from "#/components/board/calendar/calendar-widget-motion";
+import { CALENDAR_PAPER_SPRING } from "#/components/board/calendar/calendar-widget-constants";
+import { calendarPaperVariants } from "#/components/board/calendar/calendar-widget-motion";
 import { cn } from "#/lib/utils";
 
 interface CalendarWidgetPaperSheetsProps {
@@ -35,7 +33,7 @@ export const CalendarWidgetPaperSheets = ({
 					initial="idle"
 					key={layer}
 					style={{ zIndex: layer }}
-					transition={calendarPaperTransition}
+					transition={CALENDAR_PAPER_SPRING}
 					variants={calendarPaperVariants}
 				/>
 			))}

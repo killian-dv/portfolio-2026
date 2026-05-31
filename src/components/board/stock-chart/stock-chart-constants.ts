@@ -1,8 +1,3 @@
-import { BOARD_CELL_SIZE_PX } from "#/lib/board-grid-config";
-
-/** Fixed square footprint — matches one board cell (placement no longer stretches the slot). */
-export const STOCK_CHART_CARD_SIZE_PX = BOARD_CELL_SIZE_PX;
-
 /** Starts elevated, soft dip mid-day, light wiggle on recovery, then close. */
 export const STOCK_PRICES = [
 	187.8, 187.2, 186.6, 184.4, 183.4, 184.8, 186.2, 185.4, 187.4, 188.6, 190.1,
@@ -12,7 +7,6 @@ export const OPENING_PRICE = STOCK_PRICES[0];
 export const LAST_PRICE: number = STOCK_PRICES.at(-1) ?? 190.1;
 
 export const NVIDIA_GREEN = "#76B900";
-export const STOCK_POSITIVE = "#76B900";
 export const STOCK_NEGATIVE = "#F87171";
 
 export const STOCK_SYMBOL = "NVDA";

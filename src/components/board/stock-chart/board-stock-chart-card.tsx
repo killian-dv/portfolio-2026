@@ -2,9 +2,9 @@ import { motion } from "motion/react";
 
 import { StockChartArea } from "#/components/board/stock-chart/stock-chart-area";
 import { StockChartCardShell } from "#/components/board/stock-chart/stock-chart-card-shell";
-import { STOCK_CHART_CARD_SIZE_PX } from "#/components/board/stock-chart/stock-chart-constants";
 import { StockChartHeader } from "#/components/board/stock-chart/stock-chart-header";
 import { useStockChartInteraction } from "#/components/board/stock-chart/use-stock-chart-interaction";
+import { BOARD_CELL_SIZE_PX } from "#/lib/board-grid-config";
 
 export const BoardStockChartCard = () => {
 	const interaction = useStockChartInteraction();
@@ -15,8 +15,8 @@ export const BoardStockChartCard = () => {
 			onMouseDown={interaction.stopBoardPan}
 			ref={interaction.cardRef}
 			style={{
-				height: STOCK_CHART_CARD_SIZE_PX,
-				width: STOCK_CHART_CARD_SIZE_PX,
+				height: BOARD_CELL_SIZE_PX,
+				width: BOARD_CELL_SIZE_PX,
 				transform: interaction.parallaxTransform,
 			}}
 		>

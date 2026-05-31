@@ -1,2 +1,0 @@
-export const BOARD_STICKY_NOTE_WIDTH_PX = 152;
-export const BOARD_STICKY_NOTE_MIN_HEIGHT_PX = 152;

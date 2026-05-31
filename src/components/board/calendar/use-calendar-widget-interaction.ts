@@ -3,6 +3,7 @@ import { type MouseEvent, useCallback, useMemo, useRef, useState } from "react";
 
 import { CALENDAR_GLOW_SPRING } from "#/components/board/calendar/calendar-widget-constants";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 export const useCalendarWidgetInteraction = () => {
 	const cardRef = useRef<HTMLDivElement>(null);
@@ -66,9 +67,7 @@ export const useCalendarWidgetInteraction = () => {
 		glowActive.set(0);
 	}, [glowActive]);
 
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	const motionState = prefersReducedMotion || !isHovered ? "idle" : "hover";
 

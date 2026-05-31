@@ -1,12 +1,13 @@
 import { Pause, Play } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { type MouseEvent, useState } from "react";
+import { useState } from "react";
 
 import { BoardAlbumMusicNotes } from "#/components/board/album/board-album-music-notes";
 import { BoardAlbumTooltip } from "#/components/board/album/board-album-tooltip";
 import { BoardVinylDisc } from "#/components/board/album/board-vinyl-disc";
 import { useAlbumAudio } from "#/hooks/use-album-audio";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 import {
 	boardSpring,
 	boardSpringSnappy,
@@ -51,9 +52,7 @@ export const BoardAlbumCard = () => {
 		ease: [0.23, 1, 0.32, 1] as const,
 	};
 
-	const stopBoardPan = (event: MouseEvent) => {
-		event.stopPropagation();
-	};
+	const stopBoardPan = useStopBoardPan();
 
 	return (
 		// biome-ignore lint/a11y/noNoninteractiveElementInteractions: album hover zone

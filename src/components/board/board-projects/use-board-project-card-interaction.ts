@@ -1,6 +1,7 @@
-import { type MouseEvent, useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 export const useBoardProjectCardInteraction = () => {
 	const cardRef = useRef<HTMLElement>(null);
@@ -15,9 +16,7 @@ export const useBoardProjectCardInteraction = () => {
 		setIsPointerOver(false);
 	}, []);
 
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	return {
 		cardRef,

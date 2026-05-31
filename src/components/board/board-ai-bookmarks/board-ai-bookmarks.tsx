@@ -1,5 +1,3 @@
-import { type MouseEvent, useCallback } from "react";
-
 import { aiBookmarks } from "#/components/board/board-ai-bookmarks/ai-bookmarks.data";
 import { BoardAiBookmarkPaper } from "#/components/board/board-ai-bookmarks/board-ai-bookmark-paper";
 import {
@@ -13,11 +11,10 @@ import {
 } from "#/components/board/board-ai-bookmarks/board-ai-bookmarks-constants";
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
 import { BoardHandwrittenAnnotation } from "#/components/board/decorations/board-handwritten-annotation";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 export const BoardAiBookmarks = () => {
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	return (
 		<section

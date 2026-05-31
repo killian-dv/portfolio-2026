@@ -2,6 +2,7 @@ import { type MouseEvent, useCallback, useState } from "react";
 
 import { BOARD_AI_BOOKMARK_HOVER_SWING_DEG } from "#/components/board/board-ai-bookmarks/board-ai-bookmarks-constants";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 export const useBoardAiBookmarkPaperInteraction = (
 	idleRotateDeg: number,
@@ -16,9 +17,7 @@ export const useBoardAiBookmarkPaperInteraction = (
 		idleRotateDeg +
 		(isInteractive ? BOARD_AI_BOOKMARK_HOVER_SWING_DEG * swingDirection : 0);
 
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	const handleMouseDown = useCallback(
 		(event: MouseEvent) => {

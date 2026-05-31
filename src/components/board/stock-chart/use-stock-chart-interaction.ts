@@ -1,6 +1,6 @@
 import {
-	animate,
 	type AnimationPlaybackControls,
+	animate,
 	useMotionValue,
 	useMotionValueEvent,
 	useSpring,
@@ -35,6 +35,7 @@ import {
 	pricesToPoints,
 } from "#/components/board/stock-chart/stock-chart-path";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 export const useStockChartInteraction = () => {
 	const cardRef = useRef<HTMLDivElement>(null);
@@ -144,7 +145,7 @@ export const useStockChartInteraction = () => {
 			targetGain.set(change.gain);
 			setStats(change);
 		},
-		[targetGain, targetPercent, targetPrice],
+		[targetGain, targetPercent, targetPrice]
 	);
 
 	useMotionValueEvent(springPrice, "change", (latest) => {
@@ -200,9 +201,7 @@ export const useStockChartInteraction = () => {
 		return () => controls.stop();
 	}, [prefersReducedMotion]);
 
-	const stopBoardPan = (event: MouseEvent) => {
-		event.stopPropagation();
-	};
+	const stopBoardPan = useStopBoardPan();
 
 	const cancelExitAnimations = useCallback(() => {
 		exitAnimationsRef.current.pointer?.stop();
@@ -242,7 +241,7 @@ export const useStockChartInteraction = () => {
 			parallaxY,
 			pointerX,
 			syncChartMetrics,
-		],
+		]
 	);
 
 	const handlePointerLeaveChart = useCallback(() => {
@@ -294,7 +293,7 @@ export const useStockChartInteraction = () => {
 			setIsHovering(true);
 			handlePointerMoveChart(event);
 		},
-		[cancelExitAnimations, handlePointerMoveChart, hoverActive],
+		[cancelExitAnimations, handlePointerMoveChart, hoverActive]
 	);
 
 	return {

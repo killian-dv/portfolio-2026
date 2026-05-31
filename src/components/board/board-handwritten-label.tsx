@@ -27,7 +27,7 @@ export const boardHandwrittenLabelVariants = cva(
 
 type BoardHandwrittenLabelElement = "h2" | "p" | "span";
 
-export type BoardHandwrittenLabelProps = VariantProps<
+type BoardHandwrittenLabelProps = VariantProps<
 	typeof boardHandwrittenLabelVariants
 > & {
 	as?: BoardHandwrittenLabelElement;

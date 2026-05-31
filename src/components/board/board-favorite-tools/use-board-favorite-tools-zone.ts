@@ -8,7 +8,7 @@ export type FavoriteToolMagneticListener = (
 
 const POINTER_LEFT = Number.NaN;
 
-export const useBoardFavoriteToolsZone = () => {
+export const useFavoriteToolsZoneState = () => {
 	const [isZoneActive, setIsZoneActive] = useState(false);
 	const zonePointerX = useMotionValue(0.5);
 	const zonePointerY = useMotionValue(0.5);

@@ -10,10 +10,10 @@ import {
 	type AgentTerminalDisplayLine,
 	agentTerminalSessionsDisplay,
 } from "#/components/board/board-agent-terminal/agent-terminal.data";
-import { getLineRevealDelayMs } from "#/components/board/board-agent-terminal/agent-terminal-timing";
 import {
 	AGENT_TERMINAL_SESSION_HOLD_MS,
 	AGENT_TERMINAL_SESSION_TRANSITION_MS,
+	getLineRevealDelayMs,
 } from "#/components/board/board-agent-terminal/board-agent-terminal-constants";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
 

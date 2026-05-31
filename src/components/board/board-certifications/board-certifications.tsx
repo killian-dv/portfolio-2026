@@ -1,5 +1,3 @@
-import { type MouseEvent, useCallback } from "react";
-
 import { BoardCertificationCard } from "#/components/board/board-certifications/board-certification-card";
 import {
 	BOARD_CERTIFICATIONS_SECTION_HEIGHT_PX,
@@ -9,11 +7,10 @@ import {
 import { CERTIFICATIONS } from "#/components/board/board-certifications/certifications.data";
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
 import { BoardHandwrittenAnnotation } from "#/components/board/decorations/board-handwritten-annotation";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 export const BoardCertifications = () => {
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	return (
 		<section

@@ -15,11 +15,11 @@ export interface BoardFavoriteToolsZoneContextValue {
 export const BoardFavoriteToolsZoneContext =
 	createContext<BoardFavoriteToolsZoneContextValue | null>(null);
 
-export const useBoardFavoriteToolsZone = () => {
+export const useFavoriteToolsZoneContext = () => {
 	const context = useContext(BoardFavoriteToolsZoneContext);
 	if (!context) {
 		throw new Error(
-			"useBoardFavoriteToolsZone must be used within BoardFavoriteTools"
+			"useFavoriteToolsZoneContext must be used within BoardFavoriteTools"
 		);
 	}
 	return context;

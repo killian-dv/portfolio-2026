@@ -9,16 +9,16 @@ import { cn } from "#/lib/utils";
 
 const THINKING_ELLIPSIS_SUFFIX = /\.\.\.$/;
 
-const TERMINAL_CURSOR_CLASS =
-	"ml-px inline-block translate-y-[-0.5px] font-normal text-board-agent-terminal-cursor motion-safe:animate-[board-agent-terminal-cursor-blink_1s_step-end_infinite] motion-reduce:animate-none";
-
 interface BoardAgentTerminalLineProps {
 	line: AgentTerminalDisplayLine;
 	showCursor: boolean;
 }
 
 const TerminalCursor = () => (
-	<span aria-hidden className={TERMINAL_CURSOR_CLASS}>
+	<span
+		aria-hidden
+		className="ml-px inline-block translate-y-[-0.5px] font-normal text-board-agent-terminal-cursor motion-safe:animate-[board-agent-terminal-cursor-blink_1s_step-end_infinite] motion-reduce:animate-none"
+	>
 		▍
 	</span>
 );

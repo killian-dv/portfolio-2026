@@ -1,11 +1,5 @@
 import { useMotionValue, useSpring, useTransform } from "motion/react";
-import {
-	type MouseEvent,
-	useCallback,
-	useEffect,
-	useRef,
-	useState,
-} from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
 	BOARD_FAVORITE_TOOL_MAGNETIC_DEAD_ZONE_PX,
@@ -14,8 +8,9 @@ import {
 	BOARD_FAVORITE_TOOL_MAGNETIC_SPRING,
 	BOARD_FAVORITE_TOOL_ZONE_SPRING,
 } from "#/components/board/board-favorite-tools/board-favorite-tools-constants";
-import { useBoardFavoriteToolsZone } from "#/components/board/board-favorite-tools/board-favorite-tools-zone-context";
+import { useFavoriteToolsZoneContext } from "#/components/board/board-favorite-tools/board-favorite-tools-zone-context";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 const noMotionSpring = { duration: 0 } as const;
 
@@ -64,7 +59,7 @@ export const useBoardFavoriteToolInteraction = (idleRotateDeg: number) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const { isZoneActive, registerMagneticListener, zonePointerX } =
-		useBoardFavoriteToolsZone();
+		useFavoriteToolsZoneContext();
 
 	const magneticSpring = prefersReducedMotion
 		? noMotionSpring
@@ -186,9 +181,7 @@ export const useBoardFavoriteToolInteraction = (idleRotateDeg: number) => {
 		glowStrength.set(0);
 	}, [glowStrength, hoverTilt]);
 
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	return {
 		glowOpacity,

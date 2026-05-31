@@ -1,12 +1,11 @@
 import { motion } from "motion/react";
-
-import { CALENDAR_WIDGET_SIZE_PX } from "#/components/board/calendar/calendar-widget-constants";
+import {
+	CALENDAR_CARD_SPRING,
+	CALENDAR_WIDGET_SIZE_PX,
+} from "#/components/board/calendar/calendar-widget-constants";
 import { CalendarWidgetDateHeader } from "#/components/board/calendar/calendar-widget-date-header";
 import { CalendarWidgetMeetingBlock } from "#/components/board/calendar/calendar-widget-meeting-block";
-import {
-	calendarCardTransition,
-	calendarCardVariants,
-} from "#/components/board/calendar/calendar-widget-motion";
+import { calendarCardVariants } from "#/components/board/calendar/calendar-widget-motion";
 import { CalendarWidgetPaperSheets } from "#/components/board/calendar/calendar-widget-paper-sheets";
 import { CalendarWidgetRadialHighlight } from "#/components/board/calendar/calendar-widget-radial-highlight";
 import { useCalendarWidgetInteraction } from "#/components/board/calendar/use-calendar-widget-interaction";
@@ -28,7 +27,7 @@ export const BoardCalendarWidgetCard = () => {
 				height: CALENDAR_WIDGET_SIZE_PX,
 				width: CALENDAR_WIDGET_SIZE_PX,
 			}}
-			transition={calendarCardTransition}
+			transition={CALENDAR_CARD_SPRING}
 			variants={calendarCardVariants}
 		>
 			<CalendarWidgetPaperSheets

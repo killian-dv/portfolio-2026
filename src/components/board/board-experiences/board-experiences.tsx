@@ -1,4 +1,3 @@
-import { type MouseEvent, useCallback } from "react";
 import { BoardExperienceCard } from "#/components/board/board-experiences/board-experience-card";
 import {
 	BOARD_EXPERIENCES_ENTRIES,
@@ -8,11 +7,10 @@ import {
 } from "#/components/board/board-experiences/board-experiences-constants";
 import { BoardExperiencesPath } from "#/components/board/board-experiences/board-experiences-path";
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 export const BoardExperiences = () => {
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	return (
 		<section

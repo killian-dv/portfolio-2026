@@ -4,8 +4,8 @@ import { useState } from "react";
 
 import {
 	LAST_PRICE,
+	NVIDIA_GREEN,
 	STOCK_NEGATIVE,
-	STOCK_POSITIVE,
 } from "#/components/board/stock-chart/stock-chart-constants";
 import { calcChangeFromReference } from "#/components/board/stock-chart/stock-chart-path";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
@@ -62,7 +62,7 @@ export const StockChartPriceStats = ({
 	const percent = prefersReducedMotion ? stats.percent : displayPercent;
 	const gain = prefersReducedMotion ? stats.gain : displayGain;
 	const isPositive = stats.isPositive;
-	const accentColor = isPositive ? STOCK_POSITIVE : STOCK_NEGATIVE;
+	const accentColor = isPositive ? NVIDIA_GREEN : STOCK_NEGATIVE;
 	return (
 		<div className="mt-3 flex flex-col gap-1">
 			<motion.p
@@ -83,7 +83,7 @@ export const StockChartPriceStats = ({
 						aria-hidden
 						className={cn(
 							"size-3.5 shrink-0 transition-transform duration-300",
-							isPositive ? "rotate-45" : "rotate-[135deg]",
+							isPositive ? "rotate-45" : "rotate-[135deg]"
 						)}
 						strokeWidth={2.5}
 					/>

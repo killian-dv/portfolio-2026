@@ -22,20 +22,6 @@ interface BoardAgentTerminalProps {
 	className?: string;
 }
 
-const TERMINAL_ROOT_CLASS =
-	"group relative shrink-0 cursor-default select-none transition-[filter] duration-[280ms] ease-out drop-shadow-board-agent-terminal";
-
-const TERMINAL_ROOT_HOVER_CLASS = "drop-shadow-board-agent-terminal-hover";
-
-const TERMINAL_SURFACE_CLASS =
-	"relative overflow-hidden rounded-[10px] border border-board-agent-terminal-border bg-board-agent-terminal-bg p-3 shadow-board-agent-terminal-idle transition-[border-color,box-shadow] duration-320 ease-out";
-
-const TERMINAL_SURFACE_HOVER_CLASS =
-	"border-board-agent-terminal-border-hover shadow-board-agent-terminal-hover";
-
-const TERMINAL_SCANLINE_CLASS =
-	"pointer-events-none absolute inset-x-0 top-0 z-20 h-[28%] animate-[board-agent-terminal-scanline-sweep_0.72s_ease-out_forwards] bg-[linear-gradient(180deg,transparent_0%,var(--color-board-agent-terminal-scanline)_48%,transparent_100%)] motion-reduce:hidden";
-
 export const BoardAgentTerminal = ({ className }: BoardAgentTerminalProps) => {
 	const rootRef = useRef<HTMLDivElement>(null);
 	const viewportRef = useRef<HTMLDivElement>(null);
@@ -58,8 +44,8 @@ export const BoardAgentTerminal = ({ className }: BoardAgentTerminalProps) => {
 			animate={interaction.motionState}
 			aria-hidden
 			className={cn(
-				TERMINAL_ROOT_CLASS,
-				interaction.isHovered && TERMINAL_ROOT_HOVER_CLASS,
+				"group relative shrink-0 cursor-default select-none drop-shadow-board-agent-terminal transition-[filter] duration-[280ms] ease-out",
+				interaction.isHovered && "drop-shadow-board-agent-terminal-hover",
 				className
 			)}
 			onMouseDown={interaction.stopBoardPan}
@@ -72,14 +58,15 @@ export const BoardAgentTerminal = ({ className }: BoardAgentTerminalProps) => {
 		>
 			<div
 				className={cn(
-					TERMINAL_SURFACE_CLASS,
-					interaction.isHovered && TERMINAL_SURFACE_HOVER_CLASS
+					"relative overflow-hidden rounded-[10px] border border-board-agent-terminal-border bg-board-agent-terminal-bg p-3 shadow-board-agent-terminal-idle transition-[border-color,box-shadow] duration-320 ease-out",
+					interaction.isHovered &&
+						"border-board-agent-terminal-border-hover shadow-board-agent-terminal-hover"
 				)}
 			>
 				{interaction.isHovered ? (
 					<div
 						aria-hidden
-						className={TERMINAL_SCANLINE_CLASS}
+						className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[28%] animate-[board-agent-terminal-scanline-sweep_0.72s_ease-out_forwards] bg-[linear-gradient(180deg,transparent_0%,var(--color-board-agent-terminal-scanline)_48%,transparent_100%)] motion-reduce:hidden"
 						key={interaction.scanlineKey}
 					/>
 				) : null}

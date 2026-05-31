@@ -22,11 +22,7 @@ import { BoardHeroCard } from "#/components/board/hero/board-hero-card";
 import { BoardHeroContent } from "#/components/board/hero/board-hero-content";
 import { BoardCroissantStamp } from "#/components/board/stamp/board-croissant-stamp";
 import { BoardStockChartCard } from "#/components/board/stock-chart/board-stock-chart-card";
-import {
-	BLANK_GRID_AREA,
-	type BoardGridArea,
-	boardCell,
-} from "#/lib/board-grid-config";
+import { BLANK_GRID_AREA } from "#/lib/board-grid-config";
 
 type BoardLayoutAt =
 	| { row: number; col: number }
@@ -39,13 +35,6 @@ export interface BoardLayoutItem {
 	id: string;
 	placement?: Omit<BoardCellPlacementProps, "children">;
 }
-
-const resolveArea = (at: BoardLayoutAt): BoardGridArea => {
-	if ("area" in at) {
-		return at.area;
-	}
-	return boardCell(at.row, at.col);
-};
 
 /**
  * Single source of truth for what appears on the board.
@@ -264,8 +253,3 @@ export const BOARD_LAYOUT: BoardLayoutItem[] = [
 		content: <BoardAgentTerminal />,
 	},
 ];
-
-export const boardLayoutAreaById = (id: string) =>
-	resolveArea(
-		BOARD_LAYOUT.find((item) => item.id === id)?.at ?? { row: 0, col: 0 }
-	);

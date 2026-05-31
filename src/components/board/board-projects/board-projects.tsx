@@ -1,8 +1,8 @@
-import { type MouseEvent, useCallback } from "react";
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
 import { BoardProjectCard } from "#/components/board/board-projects/board-project-card";
 import { PROJECTS } from "#/components/board/board-projects/projects.data";
 import { BoardHandwrittenAnnotation } from "#/components/board/decorations/board-handwritten-annotation";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 import { cn } from "#/lib/utils";
 
 interface BoardProjectsProps {
@@ -10,9 +10,7 @@ interface BoardProjectsProps {
 }
 
 export const BoardProjects = ({ className }: BoardProjectsProps) => {
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	return (
 		<section

@@ -7,6 +7,7 @@ import {
 	BOARDING_PASS_TILT_SPRING,
 } from "#/components/board/boarding-pass/boarding-pass-constants";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 const TILT_RANGE_DEG = 2.8;
 
@@ -77,9 +78,7 @@ export const useBoardingPassInteraction = () => {
 		pointerY.set(0.5);
 	}, [glowActive, pointerX, pointerY]);
 
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	const motionState = prefersReducedMotion || !isHovered ? "idle" : "hover";
 	const baseRotate = prefersReducedMotion ? 0 : BOARDING_PASS_IDLE_ROTATE_DEG;

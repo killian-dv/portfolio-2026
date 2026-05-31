@@ -9,6 +9,7 @@ import {
 
 import { GITHUB_CONTRIBUTIONS_GLOW_SPRING } from "#/components/board/github-contributions/github-contributions-constants";
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 export interface HoveredContributionCell {
 	col: number;
@@ -83,9 +84,7 @@ export const useGithubContributionsInteraction = () => {
 		setHover(next);
 	}, []);
 
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	/** Board pan does not fire cell mouseleave — dismiss when pointer goes elsewhere. */
 	useEffect(() => {

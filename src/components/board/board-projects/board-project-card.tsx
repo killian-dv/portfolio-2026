@@ -20,8 +20,6 @@ const cardClassName = cn(
 	"transition-[box-shadow] duration-300"
 );
 
-const DESCRIPTION_MAX_HEIGHT_CLASS = "max-h-[2.75rem]";
-
 const projectColorRgba = (hex: string, alpha: number) => {
 	const normalized = hex.replace("#", "");
 	const value =
@@ -123,7 +121,7 @@ export const BoardProjectCard = ({
 					className={cn(
 						"m-0 overflow-hidden text-white/80 text-xs leading-snug transition-all duration-300",
 						showDescription
-							? cn("mt-2 opacity-70", DESCRIPTION_MAX_HEIGHT_CLASS)
+							? "mt-2 max-h-[2.75rem] opacity-70"
 							: "max-h-0 opacity-0"
 					)}
 				>

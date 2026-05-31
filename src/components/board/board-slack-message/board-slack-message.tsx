@@ -1,7 +1,3 @@
-import {
-	BOARD_SLACK_MESSAGE_AVATAR_SIZE_PX,
-	BOARD_SLACK_MESSAGE_WIDTH_PX,
-} from "#/components/board/board-slack-message/board-slack-message-constants";
 import { slackMessage } from "#/components/board/board-slack-message/slack-message.data";
 import { BoardPaperClip } from "#/components/board/decorations/board-paper-clip";
 import { cn } from "#/lib/utils";
@@ -17,7 +13,7 @@ export const BoardSlackMessage = ({ className }: BoardSlackMessageProps) => (
 			"pointer-events-none relative shrink-0 select-none font-sans drop-shadow-board-slack-message",
 			className
 		)}
-		style={{ width: BOARD_SLACK_MESSAGE_WIDTH_PX }}
+		style={{ width: 328 }}
 	>
 		<BoardPaperClip
 			className="absolute -top-[10px] -right-[14px] z-20"
@@ -30,10 +26,7 @@ export const BoardSlackMessage = ({ className }: BoardSlackMessageProps) => (
 				<div
 					aria-hidden
 					className="flex shrink-0 items-center justify-center rounded-full bg-board-slack-message-avatar font-semibold text-[0.72rem] text-white tracking-tight"
-					style={{
-						height: BOARD_SLACK_MESSAGE_AVATAR_SIZE_PX,
-						width: BOARD_SLACK_MESSAGE_AVATAR_SIZE_PX,
-					}}
+					style={{ height: 36, width: 36 }}
 				>
 					{slackMessage.senderInitials}
 				</div>

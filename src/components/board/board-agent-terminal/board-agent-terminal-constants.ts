@@ -1,3 +1,5 @@
+import type { AgentTerminalDisplayLine } from "#/components/board/board-agent-terminal/agent-terminal.data";
+
 /** Fixed widget footprint — intentional, not responsive. */
 export const BOARD_AGENT_TERMINAL_WIDTH_PX = 312;
 
@@ -17,4 +19,17 @@ export const AGENT_TERMINAL_CARD_SPRING = {
 	stiffness: 340,
 	damping: 32,
 	mass: 0.82,
+};
+
+export const getLineRevealDelayMs = (
+	line: AgentTerminalDisplayLine | undefined,
+	visibleCount: number
+) => {
+	if (visibleCount === 0 || !line) {
+		return AGENT_TERMINAL_INITIAL_DELAY_MS;
+	}
+
+	return line.type === "ai" && line.thinking
+		? AGENT_TERMINAL_THINKING_LINE_MS
+		: AGENT_TERMINAL_LINE_STAGGER_MS;
 };

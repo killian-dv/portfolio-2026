@@ -1,6 +1,7 @@
-import { type MouseEvent, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { usePrefersReducedMotion } from "#/hooks/use-prefers-reduced-motion";
+import { useStopBoardPan } from "#/hooks/use-stop-board-pan";
 
 export const useBoardAgentTerminalInteraction = () => {
 	const [isHovered, setIsHovered] = useState(false);
@@ -16,9 +17,7 @@ export const useBoardAgentTerminalInteraction = () => {
 		setIsHovered(false);
 	}, []);
 
-	const stopBoardPan = useCallback((event: MouseEvent) => {
-		event.stopPropagation();
-	}, []);
+	const stopBoardPan = useStopBoardPan();
 
 	const motionState = prefersReducedMotion || !isHovered ? "idle" : "hover";
 

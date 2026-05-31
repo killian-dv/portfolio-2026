@@ -1,9 +1,5 @@
 import type { CSSProperties } from "react";
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
-import {
-	BOARD_STICKY_NOTE_MIN_HEIGHT_PX,
-	BOARD_STICKY_NOTE_WIDTH_PX,
-} from "#/components/board/board-sticky-notes/board-sticky-notes-constants";
 import type { StickyNote } from "#/components/board/board-sticky-notes/sticky-notes.data";
 import { cn } from "#/lib/utils";
 
@@ -33,10 +29,7 @@ export const BoardStickyNote = ({
 				note.variant === "sage" && "board-sticky-note--sage"
 			)}
 			data-variant={note.variant}
-			style={{
-				width: BOARD_STICKY_NOTE_WIDTH_PX,
-				minHeight: BOARD_STICKY_NOTE_MIN_HEIGHT_PX,
-			}}
+			style={{ width: 152, minHeight: 152 }}
 		>
 			<div
 				aria-hidden

@@ -11,6 +11,7 @@ import { favoriteTools } from "#/components/board/board-favorite-tools/favorite-
 import { getFavoriteToolsClusterCenterX } from "#/components/board/board-favorite-tools/favorite-tools-layout";
 import { useBoardFavoriteToolsZone } from "#/components/board/board-favorite-tools/use-board-favorite-tools-zone";
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
+import { BoardHandwrittenAnnotation } from "#/components/board/decorations/board-handwritten-annotation";
 
 export const BoardFavoriteTools = () => {
 	const stopBoardPan = useCallback((event: MouseEvent) => {
@@ -59,6 +60,12 @@ export const BoardFavoriteTools = () => {
 				>
 					{BOARD_FAVORITE_TOOLS_TITLE}
 				</BoardHandwrittenLabel>
+
+				<BoardHandwrittenAnnotation
+					className="right-[6px] bottom-[14px]"
+					rotationDeg={-4.2}
+					text="frontend craft"
+				/>
 
 				{/* biome-ignore lint/a11y/noNoninteractiveElementInteractions: zone magnetic field */}
 				{/* biome-ignore lint/a11y/noStaticElementInteractions: zone magnetic field */}

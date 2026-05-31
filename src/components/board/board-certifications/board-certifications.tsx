@@ -8,7 +8,6 @@ import {
 } from "#/components/board/board-certifications/board-certifications-constants";
 import { CERTIFICATIONS } from "#/components/board/board-certifications/certifications.data";
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
-
 export const BoardCertifications = () => {
 	const stopBoardPan = useCallback((event: MouseEvent) => {
 		event.stopPropagation();

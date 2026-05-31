@@ -1,8 +1,8 @@
 import { type MouseEvent, useCallback } from "react";
-
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
 import { BoardProjectCard } from "#/components/board/board-projects/board-project-card";
 import { PROJECTS } from "#/components/board/board-projects/projects.data";
+import { BoardHandwrittenAnnotation } from "#/components/board/decorations/board-handwritten-annotation";
 import { cn } from "#/lib/utils";
 
 interface BoardProjectsProps {
@@ -29,6 +29,12 @@ export const BoardProjects = ({ className }: BoardProjectsProps) => {
 			>
 				Projects
 			</BoardHandwrittenLabel>
+
+			<BoardHandwrittenAnnotation
+				className="-right-[4px] -bottom-[6px]"
+				rotationDeg={2.8}
+				text="one more iteration"
+			/>
 
 			<ul className="m-0 grid w-max list-none grid-cols-[repeat(2,max-content)] gap-x-6 gap-y-6 p-0">
 				{PROJECTS.map((project) => (

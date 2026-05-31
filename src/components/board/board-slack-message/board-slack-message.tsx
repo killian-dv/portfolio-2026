@@ -3,6 +3,7 @@ import {
 	BOARD_SLACK_MESSAGE_WIDTH_PX,
 } from "#/components/board/board-slack-message/board-slack-message-constants";
 import { slackMessage } from "#/components/board/board-slack-message/slack-message.data";
+import { BoardPaperClip } from "#/components/board/decorations/board-paper-clip";
 import { cn } from "#/lib/utils";
 
 interface BoardSlackMessageProps {
@@ -13,11 +14,17 @@ export const BoardSlackMessage = ({ className }: BoardSlackMessageProps) => (
 	<div
 		aria-hidden
 		className={cn(
-			"pointer-events-none shrink-0 select-none font-sans drop-shadow-board-slack-message",
+			"pointer-events-none relative shrink-0 select-none font-sans drop-shadow-board-slack-message",
 			className
 		)}
 		style={{ width: BOARD_SLACK_MESSAGE_WIDTH_PX }}
 	>
+		<BoardPaperClip
+			className="absolute -top-[10px] -right-[14px] z-20"
+			rotationDeg={14}
+			size={48}
+		/>
+
 		<div className="rounded-lg border border-board-slack-message-border bg-board-slack-message-surface p-3">
 			<div className="flex gap-2">
 				<div

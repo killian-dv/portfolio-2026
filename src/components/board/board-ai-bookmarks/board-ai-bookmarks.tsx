@@ -12,6 +12,7 @@ import {
 	BOARD_AI_BOOKMARKS_TITLE_TOP_PX,
 } from "#/components/board/board-ai-bookmarks/board-ai-bookmarks-constants";
 import { BoardHandwrittenLabel } from "#/components/board/board-handwritten-label";
+import { BoardHandwrittenAnnotation } from "#/components/board/decorations/board-handwritten-annotation";
 
 export const BoardAiBookmarks = () => {
 	const stopBoardPan = useCallback((event: MouseEvent) => {
@@ -27,6 +28,12 @@ export const BoardAiBookmarks = () => {
 				width: BOARD_AI_BOOKMARKS_SECTION_WIDTH_PX,
 			}}
 		>
+			<BoardHandwrittenAnnotation
+				className="right-[18px] bottom-[12px]"
+				rotationDeg={-3.5}
+				text="worth bookmarking"
+			/>
+
 			<BoardHandwrittenLabel
 				as="h2"
 				className="pointer-events-none absolute z-20 text-[2.15rem]"

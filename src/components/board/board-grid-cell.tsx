@@ -4,6 +4,7 @@ import { BoardAiBookmarks } from "#/components/board/board-ai-bookmarks/board-ai
 import { BoardCertifications } from "#/components/board/board-certifications/board-certifications";
 import { BoardExperiences } from "#/components/board/board-experiences/board-experiences";
 import { BoardFavoriteTools } from "#/components/board/board-favorite-tools/board-favorite-tools";
+import { renderBoardCellDecoration } from "#/components/board/board-grid-cell-decorations";
 import { BoardProjects } from "#/components/board/board-projects/board-projects";
 import { BoardSlackMessage } from "#/components/board/board-slack-message/board-slack-message";
 import { BoardStickyNote } from "#/components/board/board-sticky-notes/board-sticky-note";
@@ -22,6 +23,11 @@ interface BoardGridCellProps {
 }
 
 export const BoardGridCell = ({ area }: BoardGridCellProps) => {
+	const decoration = renderBoardCellDecoration(area);
+	if (decoration) {
+		return decoration;
+	}
+
 	if (area === "g1") {
 		return (
 			<div

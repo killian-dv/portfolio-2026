@@ -1,0 +1,35 @@
+.board-desk-object {
+	--board-desk-rotate: 0deg;
+	filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.06))
+		drop-shadow(0 3px 8px rgb(0 0 0 / 0.1));
+	transform: rotate(var(--board-desk-rotate));
+	transition:
+		filter 220ms ease-out,
+		transform 220ms ease-out;
+}
+
+.board-desk-object:hover {
+	--board-desk-rotate-hover-adjust: 0deg;
+	filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.08))
+		drop-shadow(0 5px 14px rgb(0 0 0 / 0.14));
+	transform: rotate(
+		calc(var(--board-desk-rotate) + var(--board-desk-rotate-hover-adjust, 0deg))
+	);
+}
+
+.board-desk-object--straighten-hover:hover {
+	--board-desk-rotate-hover-adjust: calc(var(--board-desk-rotate) * -0.35);
+}
+
+.board-desk-object--nudge-hover:hover {
+	--board-desk-rotate-hover-adjust: 1.5deg;
+}
+
+.board-desk-tack {
+	transition: transform 200ms ease-out;
+}
+
+.board-desk-object:hover .board-desk-tack,
+.board-desk-tack:hover {
+	transform: translateY(-0.5px);
+}

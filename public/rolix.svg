@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none" aria-hidden="true">
+  <mask id="rolix-mask" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="21">
+    <path d="M20 0H0V21H20V0Z" fill="white"/>
+  </mask>
+  <g mask="url(#rolix-mask)">
+    <path d="M4.11215 21C6.38323 21 8.2243 19.1532 8.2243 16.875C8.2243 14.5968 6.38323 12.75 4.11215 12.75C1.84107 12.75 0 14.5968 0 16.875C0 19.1532 1.84107 21 4.11215 21Z" fill="url(#rolix-gradient)"/>
+    <path d="M13.3084 10.275L19.2897 0H13.9813L8.07477 10.275L14.1308 21H19.5888L13.3084 10.275Z" fill="white"/>
+  </g>
+  <defs>
+    <linearGradient id="rolix-gradient" x1="7.27533" y1="14.0192" x2="1.24754" y2="19.7119" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BC3EF8"/>
+      <stop offset="1" stop-color="#B923C6"/>
+    </linearGradient>
+  </defs>
+</svg>

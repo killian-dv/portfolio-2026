@@ -1,12 +1,20 @@
+import type { LucideIcon } from "lucide-react";
+import { Leaf } from "lucide-react";
+import type { ComponentType } from "react";
+
+import { LucideAnimatedIcon } from "#/components/board/board-projects/lucide-animated-icon";
+
 export interface Project {
 	color: string;
 	description: string;
 	href: string;
 	id: string;
-	image: string;
+	image?: string;
 	imageAlt: string;
+	imageComponent?: ComponentType<{ size?: number }>;
 	imageWidth: number;
 	isPrivate: boolean;
+	lucideIcon?: LucideIcon;
 	rotate: number;
 	tags?: string[];
 	title: string;
@@ -15,59 +23,63 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
 	{
-		id: "altermaker",
-		title: "Altermaker Studio",
-		description: "Design system and product UI for a sustainability studio.",
-		year: "2024",
-		tags: ["React", "Design system"],
-		image: "/altermaker.svg",
-		imageAlt: "Altermaker logo",
-		imageWidth: 52,
-		color: "#3f6278",
-		href: "https://altermaker.com",
+		id: "renewable-energy-card",
+		title: "Renewable Energy Generation Card",
+		description:
+			"Animated energy card — React, Motion, and Tailwind. Inspired by Tanjim’s motion design.",
+		year: "2026",
+		tags: ["React", "Motion", "Tailwind"],
+		lucideIcon: Leaf,
+		imageAlt: "Renewable energy icon",
+		imageWidth: 48,
+		color: "#2d6a4f",
+		href: "https://github.com/killian-dv/renewable-energy-generation-card",
 		isPrivate: false,
 		rotate: -2.4,
 	},
 	{
-		id: "artybot",
-		title: "Artybot",
-		description: "Creative tooling for UpCulture — dashboards and editor UI.",
-		year: "2023",
-		tags: ["TypeScript", "Node"],
-		image: "/artybot.svg",
-		imageAlt: "Artybot logo",
-		imageWidth: 48,
-		color: "#8f5a4c",
-		href: "https://artybot.ai",
+		id: "lucide-animated",
+		title: "lucide-animated",
+		description:
+			"Beautifully crafted animated icons — open-source collection by pqoqubbw.",
+		year: "2025",
+		tags: ["Motion", "Open Source"],
+		imageComponent: LucideAnimatedIcon,
+		imageAlt: "lucide-animated ghost icon",
+		imageWidth: 56,
+		color: "#181818",
+		href: "https://github.com/pqoqubbw/icons",
 		isPrivate: false,
-		rotate: 1.7,
+		rotate: 2.1,
 	},
 	{
-		id: "atelier",
-		title: "Atelier",
-		description: "Internal canvas for layout, type, and motion exploration.",
-		year: "2025",
-		tags: ["Prototype"],
-		image: "/project-atelier.svg",
-		imageAlt: "Atelier mark",
-		imageWidth: 56,
-		color: "#5a4f72",
+		id: "rolix",
+		title: "Rolix",
+		description:
+			"Copy-paste Shadcn/ui components, customized for our dashboards — plus a full Figma kit.",
+		year: "2024",
+		tags: ["Shadcn/ui", "Figma"],
+		image: "/rolix.svg",
+		imageAlt: "Rolix logo",
+		imageWidth: 40,
+		color: "#7c2d9e",
 		href: "",
 		isPrivate: true,
 		rotate: -1.1,
 	},
 	{
-		id: "meridian",
-		title: "Meridian",
-		description: "Editorial site with scroll-linked type and soft parallax.",
-		year: "2022",
-		tags: ["GSAP", "WebGL"],
-		image: "/project-meridian.svg",
-		imageAlt: "Meridian mark",
-		imageWidth: 64,
-		color: "#3d5f52",
-		href: "https://example.com/meridian",
+		id: "artystory",
+		title: "ArtyStory",
+		description:
+			"Conversational chatbot to talk with iconic historical figures, powered by ChatGPT.",
+		year: "2023",
+		tags: ["Vue", "ChatGPT"],
+		image: "/napoleon.webp",
+		imageAlt: "Napoleon — ArtyStory character",
+		imageWidth: 72,
+		color: "#345ba4",
+		href: "https://github.com/killian-dv/ArtyStory",
 		isPrivate: false,
-		rotate: 2.1,
+		rotate: 1.7,
 	},
 ];

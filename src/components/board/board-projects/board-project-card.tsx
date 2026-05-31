@@ -14,6 +14,8 @@ interface BoardProjectCardProps {
 const badgeClassName =
 	"rounded-full bg-neutral-100/10 text-white backdrop-blur-[1px]";
 
+const descriptionMaxHeight = "max-h-[3.125rem]";
+
 const cardClassName = cn(
 	"group relative flex aspect-4/5 w-[224px] cursor-default flex-col overflow-hidden rounded-2xl p-3",
 	"outline-none focus-within:ring-2 focus-within:ring-white/40 focus-within:ring-offset-2 focus-within:ring-offset-transparent",
@@ -53,6 +55,8 @@ export const BoardProjectCard = ({
 	const colorGlowSoft = projectColorRgba(project.color, 0.28);
 	const isInteractive = !project.isPrivate && Boolean(project.href);
 	const showDescription = isPointerOver || prefersReducedMotion;
+	const ProjectIcon = project.lucideIcon;
+	const ProjectImage = project.imageComponent;
 
 	const motionStyle: CSSProperties = {
 		backgroundColor: project.color,
@@ -90,14 +94,27 @@ export const BoardProjectCard = ({
 			</div>
 
 			<div className="pointer-events-none relative z-10 flex min-h-0 flex-1 items-center justify-center">
-				<img
-					alt={project.imageAlt}
-					className="max-h-[min(88px,100%)] w-auto object-contain"
-					height={88}
-					src={project.image}
-					style={{ width: project.imageWidth }}
-					width={project.imageWidth}
-				/>
+				{ProjectIcon ? (
+					<ProjectIcon
+						aria-hidden
+						className="text-white"
+						size={project.imageWidth}
+						strokeWidth={1.75}
+					/>
+				) : null}
+				{!ProjectIcon && ProjectImage ? (
+					<ProjectImage size={project.imageWidth} />
+				) : null}
+				{!(ProjectIcon || ProjectImage) && project.image ? (
+					<img
+						alt={project.imageAlt}
+						className="max-h-[min(88px,100%)] w-auto object-contain"
+						height={88}
+						src={project.image}
+						style={{ width: project.imageWidth }}
+						width={project.imageWidth}
+					/>
+				) : null}
 			</div>
 
 			<div className="pointer-events-none relative z-10 flex shrink-0 flex-col text-white">
@@ -121,7 +138,7 @@ export const BoardProjectCard = ({
 					className={cn(
 						"m-0 overflow-hidden text-white/80 text-xs leading-snug transition-all duration-300",
 						showDescription
-							? "mt-2 max-h-[2.75rem] opacity-70"
+							? cn("mt-2 opacity-70", descriptionMaxHeight)
 							: "max-h-0 opacity-0"
 					)}
 				>

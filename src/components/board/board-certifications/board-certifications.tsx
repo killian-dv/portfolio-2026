@@ -18,7 +18,7 @@ export const BoardCertifications = () => {
 	return (
 		<section
 			aria-label="Board certifications"
-			className="pointer-events-auto relative shrink-0 overflow-visible"
+			className="relative shrink-0 overflow-visible"
 			style={{
 				height: BOARD_CERTIFICATIONS_SECTION_HEIGHT_PX,
 				width: BOARD_CERTIFICATIONS_SECTION_WIDTH_PX,

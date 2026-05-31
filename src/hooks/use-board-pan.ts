@@ -311,13 +311,6 @@ export const useBoardPan = (enabled = true) => {
 				return;
 			}
 
-			if (
-				event.target instanceof Element &&
-				event.target.closest('[data-clickable="true"]')
-			) {
-				return;
-			}
-
 			startDrag(event.clientX, event.clientY);
 		},
 		handleMouseMove: (event: React.MouseEvent<HTMLDivElement>) => {

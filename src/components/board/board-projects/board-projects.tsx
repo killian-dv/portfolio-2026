@@ -18,7 +18,7 @@ export const BoardProjects = ({ className }: BoardProjectsProps) => {
 		<section
 			aria-label="Board projects"
 			className={cn(
-				"pointer-events-auto flex w-max max-w-none flex-col gap-4 overflow-visible p-6",
+				"flex w-max max-w-none flex-col gap-4 overflow-visible p-6",
 				className
 			)}
 		>

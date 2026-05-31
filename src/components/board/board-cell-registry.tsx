@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
 import { BoardCellPlacement } from "#/components/board/board-cell-placement";
-import type { BoardCellSlotProps } from "#/components/board/board-cell-slot";
 import {
 	BOARD_LAYOUT,
 	type BoardLayoutItem,
@@ -10,25 +9,7 @@ import { type BoardGridArea, boardCell } from "#/lib/board-grid-config";
 
 export interface BoardCellRegistryEntry {
 	children: ReactNode;
-	slot?: Omit<BoardCellSlotProps, "area" | "children">;
 }
-
-const mergeSlotOptions = (
-	a?: BoardCellRegistryEntry["slot"],
-	b?: BoardCellRegistryEntry["slot"]
-): BoardCellRegistryEntry["slot"] => {
-	if (!a) {
-		return b;
-	}
-	if (!b) {
-		return a;
-	}
-	return {
-		...a,
-		...b,
-		zIndex: Math.max(a.zIndex ?? 0, b.zIndex ?? 0) || undefined,
-	};
-};
 
 const wrapItem = (item: BoardLayoutItem): ReactNode => {
 	if (!item.placement) {
@@ -52,7 +33,6 @@ const buildBoardCellContent = (): Partial<
 		const existing = map[area];
 		if (existing) {
 			map[area] = {
-				slot: mergeSlotOptions(existing.slot, item.slot),
 				children: (
 					<>
 						{existing.children}
@@ -63,10 +43,7 @@ const buildBoardCellContent = (): Partial<
 			continue;
 		}
 
-		map[area] = {
-			children: child,
-			slot: item.slot,
-		};
+		map[area] = { children: child };
 	}
 
 	return map;

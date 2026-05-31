@@ -4,7 +4,6 @@ import { BoardAlbumCard } from "#/components/board/album/board-album-card";
 import { BoardAgentTerminal } from "#/components/board/board-agent-terminal/board-agent-terminal";
 import { BoardAiBookmarks } from "#/components/board/board-ai-bookmarks/board-ai-bookmarks";
 import type { BoardCellPlacementProps } from "#/components/board/board-cell-placement";
-import type { BoardCellSlotProps } from "#/components/board/board-cell-slot";
 import { BoardCertifications } from "#/components/board/board-certifications/board-certifications";
 import { BoardExperiences } from "#/components/board/board-experiences/board-experiences";
 import { BoardFavoriteTools } from "#/components/board/board-favorite-tools/board-favorite-tools";
@@ -39,7 +38,6 @@ export interface BoardLayoutItem {
 	/** Stable name — search this file by id when editing. */
 	id: string;
 	placement?: Omit<BoardCellPlacementProps, "children">;
-	slot?: Omit<BoardCellSlotProps, "area" | "children">;
 }
 
 const resolveArea = (at: BoardLayoutAt): BoardGridArea => {
@@ -116,7 +114,6 @@ export const BOARD_LAYOUT: BoardLayoutItem[] = [
 	{
 		id: "certifications",
 		at: { row: 1, col: 2 },
-		slot: { pointerEvents: "none", zIndex: 20 },
 		placement: { anchor: "top-left", offset: { x: -200, y: -250 } },
 		content: <BoardCertifications />,
 	},
@@ -195,7 +192,6 @@ export const BOARD_LAYOUT: BoardLayoutItem[] = [
 	{
 		id: "projects",
 		at: { row: 0, col: 5 },
-		slot: { pointerEvents: "none", zIndex: 30 },
 		placement: { anchor: "top-left", offset: { x: 100, y: 150 } },
 		content: <BoardProjects />,
 	},

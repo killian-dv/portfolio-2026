@@ -12,9 +12,5 @@ export const BoardGridCell = ({ area }: BoardGridCellProps) => {
 		return <BoardCellSlot area={area} />;
 	}
 
-	return (
-		<BoardCellSlot area={area} {...entry.slot}>
-			{entry.children}
-		</BoardCellSlot>
-	);
+	return <BoardCellSlot area={area}>{entry.children}</BoardCellSlot>;
 };

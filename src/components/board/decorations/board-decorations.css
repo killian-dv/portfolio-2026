@@ -17,14 +17,6 @@
 	);
 }
 
-.board-desk-object--straighten-hover:hover {
-	--board-desk-rotate-hover-adjust: calc(var(--board-desk-rotate) * -0.35);
-}
-
-.board-desk-object--nudge-hover:hover {
-	--board-desk-rotate-hover-adjust: 1.5deg;
-}
-
 .board-desk-tack {
 	transition: transform 200ms ease-out;
 }

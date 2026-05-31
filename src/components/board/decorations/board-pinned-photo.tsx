@@ -39,7 +39,7 @@ export const BoardPinnedPhoto = ({
 		<figure
 			aria-hidden
 			className={cn(
-				"board-desk-object board-desk-object--straighten-hover pointer-events-auto absolute z-10 m-0 w-fit",
+				"board-desk-object board-desk-object--static pointer-events-none absolute z-10 m-0 w-fit",
 				className
 			)}
 			style={

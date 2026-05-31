@@ -29,7 +29,7 @@ export const BoardHandwrittenAnnotation = ({
 	<BoardHandwrittenLabel
 		aria-hidden
 		className={cn(
-			"board-desk-object board-desk-object--nudge-hover pointer-events-auto absolute z-20 whitespace-nowrap text-[#4a4a4a] text-[0.98rem] italic",
+			"board-desk-object board-desk-object--static pointer-events-none absolute z-20 whitespace-nowrap text-[#4a4a4a] text-[0.98rem] italic",
 			className
 		)}
 		style={

@@ -3,16 +3,24 @@ import type { ReactNode } from "react";
 
 import { BoardFigmaCursors } from "#/components/board/hero/board-figma-cursors";
 import { BoardFrameCorner } from "#/components/board/hero/board-frame-corner";
+import { cn } from "#/lib/utils";
 
 interface BoardHeroCardProps {
 	children?: ReactNode;
+	showFigmaCursors?: boolean;
 }
 
-export const BoardHeroCard = ({ children }: BoardHeroCardProps) => (
+export const BoardHeroCard = ({
+	children,
+	showFigmaCursors = true,
+}: BoardHeroCardProps) => (
 	<div className="flex h-fit w-fit items-center justify-center overflow-visible">
 		<motion.div
 			animate={{ filter: "blur(0px)", opacity: 1, scale: 1 }}
-			className="relative cursor-grab overflow-visible hover:cursor-default"
+			className={cn(
+				"relative overflow-visible",
+				showFigmaCursors ? "cursor-grab hover:cursor-default" : "cursor-default"
+			)}
 			initial={{ filter: "blur(5px)", opacity: 0, scale: 0.95 }}
 			transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
 		>
@@ -23,7 +31,7 @@ export const BoardHeroCard = ({ children }: BoardHeroCardProps) => (
 				<BoardFrameCorner position="bottom-right" />
 				{children}
 			</div>
-			<BoardFigmaCursors />
+			{showFigmaCursors ? <BoardFigmaCursors /> : null}
 		</motion.div>
 	</div>
 );

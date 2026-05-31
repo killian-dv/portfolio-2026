@@ -2,6 +2,7 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
+import { BoardNotFoundPage } from "#/components/board/board-not-found-page";
 import { buildSiteHead } from "#/lib/site-seo";
 
 import appCss from "../styles.css?url";
@@ -9,6 +10,7 @@ import appCss from "../styles.css?url";
 export const Route = createRootRoute({
 	head: () => buildSiteHead(appCss),
 	shellComponent: RootDocument,
+	notFoundComponent: BoardNotFoundPage,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {

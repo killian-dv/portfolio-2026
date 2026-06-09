@@ -44,7 +44,7 @@ export const aiBookmarks = [
 		id: "impeccable",
 		title: "Impeccable",
 		url: "https://impeccable.style",
-		note: "instant code reviews",
+		note: "design vocabulary",
 		rotation: -4.2,
 		layout: {
 			left: 164,
@@ -81,9 +81,9 @@ export const aiBookmarks = [
 	},
 	{
 		id: "emil-design-eng",
-		title: "Emile Design Eng",
+		title: "Emil Design Eng",
 		url: "https://emilkowal.ski/skill",
-		note: "UI gold mine",
+		note: "motion that feels right",
 		rotation: -3.5,
 		layout: {
 			left: 318,

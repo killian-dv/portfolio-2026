@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
-import { Leaf } from "lucide-react";
 import type { ComponentType } from "react";
 
+import { AdvancedModelSelectorIcon } from "#/components/board/board-projects/advanced-model-selector-icon";
 import { LucideAnimatedIcon } from "#/components/board/board-projects/lucide-animated-icon";
 
 export interface Project {
@@ -23,18 +23,18 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
 	{
-		color: "#2d6a4f",
+		color: "#26262a",
 		description:
-			"Animated energy card — React, Motion, and Tailwind. Inspired by Tanjim’s motion design.",
-		href: "https://github.com/killian-dv/renewable-energy-generation-card",
-		id: "renewable-energy-card",
-		imageAlt: "Renewable energy icon",
-		imageWidth: 48,
+			"Chat-style input with an AI model picker — search, hover previews, keyboard nav, and settings.",
+		href: "https://github.com/killian-dv/advanced-model-selector",
+		id: "advanced-model-selector",
+		imageAlt: "OpenAI, Gemini, and Claude provider icons",
+		imageComponent: AdvancedModelSelectorIcon,
+		imageWidth: 92,
 		isPrivate: false,
-		lucideIcon: Leaf,
 		rotate: -2.4,
-		tags: ["React", "Motion", "Tailwind"],
-		title: "Renewable Energy Generation Card",
+		tags: ["React", "Base UI", "Motion"],
+		title: "Advanced Model Selector",
 		year: "2026",
 	},
 	{

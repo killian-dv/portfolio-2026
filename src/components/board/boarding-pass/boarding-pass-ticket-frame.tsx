@@ -8,7 +8,6 @@ import {
 } from "#/components/board/boarding-pass/boarding-pass-ticket-path";
 
 export const BoardingPassTicketShadow = () => (
-	// biome-ignore lint/a11y/noSvgWithoutTitle: decorative shadow
 	<svg
 		aria-hidden
 		className="pointer-events-none absolute inset-0"
@@ -29,7 +28,6 @@ export const BoardingPassTicketShadow = () => (
 );
 
 export const BoardingPassTicketOutline = () => (
-	// biome-ignore lint/a11y/noSvgWithoutTitle: decorative outline
 	<svg
 		aria-hidden
 		className="pointer-events-none absolute inset-0 z-20"

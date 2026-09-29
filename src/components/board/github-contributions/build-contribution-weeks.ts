@@ -82,7 +82,7 @@ export const isFutureContributionSlot = (
 ): cell is FutureContributionSlot => "kind" in cell && cell.kind === "future";
 
 export const getWeekColumnKey = (week: ContributionWeekCell[]): string => {
-	const sunday = week[0];
+	const [sunday] = week;
 	if (sunday && !isFutureContributionSlot(sunday)) {
 		return `week-${sunday.date}`;
 	}
@@ -100,7 +100,7 @@ export const buildContributionWeeks = (
 	const weeks: ContributionWeekCell[][] = [];
 	for (let index = 0; index < days.length; index += 7) {
 		const week: ContributionWeekCell[] = days.slice(index, index + 7);
-		const firstDay = week[0];
+		const [firstDay] = week;
 		const weekSunday =
 			firstDay && !isFutureContributionSlot(firstDay)
 				? firstDay.date

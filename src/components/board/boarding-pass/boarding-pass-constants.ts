@@ -12,39 +12,39 @@ export const BOARDING_PASS_NOTCH_CENTER_Y_PX =
 export const BOARDING_PASS_IDLE_ROTATE_DEG = -3.2;
 
 export const BOARDING_PASS_FLIGHT = {
-	flightNumber: "EK 368",
+	class: "Business",
 	date: "24 May 2026",
+	flightNumber: "EK 368",
 	gate: "C42",
 	seat: "14A",
-	class: "Business",
 } as const;
 
 export const BOARDING_PASS_ROUTE = {
-	originCode: "ORY",
-	originCity: "Paris",
-	destinationCode: "DPS",
-	destinationCity: "Bali",
-	departureLocal: "10:15",
-	arrivalLocal: "06:55",
 	arrivalDayOffset: "+1",
+	arrivalLocal: "06:55",
+	departureLocal: "10:15",
+	destinationCity: "Bali",
+	destinationCode: "DPS",
 	duration: "16h 40m",
+	originCity: "Paris",
+	originCode: "ORY",
 } as const;
 
 export const BOARDING_PASS_GLOW_SPRING = {
-	stiffness: 160,
 	damping: 28,
 	mass: 0.85,
+	stiffness: 160,
 };
 
 export const BOARDING_PASS_TILT_SPRING = {
-	stiffness: 220,
 	damping: 32,
 	mass: 0.75,
+	stiffness: 220,
 };
 
 export const BOARDING_PASS_CARD_SPRING = {
-	type: "spring" as const,
-	stiffness: 300,
 	damping: 30,
 	mass: 0.9,
+	stiffness: 300,
+	type: "spring" as const,
 };

@@ -20,14 +20,14 @@ export const GithubContributionsRadialHighlight = ({
 			aria-hidden
 			className="pointer-events-none absolute z-20 size-36 rounded-full"
 			style={{
-				left,
-				top,
-				translateX: "-50%",
-				translateY: "-50%",
-				opacity: glowOpacity,
 				background:
 					"radial-gradient(circle at center, color-mix(in srgb, var(--board-github-accent) 22%, transparent) 0%, color-mix(in srgb, var(--board-github-accent) 8%, white) 42%, transparent 72%)",
 				filter: "blur(14px)",
+				left,
+				opacity: glowOpacity,
+				top,
+				translateX: "-50%",
+				translateY: "-50%",
 			}}
 		/>
 	);

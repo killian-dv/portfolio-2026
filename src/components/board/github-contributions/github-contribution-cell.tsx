@@ -80,9 +80,9 @@ export const GithubContributionCell = ({
 			}
 			const cell: HoveredContributionCell = {
 				col,
-				row,
-				date: day.date,
 				count: day.count,
+				date: day.date,
+				row,
 			};
 			onHover({
 				anchor: getAnchorInCard(event.currentTarget, card),
@@ -109,12 +109,12 @@ export const GithubContributionCell = ({
 			onMouseEnter={handleEnter}
 			onMouseLeave={handleLeave}
 			style={{
-				width: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
-				height: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
 				backgroundColor: color,
 				boxShadow: isDirectHover
 					? "0 0 0 1px color-mix(in srgb, var(--board-github-accent-deep) 25%, transparent), 0 0 14px color-mix(in srgb, var(--board-github-accent) 35%, transparent)"
 					: undefined,
+				height: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
+				width: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
 			}}
 			transition={
 				prefersReducedMotion

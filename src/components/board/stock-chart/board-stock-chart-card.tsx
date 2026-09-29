@@ -16,8 +16,8 @@ export const BoardStockChartCard = () => {
 			ref={interaction.cardRef}
 			style={{
 				height: BOARD_CELL_SIZE_PX,
-				width: BOARD_CELL_SIZE_PX,
 				transform: interaction.parallaxTransform,
+				width: BOARD_CELL_SIZE_PX,
 			}}
 		>
 			<StockChartCardShell>

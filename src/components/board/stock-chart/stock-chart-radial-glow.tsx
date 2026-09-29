@@ -22,13 +22,13 @@ export const StockChartRadialGlow = ({
 			aria-hidden
 			className="pointer-events-none absolute size-24 rounded-full"
 			style={{
+				background: `radial-gradient(circle, ${NVIDIA_GREEN}55 0%, transparent 70%)`,
+				filter: "blur(12px)",
 				left: glowX,
+				opacity: cursorOpacity,
 				top: glowY,
 				translateX: "-50%",
 				translateY: "-50%",
-				background: `radial-gradient(circle, ${NVIDIA_GREEN}55 0%, transparent 70%)`,
-				opacity: cursorOpacity,
-				filter: "blur(12px)",
 			}}
 		/>
 	);

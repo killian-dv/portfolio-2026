@@ -18,8 +18,8 @@ export const StockChartCursor = ({
 		stroke={`url(#cursor-line-${clipId})`}
 		strokeWidth={1}
 		style={{
-			opacity: cursorOpacity,
 			filter: "blur(0.4px)",
+			opacity: cursorOpacity,
 		}}
 		x1={cursorLineX}
 		x2={cursorLineX}

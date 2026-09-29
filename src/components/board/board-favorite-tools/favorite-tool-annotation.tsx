@@ -15,27 +15,27 @@ const ANNOTATION_BASE_CLASS =
 	"pointer-events-none absolute font-caveat font-medium text-[1.05rem] italic text-board-handwritten-neutral transition-opacity duration-200";
 
 const placementStyle: Record<FavoriteToolNotePlacement, CSSProperties> = {
-	top: {
-		bottom: "calc(100% + 10px)",
-		left: "50%",
-		transform: "translateX(-50%) rotate(-3deg)",
-	},
 	bottom: {
-		top: "calc(100% + 10px)",
 		left: "50%",
+		top: "calc(100% + 10px)",
 		transform: "translateX(-50%) rotate(-3deg)",
 	},
 	left: {
 		right: "calc(100% + 10px)",
+		textAlign: "right",
 		top: "50%",
 		transform: "translateY(-50%) rotate(-4deg)",
-		textAlign: "right",
 	},
 	right: {
 		left: "calc(100% + 10px)",
+		textAlign: "left",
 		top: "50%",
 		transform: "translateY(-50%) rotate(-4deg)",
-		textAlign: "left",
+	},
+	top: {
+		bottom: "calc(100% + 10px)",
+		left: "50%",
+		transform: "translateX(-50%) rotate(-3deg)",
 	},
 };
 

@@ -89,7 +89,7 @@ export const useGithubContributionsInteraction = () => {
 	/** Board pan does not fire cell mouseleave — dismiss when pointer goes elsewhere. */
 	useEffect(() => {
 		const handlePointerDown = (event: PointerEvent) => {
-			const target = event.target;
+			const { target } = event;
 			if (!(target instanceof Element)) {
 				return;
 			}

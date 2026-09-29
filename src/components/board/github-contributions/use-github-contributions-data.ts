@@ -18,7 +18,7 @@ let loadResultPromise: Promise<GithubContributionsLoadResult> | null = null;
 
 const getGithubContributionsLoadResult = () => {
 	loadResultPromise ??= fetchGithubContributions(GITHUB_CONTRIBUTIONS_USERNAME)
-		.then((response) => ({ status: "ready" as const, response }))
+		.then((response) => ({ response, status: "ready" as const }))
 		.catch(() => ({ status: "error" as const }));
 
 	return loadResultPromise;

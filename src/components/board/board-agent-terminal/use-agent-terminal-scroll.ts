@@ -23,8 +23,8 @@ export const useAgentTerminalScroll = (
 			}
 
 			viewport.scrollTo({
-				top: viewport.scrollHeight,
 				behavior: prefersReducedMotion ? "instant" : "smooth",
+				top: viewport.scrollHeight,
 			});
 		});
 

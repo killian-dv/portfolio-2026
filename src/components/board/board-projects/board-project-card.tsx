@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
-import type { CSSProperties, MouseEvent } from "react";
+import { type CSSProperties, type MouseEvent, useCallback } from "react";
 
 import type { Project } from "#/components/board/board-projects/projects.data";
 import { useBoardProjectCardInteraction } from "#/components/board/board-projects/use-board-project-card-interaction";
@@ -58,21 +58,26 @@ export const BoardProjectCard = ({
 	const ProjectIcon = project.lucideIcon;
 	const ProjectImage = project.imageComponent;
 
+	const handleMouseDown = useCallback(
+		(event: MouseEvent) => {
+			stopBoardPan(event);
+			onMouseDown(event);
+		},
+		[onMouseDown, stopBoardPan]
+	);
+
 	const motionStyle: CSSProperties = {
 		backgroundColor: project.color,
-		rotate: `${project.rotate}deg`,
 		boxShadow: isHovered
 			? `0 20px 44px -18px rgba(0,0,0,0.42), 0 28px 56px -24px ${colorGlowSoft}`
 			: `0 12px 32px -16px rgba(0,0,0,0.32), 0 18px 40px -28px ${colorGlowSoft}`,
+		rotate: `${project.rotate}deg`,
 	};
 
 	return (
 		<motion.article
 			className={cardClassName}
-			onMouseDown={(event) => {
-				stopBoardPan(event);
-				onMouseDown(event);
-			}}
+			onMouseDown={handleMouseDown}
 			onMouseEnter={handlePointerEnter}
 			onMouseLeave={handlePointerLeave}
 			ref={cardRef}
@@ -151,10 +156,7 @@ export const BoardProjectCard = ({
 					aria-label={`${project.title} (opens in new tab)`}
 					className="absolute inset-0 z-20 cursor-pointer rounded-2xl"
 					href={project.href}
-					onMouseDown={(event) => {
-						stopBoardPan(event);
-						onMouseDown(event);
-					}}
+					onMouseDown={handleMouseDown}
 					onMouseEnter={handlePointerEnter}
 					onMouseLeave={handlePointerLeave}
 					rel="noopener noreferrer"

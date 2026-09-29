@@ -18,8 +18,8 @@ import { boardingPassTicketClipPath } from "#/components/board/boarding-pass/boa
 import { useBoardingPassInteraction } from "#/components/board/boarding-pass/use-boarding-pass-interaction";
 
 const cardVariants: Variants = {
-	idle: { y: 0, scale: 1 },
-	hover: { y: -5, scale: 1.006 },
+	hover: { scale: 1.006, y: -5 },
+	idle: { scale: 1, y: 0 },
 };
 
 export const BoardBoardingPassCard = () => {
@@ -37,9 +37,9 @@ export const BoardBoardingPassCard = () => {
 			onMouseMove={interaction.updatePointer}
 			ref={interaction.cardRef}
 			style={{
-				width: BOARDING_PASS_WIDTH_PX,
 				height: BOARDING_PASS_HEIGHT_PX,
 				perspective: 900,
+				width: BOARDING_PASS_WIDTH_PX,
 			}}
 			transition={BOARDING_PASS_CARD_SPRING}
 			variants={cardVariants}
@@ -47,10 +47,10 @@ export const BoardBoardingPassCard = () => {
 			<motion.div
 				className="relative overflow-visible"
 				style={{
-					width: BOARDING_PASS_WIDTH_PX,
 					height: BOARDING_PASS_HEIGHT_PX,
 					transform: cardTransform,
 					transformStyle: "preserve-3d",
+					width: BOARDING_PASS_WIDTH_PX,
 				}}
 			>
 				<div
@@ -70,9 +70,9 @@ export const BoardBoardingPassCard = () => {
 					aria-label="Boarding pass — Paris ORY to Bali DPS, Emirates"
 					className="relative flex flex-col overflow-visible"
 					style={{
-						width: BOARDING_PASS_WIDTH_PX,
-						height: BOARDING_PASS_HEIGHT_PX,
 						clipPath: boardingPassTicketClipPath,
+						height: BOARDING_PASS_HEIGHT_PX,
+						width: BOARDING_PASS_WIDTH_PX,
 					}}
 				>
 					<BoardingPassSurface />

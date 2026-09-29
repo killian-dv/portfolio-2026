@@ -47,8 +47,8 @@ export const BoardAiBookmarkPaper = ({
 				aria-hidden
 				className="board-ai-bookmark-pin pointer-events-none absolute top-0 left-1/2 z-30 -translate-x-1/2 -translate-y-1/2"
 				style={{
-					width: BOARD_AI_BOOKMARK_PIN_SIZE_PX,
 					height: BOARD_AI_BOOKMARK_PIN_SIZE_PX,
+					width: BOARD_AI_BOOKMARK_PIN_SIZE_PX,
 				}}
 			/>
 

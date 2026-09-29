@@ -60,9 +60,9 @@ export const GithubContributionGrid = ({
 								className="animate-pulse rounded-[3px] bg-board-github-skeleton"
 								key={`${weekId}-${rowId}`}
 								style={{
-									width: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
-									height: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
 									animationDelay: `${(weekIndex % 8) * 40 + rowIndex * 12}ms`,
+									height: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
+									width: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
 								}}
 							/>
 						))}
@@ -90,8 +90,8 @@ export const GithubContributionGrid = ({
 								className="shrink-0"
 								key={cell.slotId}
 								style={{
-									width: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
 									height: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
+									width: GITHUB_CONTRIBUTIONS_CELL_SIZE_PX,
 								}}
 							/>
 						) : (

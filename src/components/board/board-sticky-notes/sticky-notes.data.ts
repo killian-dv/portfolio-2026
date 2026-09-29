@@ -14,13 +14,13 @@ export const stickyNotesById = {
 	"deploy-friday": {
 		id: "deploy-friday",
 		lines: ["Deploy Friday?", "Bad idea."],
-		variant: "yellow",
 		rotationDeg: -2.8,
+		variant: "yellow",
 	},
 	"learn-build": {
 		id: "learn-build",
 		lines: ["The best way to learn", "is to build things."],
-		variant: "sage",
 		rotationDeg: 3.4,
+		variant: "sage",
 	},
 } as const satisfies Record<StickyNoteId, StickyNote>;

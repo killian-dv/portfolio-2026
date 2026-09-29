@@ -1,6 +1,6 @@
 import { Pause, Play } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { type MouseEvent, useCallback, useState } from "react";
 
 import { BoardAlbumMusicNotes } from "#/components/board/album/board-album-music-notes";
 import { BoardAlbumTooltip } from "#/components/board/album/board-album-tooltip";
@@ -54,13 +54,23 @@ export const BoardAlbumCard = () => {
 
 	const stopBoardPan = useStopBoardPan();
 
+	const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+	const handleMouseLeave = useCallback(() => setIsHovered(false), []);
+	const handlePlayClick = useCallback(
+		(event: MouseEvent<HTMLButtonElement>) => {
+			stopBoardPan(event);
+			toggle();
+		},
+		[stopBoardPan, toggle]
+	);
+
 	return (
 		// biome-ignore lint/a11y/noNoninteractiveElementInteractions: album hover zone
 		// biome-ignore lint/a11y/noStaticElementInteractions: album hover zone
 		<div
 			className="relative size-[150px] overflow-visible"
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
 		>
 			<BoardAlbumMusicNotes active={isPlaying} />
 
@@ -113,10 +123,7 @@ export const BoardAlbumCard = () => {
 						"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80",
 						!showPlayControl && "pointer-events-none"
 					)}
-					onClick={(event) => {
-						stopBoardPan(event);
-						toggle();
-					}}
+					onClick={handlePlayClick}
 					onMouseDown={stopBoardPan}
 					type="button"
 				>

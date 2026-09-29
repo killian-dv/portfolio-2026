@@ -45,7 +45,6 @@ export const BoardPaperClip = ({
 	const width = (size * CLIP_VIEWBOX_WIDTH) / CLIP_VIEWBOX_HEIGHT;
 
 	return (
-		// biome-ignore lint/a11y/noSvgWithoutTitle: decorative desk object
 		<svg
 			aria-hidden
 			className={cn(

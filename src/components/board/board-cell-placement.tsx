@@ -53,35 +53,35 @@ export const getBoardCellPlacementStyle = (
 
 	switch (anchor) {
 		case "top-left":
-			return { ...base, top: y, left: x };
+			return { ...base, left: x, top: y };
 		case "top-center":
 			return {
 				...base,
-				top: y,
 				left: `calc(50% + ${x})`,
+				top: y,
 				transform: "translateX(-50%)",
 			};
 		case "top-right":
-			return { ...base, top: y, right: x };
+			return { ...base, right: x, top: y };
 		case "center-left":
 			return {
 				...base,
-				top: `calc(50% + ${y})`,
 				left: x,
+				top: `calc(50% + ${y})`,
 				transform: "translateY(-50%)",
 			};
 		case "center":
 			return {
 				...base,
-				top: `calc(50% + ${y})`,
 				left: `calc(50% + ${x})`,
+				top: `calc(50% + ${y})`,
 				transform: "translate(-50%, -50%)",
 			};
 		case "center-right":
 			return {
 				...base,
-				top: `calc(50% + ${y})`,
 				right: x,
+				top: `calc(50% + ${y})`,
 				transform: "translateY(-50%)",
 			};
 		case "bottom-left":

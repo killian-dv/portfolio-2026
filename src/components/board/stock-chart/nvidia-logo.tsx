@@ -1,5 +1,4 @@
 export const NvidiaLogo = ({ className }: { className?: string }) => (
-	// biome-ignore lint/a11y/noSvgWithoutTitle: decorative logo beside company name
 	<svg
 		aria-hidden
 		className={className}

@@ -13,8 +13,8 @@ import { cn } from "#/lib/utils";
 
 const formatPrice = (value: number) =>
 	value.toLocaleString("en-US", {
-		minimumFractionDigits: 2,
 		maximumFractionDigits: 2,
+		minimumFractionDigits: 2,
 	});
 
 const formatPercent = (value: number) => {
@@ -59,9 +59,9 @@ export const StockChartPriceStats = ({
 		(latest) => !prefersReducedMotion && setDisplayGain(latest)
 	);
 
-	const percent = prefersReducedMotion ? stats.percent : displayPercent;
-	const gain = prefersReducedMotion ? stats.gain : displayGain;
-	const isPositive = stats.isPositive;
+	const { isPositive, gain: statsGain, percent: statsPercent } = stats;
+	const percent = prefersReducedMotion ? statsPercent : displayPercent;
+	const gain = prefersReducedMotion ? statsGain : displayGain;
 	const accentColor = isPositive ? NVIDIA_GREEN : STOCK_NEGATIVE;
 	return (
 		<div className="mt-3 flex flex-col gap-1">

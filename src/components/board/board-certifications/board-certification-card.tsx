@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
-import type { MouseEvent } from "react";
+import { type MouseEvent, useCallback } from "react";
 
 import {
 	BOARD_CERTIFICATION_CARD_SPRING,
@@ -44,20 +44,25 @@ export const BoardCertificationCard = ({
 		certification.skills?.slice(0, BOARD_CERTIFICATION_MAX_SKILLS) ?? [];
 	const verifyLabel = `${certification.title} — view certification (opens in new tab)`;
 
+	const handleMouseDown = useCallback(
+		(event: MouseEvent) => {
+			stopBoardPan(event);
+			onMouseDown(event);
+		},
+		[onMouseDown, stopBoardPan]
+	);
+
 	return (
 		<motion.article
 			animate={{
-				y: isInteractive ? -4 : 0,
-				rotate: isInteractive ? hoverRotateDeg : idleRotateDeg,
 				boxShadow: isInteractive
 					? "var(--board-widget-shadow-hover)"
 					: "var(--board-widget-shadow-idle)",
+				rotate: isInteractive ? hoverRotateDeg : idleRotateDeg,
+				y: isInteractive ? -4 : 0,
 			}}
 			className={cardClassName}
-			onMouseDown={(event) => {
-				stopBoardPan(event);
-				onMouseDown(event);
-			}}
+			onMouseDown={handleMouseDown}
 			onMouseEnter={handlePointerEnter}
 			onMouseLeave={handlePointerLeave}
 			onMouseMove={updatePointer}
@@ -123,10 +128,7 @@ export const BoardCertificationCard = ({
 				aria-label={verifyLabel}
 				className="absolute inset-0 z-30 rounded-xl"
 				href={certification.href}
-				onMouseDown={(event) => {
-					stopBoardPan(event);
-					onMouseDown(event);
-				}}
+				onMouseDown={handleMouseDown}
 				onMouseEnter={handlePointerEnter}
 				onMouseLeave={handlePointerLeave}
 				onMouseMove={updatePointer}

@@ -33,8 +33,8 @@ export const StockChartActivePoint = ({
 			transition={{
 				scale: {
 					duration: 2,
-					repeat: Number.POSITIVE_INFINITY,
 					ease: "easeInOut",
+					repeat: Number.POSITIVE_INFINITY,
 				},
 			}}
 		/>

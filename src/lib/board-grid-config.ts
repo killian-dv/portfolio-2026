@@ -41,10 +41,10 @@ export const boardCellOffset = (cols = 0, rows = 0) => ({
 
 /** Hero zone — 2×2 cells in the center (rows 2–3, cols 3–4). Do not split. */
 export const BOARD_BLANK_REGION = {
-	rowStart: 2,
-	rowEnd: 4,
-	colStart: 3,
 	colEnd: 5,
+	colStart: 3,
+	rowEnd: 4,
+	rowStart: 2,
 } as const;
 
 export const BLANK_GRID_AREA = "blank" as const;
@@ -64,9 +64,9 @@ export const boardCell = (row: number, col: number) => {
 };
 
 const buildGridTemplateRows = () =>
-	Array.from({ length: BOARD_GRID_ROWS }, (_, row) =>
-		Array.from({ length: BOARD_GRID_COLS }, (_, col) =>
-			boardCell(row, col)
+	Array.from({ length: BOARD_GRID_ROWS }, (_row, rowIndex) =>
+		Array.from({ length: BOARD_GRID_COLS }, (_col, colIndex) =>
+			boardCell(rowIndex, colIndex)
 		).join(" ")
 	);
 

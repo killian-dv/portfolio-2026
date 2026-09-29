@@ -42,7 +42,6 @@ export const StockChartSvg = ({
 
 	return (
 		<>
-			{/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative chart */}
 			<svg
 				aria-hidden
 				className="absolute inset-0 h-full w-full overflow-visible"

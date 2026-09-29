@@ -7,10 +7,10 @@ interface BoardFrameCornerProps extends ComponentProps<"svg"> {
 }
 
 const positionClassName: Record<BoardFrameCornerProps["position"], string> = {
-	"top-left": "absolute -top-[7px] -left-[7px]",
-	"top-right": "absolute -top-[7px] -right-[7px]",
 	"bottom-left": "absolute -bottom-[7px] -left-[7px]",
 	"bottom-right": "absolute -bottom-[7px] -right-[7px]",
+	"top-left": "absolute -top-[7px] -left-[7px]",
+	"top-right": "absolute -top-[7px] -right-[7px]",
 };
 
 export const BoardFrameCorner = ({

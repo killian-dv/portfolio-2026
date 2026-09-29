@@ -55,7 +55,7 @@ const computeMagneticOffset = (
 
 export const useBoardFavoriteToolInteraction = (idleRotateDeg: number) => {
 	const stickerRef = useRef<HTMLButtonElement>(null);
-	const isHoveredRef = useRef(false);
+	const isHoveredRef = useRef<boolean>(false);
 	const [isHovered, setIsHovered] = useState(false);
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const { isZoneActive, registerMagneticListener, zonePointerX } =

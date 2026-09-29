@@ -9,8 +9,8 @@ import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
 	head: () => buildSiteHead(appCss),
-	shellComponent: RootDocument,
 	notFoundComponent: BoardNotFoundPage,
+	shellComponent: RootDocument,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {

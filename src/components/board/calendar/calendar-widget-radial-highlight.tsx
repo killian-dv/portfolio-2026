@@ -21,14 +21,14 @@ export const CalendarWidgetRadialHighlight = ({
 			aria-hidden
 			className="pointer-events-none absolute z-20 size-32 rounded-full"
 			style={{
-				left,
-				top,
-				translateX: "-50%",
-				translateY: "-50%",
-				opacity: glowOpacity,
 				background:
 					"radial-gradient(circle at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.18) 38%, transparent 72%)",
 				filter: "blur(10px)",
+				left,
+				opacity: glowOpacity,
+				top,
+				translateX: "-50%",
+				translateY: "-50%",
 			}}
 		/>
 	);

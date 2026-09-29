@@ -1,6 +1,32 @@
 {
+  "name": "portfolio",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "build": "vite build",
+    "cf-typegen": "wrangler types",
+    "check": "ultracite check",
+    "deploy": "npm run build && wrangler deploy",
+    "dev": "vite dev --port 3000",
+    "fix": "ultracite fix",
+    "format": "biome format",
+    "lint": "biome lint",
+    "og:image": "node scripts/capture-og-image.mjs",
+    "prepare": "husky",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,jsonc,css}": [
+      "npx ultracite fix"
+    ]
+  },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-devtools": "latest",
     "@tanstack/react-router": "latest",
     "@tanstack/react-router-devtools": "latest",
@@ -9,57 +35,31 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "d3-shape": "^3.2.0",
-    "lucide-react": "^0.545.0",
-    "motion": "^12.39.0",
+    "lucide-react": "^0.577.0",
+    "motion": "^12.43.0",
     "penflow": "^0.1.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "tailwind-merge": "^3.6.0",
-    "tailwindcss": "^4.1.18"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.15",
-    "@cloudflare/vite-plugin": "^1.39.0",
+    "@biomejs/biome": "^2.5.14",
+    "@cloudflare/vite-plugin": "^1.62.1",
     "@tanstack/devtools-vite": "latest",
-    "@types/d3-shape": "^3.1.8",
-    "@types/node": "^22.10.2",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "@vitejs/plugin-react": "^6.0.1",
+    "@types/d3-shape": "^3.2.0",
+    "@types/node": "^22.20.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
     "husky": "^9.1.7",
     "jsdom": "^28.1.0",
-    "playwright": "^1.60.0",
-    "typescript": "^6.0.2",
-    "ultracite": "^7.7.0",
-    "vite": "^8.0.0",
-    "vitest": "^4.1.5",
-    "wrangler": "^4.95.0"
-  },
-  "name": "portfolio",
-  "scripts": {
-    "dev": "vite dev --port 3000",
-    "build": "vite build",
-    "deploy": "npm run build && wrangler deploy",
-    "preview": "vite preview",
-    "cf-typegen": "wrangler types",
-    "test": "vitest run",
-    "format": "biome format",
-    "lint": "biome lint",
-    "check": "ultracite check",
-    "fix": "ultracite fix",
-    "prepare": "husky",
-    "typecheck": "tsc --noEmit",
-    "og:image": "node scripts/capture-og-image.mjs"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,jsonc,css}": [
-      "npx ultracite fix"
-    ]
-  },
-  "type": "module",
-  "private": true,
-  "imports": {
-    "#/*": "./src/*"
+    "playwright": "^1.63.0",
+    "typescript": "^6.0.3",
+    "ultracite": "^7.12.2",
+    "vite": "^8.3.1",
+    "vitest": "^4.1.11",
+    "wrangler": "^4.143.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

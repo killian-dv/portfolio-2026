@@ -7,15 +7,17 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
+const isVitest = process.env.VITEST === "true" || process.env.VITEST === "1";
+
 const config = defineConfig({
-	resolve: { tsconfigPaths: true },
 	plugins: [
-		cloudflare({ viteEnvironment: { name: "ssr" } }),
+		...(isVitest ? [] : [cloudflare({ viteEnvironment: { name: "ssr" } })]),
 		devtools(),
 		tailwindcss(),
 		tanstackStart(),
 		viteReact(),
 	],
+	resolve: { tsconfigPaths: true },
 });
 
 export default config;

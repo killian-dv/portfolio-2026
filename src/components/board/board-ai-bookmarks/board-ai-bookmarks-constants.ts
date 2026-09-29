@@ -14,10 +14,10 @@ export const BOARD_AI_BOOKMARK_PAPER_WIDTH_PX = 140;
 export const BOARD_AI_BOOKMARK_PIN_SIZE_PX = 9;
 
 export const BOARD_AI_BOOKMARK_PAPER_SPRING = {
-	type: "spring" as const,
-	stiffness: 320,
 	damping: 22,
 	mass: 0.75,
+	stiffness: 320,
+	type: "spring" as const,
 };
 
 /** Extra swing when hovering — pivots from the pin */

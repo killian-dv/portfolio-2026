@@ -8,14 +8,14 @@ export const BOARD_CERTIFICATION_MAX_SKILLS = 3;
 export const BOARD_CERTIFICATIONS_TITLE = "Certifications" as const;
 
 export const BOARD_CERTIFICATION_CARD_SPRING = {
-	type: "spring" as const,
-	stiffness: 380,
 	damping: 30,
 	mass: 0.88,
+	stiffness: 380,
+	type: "spring" as const,
 };
 
 export const BOARD_CERTIFICATION_LAMINATE_SPRING = {
-	stiffness: 180,
 	damping: 30,
 	mass: 0.85,
+	stiffness: 180,
 };

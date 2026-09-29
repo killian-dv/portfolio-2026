@@ -29,25 +29,25 @@ export interface BoardExperienceEntry {
 /** Vertical layout: one card per row, alternating left / right. */
 export const BOARD_EXPERIENCES_ENTRIES: BoardExperienceEntry[] = [
 	{
-		id: "altermaker",
 		company: "Altermaker",
-		role: "Front-end Developer",
 		dates: "2023 — Present",
+		id: "altermaker",
 		isCurrent: true,
-		logoSrc: "/altermaker.svg",
+		layout: { left: 36, rotate: -0.9, top: 78 },
 		logoAlt: "AlterMaker logo",
-		layout: { left: 36, top: 78, rotate: -0.9 },
+		logoSrc: "/altermaker.svg",
 		pathAnchor: { x: 260, y: 152 },
+		role: "Front-end Developer",
 	},
 	{
-		id: "upculture",
 		company: "Upculture / Artybot",
-		role: "Full-stack Developer",
 		dates: "2022 — 2023",
-		logoSrc: "/artybot.svg",
+		id: "upculture",
+		layout: { left: 252, rotate: 1, top: 248 },
 		logoAlt: "Artybot logo",
-		layout: { left: 252, top: 248, rotate: 1 },
+		logoSrc: "/artybot.svg",
 		pathAnchor: { x: 476, y: 242 },
+		role: "Full-stack Developer",
 	},
 ];
 

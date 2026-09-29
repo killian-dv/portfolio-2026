@@ -12,9 +12,9 @@ const FLIP_BELOW_CARD_Y = 40;
 
 const formatTooltipDate = (date: string) =>
 	new Intl.DateTimeFormat("en-US", {
-		weekday: "long",
-		month: "short",
 		day: "numeric",
+		month: "short",
+		weekday: "long",
 		year: "numeric",
 	}).format(new Date(`${date}T12:00:00`));
 

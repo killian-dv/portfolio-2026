@@ -12,13 +12,13 @@ export type BoardPushPinColor =
 	| "white";
 
 const PIN_HEAD: Record<BoardPushPinColor, string> = {
-	red: "var(--board-pin-red)",
 	blue: "#3d6eb5",
-	yellow: "#d4a82a",
 	green: "#4a8f5c",
 	orange: "#d97a32",
 	purple: "#7a52b8",
+	red: "var(--board-pin-red)",
 	white: "#e8eaee",
+	yellow: "#d4a82a",
 };
 
 interface BoardPushPinProps {
@@ -39,7 +39,6 @@ export const BoardPushPin = ({
 	const head = PIN_HEAD[color];
 
 	return (
-		// biome-ignore lint/a11y/noSvgWithoutTitle: decorative desk object
 		<svg
 			aria-hidden
 			className={cn(

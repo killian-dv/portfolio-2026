@@ -92,5 +92,5 @@ export const useAlbumAudio = (src: string) => {
 		}
 	}, [isPlaying, pause, play]);
 
-	return { isPlaying, toggle, pause, play };
+	return { isPlaying, pause, play, toggle };
 };

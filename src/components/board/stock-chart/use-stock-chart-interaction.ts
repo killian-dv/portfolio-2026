@@ -46,7 +46,7 @@ export const useStockChartInteraction = () => {
 		pointer?: AnimationPlaybackControls;
 	}>({});
 
-	const [chartSize, setChartSize] = useState({ width: 320, height: 200 });
+	const [chartSize, setChartSize] = useState({ height: 200, width: 320 });
 	const [displayPrice, setDisplayPrice] = useState(LAST_PRICE);
 	const [stats, setStats] = useState(() => calcChangeFromReference(LAST_PRICE));
 	const [isHovering, setIsHovering] = useState(false);
@@ -160,7 +160,7 @@ export const useStockChartInteraction = () => {
 	const syncChartMetrics = useCallback(
 		(width: number, height: number) => {
 			if (width > 0 && height > 0) {
-				setChartSize({ width, height });
+				setChartSize({ height, width });
 				chartWidth.set(width);
 			}
 		},
@@ -264,11 +264,11 @@ export const useStockChartInteraction = () => {
 		}
 
 		exitAnimationsRef.current = {
-			pointer: animate(pointerX, fullWidth, {
+			hover: animate(hoverActive, 0, {
 				type: "spring",
 				...CHART_SPRING_RESET,
 			}),
-			hover: animate(hoverActive, 0, {
+			pointer: animate(pointerX, fullWidth, {
 				type: "spring",
 				...CHART_SPRING_RESET,
 			}),
@@ -297,9 +297,9 @@ export const useStockChartInteraction = () => {
 	);
 
 	return {
-		areaPath,
 		activeX,
 		activeY,
+		areaPath,
 		cardRef,
 		chartRef,
 		chartSize,
@@ -307,6 +307,9 @@ export const useStockChartInteraction = () => {
 		cursorLineX,
 		cursorOpacity,
 		displayPrice,
+		handlePointerEnterChart,
+		handlePointerLeaveChart,
+		handlePointerMoveChart,
 		hasMounted,
 		isHovering,
 		linePath,
@@ -318,8 +321,5 @@ export const useStockChartInteraction = () => {
 		springPercent,
 		stats,
 		stopBoardPan,
-		handlePointerEnterChart,
-		handlePointerLeaveChart,
-		handlePointerMoveChart,
 	};
 };

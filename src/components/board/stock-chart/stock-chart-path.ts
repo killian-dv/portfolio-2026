@@ -28,7 +28,7 @@ export const getChartScale = (
 	const range = max - min || 1;
 	const verticalPad = height * 0.12;
 	const drawable = height - verticalPad * 2;
-	return { min, max, range, verticalPad, drawable };
+	return { drawable, max, min, range, verticalPad };
 };
 
 export const priceToY = (
@@ -48,9 +48,9 @@ export const pricesToPoints = (
 	const { min, range, verticalPad, drawable } = getChartScale(prices, height);
 
 	return prices.map((price, index) => ({
+		price,
 		x: (index / (prices.length - 1)) * width,
 		y: verticalPad + drawable - ((price - min) / range) * drawable,
-		price,
 	}));
 };
 
@@ -69,7 +69,7 @@ export const buildAreaPath = (points: ChartPoint[], height: number): string => {
 		return "";
 	}
 	const last = points.at(-1);
-	const first = points[0];
+	const [first] = points;
 	if (!(last && first)) {
 		return "";
 	}
@@ -107,7 +107,7 @@ const samplePathYAtX = (path: SVGPathElement, targetX: number): number => {
 
 	let lo = 0;
 	let hi = length;
-	for (let i = 0; i < 24; i++) {
+	for (let i = 0; i < 24; i += 1) {
 		const mid = (lo + hi) / 2;
 		if (path.getPointAtLength(mid).x < targetX) {
 			lo = mid;
@@ -166,9 +166,9 @@ export const getReferenceLineY = (height: number) =>
 /** % and $ gain vs the dashed reference line (not session open). */
 export const calcChangeFromReference = (
 	price: number,
-	referencePrice: number = getReferenceLinePrice(),
+	referencePrice: number = getReferenceLinePrice()
 ) => {
 	const gain = price - referencePrice;
 	const percent = (gain / referencePrice) * 100;
-	return { percent, gain, isPositive: gain >= 0 };
+	return { gain, isPositive: gain >= 0, percent };
 };

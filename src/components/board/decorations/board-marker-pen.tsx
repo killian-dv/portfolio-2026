@@ -24,12 +24,12 @@ const BARREL_GRADIENT: Record<
 	BoardMarkerPenColor,
 	{ top: string; mid: string; bottom: string }
 > = {
-	blue: { top: "#6a7ee8", mid: "#4f63d4", bottom: "#3d4fb8" },
-	red: { top: "#e86a6a", mid: "#d44f4f", bottom: "#b83d3d" },
-	green: { top: "#5fc98a", mid: "#3dad6e", bottom: "#2e8f58" },
-	orange: { top: "#f0a04a", mid: "#e0862e", bottom: "#c46e1a" },
-	purple: { top: "#a87ee8", mid: "#8a63d4", bottom: "#6e4fb8" },
-	black: { top: "#4a4f58", mid: "#32363e", bottom: "#22252a" },
+	black: { bottom: "#22252a", mid: "#32363e", top: "#4a4f58" },
+	blue: { bottom: "#3d4fb8", mid: "#4f63d4", top: "#6a7ee8" },
+	green: { bottom: "#2e8f58", mid: "#3dad6e", top: "#5fc98a" },
+	orange: { bottom: "#c46e1a", mid: "#e0862e", top: "#f0a04a" },
+	purple: { bottom: "#6e4fb8", mid: "#8a63d4", top: "#a87ee8" },
+	red: { bottom: "#b83d3d", mid: "#d44f4f", top: "#e86a6a" },
 };
 
 const MARKER_WIDTH = 168;
@@ -49,24 +49,30 @@ interface PoseLayout {
 
 const MARKER_POSES: Record<BoardMarkerPenPose, PoseLayout> = {
 	default: {
-		width: MARKER_WIDTH,
-		height: MARKER_HEIGHT,
-		cap: {
-			className: "absolute top-0 right-[2px] block",
-			style: { transform: "rotate(11deg)", transformOrigin: "70% 50%" },
-		},
 		barrel: {
 			className: "absolute bottom-[2px] left-0 block",
 			style: { transform: "rotate(-1.5deg)", transformOrigin: "12% 50%" },
 		},
+		cap: {
+			className: "absolute top-0 right-[2px] block",
+			style: { transform: "rotate(11deg)", transformOrigin: "70% 50%" },
+		},
+		height: MARKER_HEIGHT,
+		width: MARKER_WIDTH,
+	},
+	"dropped-cap": {
+		barrel: {
+			className: "absolute right-[8px] bottom-[2px] block",
+			style: { transform: "rotate(-22deg)", transformOrigin: "18% 55%" },
+		},
+		cap: {
+			className: "absolute top-[22px] left-[18px] block",
+			style: { transform: "rotate(48deg)", transformOrigin: "50% 50%" },
+		},
+		height: MARKER_HEIGHT + 18,
+		width: MARKER_WIDTH,
 	},
 	flipped: {
-		width: MARKER_WIDTH,
-		height: MARKER_HEIGHT,
-		cap: {
-			className: "absolute top-[2px] left-[6px] block",
-			style: { transform: "rotate(-32deg)", transformOrigin: "25% 45%" },
-		},
 		barrel: {
 			className: "absolute right-[2px] bottom-[4px] block",
 			style: {
@@ -74,42 +80,36 @@ const MARKER_POSES: Record<BoardMarkerPenPose, PoseLayout> = {
 				transformOrigin: "88% 50%",
 			},
 		},
-	},
-	"dropped-cap": {
-		width: MARKER_WIDTH,
-		height: MARKER_HEIGHT + 18,
 		cap: {
-			className: "absolute top-[22px] left-[18px] block",
-			style: { transform: "rotate(48deg)", transformOrigin: "50% 50%" },
+			className: "absolute top-[2px] left-[6px] block",
+			style: { transform: "rotate(-32deg)", transformOrigin: "25% 45%" },
 		},
-		barrel: {
-			className: "absolute right-[8px] bottom-[2px] block",
-			style: { transform: "rotate(-22deg)", transformOrigin: "18% 55%" },
-		},
+		height: MARKER_HEIGHT,
+		width: MARKER_WIDTH,
 	},
 	scattered: {
-		width: MARKER_WIDTH + 12,
-		height: MARKER_HEIGHT + 24,
-		cap: {
-			className: "absolute top-[30px] right-[8px] block",
-			style: { transform: "rotate(-24deg)", transformOrigin: "55% 40%" },
-		},
 		barrel: {
 			className: "absolute bottom-[10px] left-[20px] block",
 			style: { transform: "rotate(16deg)", transformOrigin: "6% 62%" },
 		},
+		cap: {
+			className: "absolute top-[30px] right-[8px] block",
+			style: { transform: "rotate(-24deg)", transformOrigin: "55% 40%" },
+		},
+		height: MARKER_HEIGHT + 24,
+		width: MARKER_WIDTH + 12,
 	},
 	upright: {
-		width: 58,
-		height: 172,
-		cap: {
-			className: "absolute top-[6px] left-1/2 block -translate-x-[42%]",
-			style: { transform: "rotate(94deg)", transformOrigin: "50% 50%" },
-		},
 		barrel: {
 			className: "absolute bottom-[4px] left-1/2 block -translate-x-1/2",
 			style: { transform: "rotate(91deg)", transformOrigin: "50% 85%" },
 		},
+		cap: {
+			className: "absolute top-[6px] left-1/2 block -translate-x-[42%]",
+			style: { transform: "rotate(94deg)", transformOrigin: "50% 50%" },
+		},
+		height: 172,
+		width: 58,
 	},
 };
 
@@ -146,12 +146,11 @@ export const BoardMarkerPen = ({
 				{
 					...style,
 					"--board-desk-rotate": `${rotationDeg}deg`,
-					width: layout.width,
 					height: layout.height,
+					width: layout.width,
 				} as CSSProperties
 			}
 		>
-			{/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative desk object */}
 			<svg
 				aria-hidden
 				className={layout.cap.className}
@@ -193,7 +192,6 @@ export const BoardMarkerPen = ({
 				/>
 			</svg>
 
-			{/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative desk object */}
 			<svg
 				aria-hidden
 				className={layout.barrel.className}

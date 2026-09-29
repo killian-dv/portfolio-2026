@@ -8,16 +8,16 @@ export const GITHUB_CONTRIBUTIONS_CELL_SIZE_PX = 10;
 export const GITHUB_CONTRIBUTIONS_CELL_GAP_PX = 3;
 
 export const GITHUB_CONTRIBUTIONS_GLOW_SPRING = {
-	stiffness: 180,
 	damping: 26,
 	mass: 0.8,
+	stiffness: 180,
 };
 
 export const GITHUB_CONTRIBUTIONS_CELL_SPRING = {
-	type: "spring" as const,
-	stiffness: 420,
 	damping: 28,
 	mass: 0.55,
+	stiffness: 420,
+	type: "spring" as const,
 };
 
 /**

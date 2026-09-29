@@ -21,16 +21,16 @@ export const StockChartDimmedLayer = ({
 			d={areaPath}
 			fill={`url(#area-dim-${clipId})`}
 			initial={{ opacity: 0 }}
-			transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1], delay: 0.15 }}
+			transition={{ delay: 0.15, duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
 		/>
 		<motion.path
-			animate={{ pathLength: 1, opacity: 0.7 }}
+			animate={{ opacity: 0.7, pathLength: 1 }}
 			d={linePath}
 			fill="none"
 			initial={
 				prefersReducedMotion
-					? { pathLength: 1, opacity: 0.7 }
-					: { pathLength: 0, opacity: 0.7 }
+					? { opacity: 0.7, pathLength: 1 }
+					: { opacity: 0.7, pathLength: 0 }
 			}
 			stroke={NVIDIA_GREEN}
 			strokeLinecap="round"

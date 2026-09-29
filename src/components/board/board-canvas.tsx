@@ -9,12 +9,12 @@ export const BoardCanvas = () => (
 		<div
 			className="absolute top-0 left-0 bg-grid-pattern"
 			style={{
-				width: BOARD_WIDTH_PX,
 				height: BOARD_HEIGHT_PX,
 				left: "50%",
-				top: "50%",
 				marginLeft: -BOARD_WIDTH_PX / 2,
 				marginTop: -BOARD_HEIGHT_PX / 2,
+				top: "50%",
+				width: BOARD_WIDTH_PX,
 			}}
 		>
 			<div className="relative flex h-full w-full items-center justify-center">

@@ -43,8 +43,8 @@ const planeFloatTransition = (reduced: boolean) =>
 		? { duration: 0 }
 		: {
 				duration: 5.5,
-				repeat: Number.POSITIVE_INFINITY,
 				ease: "easeInOut" as const,
+				repeat: Number.POSITIVE_INFINITY,
 			};
 
 export const BoardingPassRoute = ({

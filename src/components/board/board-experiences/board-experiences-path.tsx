@@ -5,7 +5,6 @@ import {
 } from "#/components/board/board-experiences/board-experiences-constants";
 
 export const BoardExperiencesPath = () => (
-	// biome-ignore lint/a11y/noSvgWithoutTitle: decorative connectors
 	<svg
 		aria-hidden
 		className="pointer-events-none absolute inset-0 z-0 overflow-visible stroke-foreground/14"

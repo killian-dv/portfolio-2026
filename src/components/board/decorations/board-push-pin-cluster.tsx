@@ -23,22 +23,22 @@ const CLUSTER_PINS_BY_VARIANT: Record<
 	ClusterPin[]
 > = {
 	"scatter-a": [
-		{ color: "red", left: -2, top: 48, rotateDeg: -44, size: 16, zIndex: 2 },
-		{ color: "blue", left: 34, top: 0, rotateDeg: 31, size: 18, zIndex: 6 },
-		{ color: "yellow", left: 70, top: 52, rotateDeg: -38, size: 17, zIndex: 3 },
-		{ color: "green", left: 96, top: 14, rotateDeg: 52, size: 15, zIndex: 7 },
-		{ color: "orange", left: 14, top: 18, rotateDeg: -19, size: 19, zIndex: 4 },
-		{ color: "purple", left: 52, top: 34, rotateDeg: 41, size: 14, zIndex: 5 },
-		{ color: "white", left: 40, top: 6, rotateDeg: -27, size: 16, zIndex: 1 },
+		{ color: "red", left: -2, rotateDeg: -44, size: 16, top: 48, zIndex: 2 },
+		{ color: "blue", left: 34, rotateDeg: 31, size: 18, top: 0, zIndex: 6 },
+		{ color: "yellow", left: 70, rotateDeg: -38, size: 17, top: 52, zIndex: 3 },
+		{ color: "green", left: 96, rotateDeg: 52, size: 15, top: 14, zIndex: 7 },
+		{ color: "orange", left: 14, rotateDeg: -19, size: 19, top: 18, zIndex: 4 },
+		{ color: "purple", left: 52, rotateDeg: 41, size: 14, top: 34, zIndex: 5 },
+		{ color: "white", left: 40, rotateDeg: -27, size: 16, top: 6, zIndex: 1 },
 	],
 	"scatter-b": [
-		{ color: "purple", left: 8, top: 4, rotateDeg: 36, size: 15, zIndex: 6 },
-		{ color: "orange", left: 82, top: 46, rotateDeg: -51, size: 17, zIndex: 3 },
-		{ color: "blue", left: 44, top: 50, rotateDeg: 22, size: 18, zIndex: 4 },
-		{ color: "white", left: 64, top: 18, rotateDeg: -14, size: 16, zIndex: 2 },
-		{ color: "green", left: 0, top: 32, rotateDeg: -33, size: 17, zIndex: 5 },
-		{ color: "red", left: 26, top: 44, rotateDeg: 48, size: 16, zIndex: 7 },
-		{ color: "yellow", left: 58, top: 2, rotateDeg: -42, size: 14, zIndex: 1 },
+		{ color: "purple", left: 8, rotateDeg: 36, size: 15, top: 4, zIndex: 6 },
+		{ color: "orange", left: 82, rotateDeg: -51, size: 17, top: 46, zIndex: 3 },
+		{ color: "blue", left: 44, rotateDeg: 22, size: 18, top: 50, zIndex: 4 },
+		{ color: "white", left: 64, rotateDeg: -14, size: 16, top: 18, zIndex: 2 },
+		{ color: "green", left: 0, rotateDeg: -33, size: 17, top: 32, zIndex: 5 },
+		{ color: "red", left: 26, rotateDeg: 48, size: 16, top: 44, zIndex: 7 },
+		{ color: "yellow", left: 58, rotateDeg: -42, size: 14, top: 2, zIndex: 1 },
 	],
 };
 
@@ -50,8 +50,8 @@ const clusterBounds = (pins: ClusterPin[]) => {
 		maxBottom = Math.max(maxBottom, pin.top + pin.size + 6);
 	}
 	return {
-		width: Math.max(maxRight, 100),
 		height: Math.max(maxBottom, 68),
+		width: Math.max(maxRight, 100),
 	};
 };
 
@@ -80,8 +80,8 @@ export const BoardPushPinCluster = ({
 			)}
 			style={
 				{
-					width,
 					height,
+					width,
 					...style,
 					"--board-desk-rotate": `${rotationDeg}deg`,
 				} as CSSProperties
@@ -96,8 +96,8 @@ export const BoardPushPinCluster = ({
 					style={{
 						left: pin.left,
 						top: pin.top,
-						zIndex: pin.zIndex,
 						transform: `rotate(${pin.rotateDeg}deg)`,
+						zIndex: pin.zIndex,
 					}}
 				/>
 			))}

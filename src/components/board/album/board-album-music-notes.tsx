@@ -50,11 +50,11 @@ const createNote = (id: number): FloatingNote => {
 	const { x: endX, y: endY } = polarOffset(angle, distance);
 
 	return {
-		id,
 		angle,
 		color: randomFrom(NOTE_COLORS),
 		endX,
 		endY,
+		id,
 		spin: (Math.random() - 0.5) * 36,
 		symbol: randomFrom(NOTE_SYMBOLS),
 	};
@@ -73,7 +73,9 @@ export const BoardAlbumMusicNotes = ({ active }: BoardAlbumMusicNotesProps) => {
 
 		let noteId = 0;
 		const spawn = () => {
-			setNotes((current) => [...current.slice(-18), createNote(noteId++)]);
+			const nextNote = createNote(noteId);
+			noteId += 1;
+			setNotes((current) => [...current.slice(-18), nextNote]);
 		};
 
 		spawn();

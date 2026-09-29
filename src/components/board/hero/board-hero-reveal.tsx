@@ -5,9 +5,9 @@ import { boardEaseOut } from "#/lib/motion-config";
 
 const motionByTag = {
 	div: motion.div,
-	p: motion.p,
-	header: motion.header,
 	footer: motion.footer,
+	header: motion.header,
+	p: motion.p,
 } as const;
 
 type BoardHeroRevealTag = keyof typeof motionByTag;

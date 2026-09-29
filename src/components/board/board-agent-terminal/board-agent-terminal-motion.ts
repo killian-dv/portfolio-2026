@@ -1,13 +1,13 @@
 import type { Transition, Variants } from "motion/react";
 
 export const agentTerminalCardVariants: Variants = {
-	idle: {
-		y: 0,
-		scale: 1,
-	},
 	hover: {
-		y: -4,
 		scale: 1.006,
+		y: -4,
+	},
+	idle: {
+		scale: 1,
+		y: 0,
 	},
 };
 

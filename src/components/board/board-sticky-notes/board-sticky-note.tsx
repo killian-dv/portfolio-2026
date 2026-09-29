@@ -32,7 +32,7 @@ export const BoardStickyNote = ({
 				note.variant === "sage" && "board-sticky-note--sage"
 			)}
 			data-variant={note.variant}
-			style={{ width: 152, minHeight: 152 }}
+			style={{ minHeight: 152, width: 152 }}
 		>
 			<div
 				aria-hidden

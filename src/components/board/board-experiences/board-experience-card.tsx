@@ -1,4 +1,4 @@
-import { type MouseEvent, useState } from "react";
+import { type MouseEvent, useCallback, useState } from "react";
 
 import {
 	BOARD_EXPERIENCE_CARD_WIDTH_PX,
@@ -20,6 +20,9 @@ export const BoardExperienceCard = ({
 	const prefersReducedMotion = usePrefersReducedMotion();
 	const showHover = isHovered && !prefersReducedMotion;
 
+	const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+	const handleMouseLeave = useCallback(() => setIsHovered(false), []);
+
 	return (
 		// biome-ignore lint/a11y/noNoninteractiveElementInteractions: board pan surface
 		<article
@@ -30,13 +33,13 @@ export const BoardExperienceCard = ({
 				showHover ? "bg-board-surface-subtle" : "bg-white"
 			)}
 			onMouseDown={onMouseDown}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
 			style={{
 				left: entry.layout.left,
 				top: entry.layout.top,
-				width: BOARD_EXPERIENCE_CARD_WIDTH_PX,
 				transform: `rotate(${entry.layout.rotate}deg)`,
+				width: BOARD_EXPERIENCE_CARD_WIDTH_PX,
 			}}
 		>
 			<div

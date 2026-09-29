@@ -8,8 +8,8 @@ export const BoardCroissantStamp = () => (
 		height={120}
 		src={CROISSANT_STAMP_SRC}
 		style={{
-			width: CROISSANT_STAMP_WIDTH_PX,
 			transform: "rotate(-8deg)",
+			width: CROISSANT_STAMP_WIDTH_PX,
 		}}
 		width={CROISSANT_STAMP_WIDTH_PX}
 	/>

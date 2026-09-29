@@ -1,13 +1,13 @@
 export const boardSpring = {
-	type: "spring" as const,
-	duration: 0.5,
 	bounce: 0.2,
+	duration: 0.5,
+	type: "spring" as const,
 };
 
 export const boardSpringSnappy = {
-	type: "spring" as const,
-	duration: 0.35,
 	bounce: 0.15,
+	duration: 0.35,
+	type: "spring" as const,
 };
 
 export const boardEaseOut = [0.23, 1, 0.32, 1] as const;
@@ -19,7 +19,7 @@ export const tooltipMotion = {
 } as const;
 
 export const vinylSpinTransition = {
-	repeat: Number.POSITIVE_INFINITY,
 	duration: 2.4,
 	ease: "linear" as const,
+	repeat: Number.POSITIVE_INFINITY,
 };

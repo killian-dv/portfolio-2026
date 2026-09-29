@@ -38,8 +38,8 @@ export const StockChartCardShell = ({ children }: StockChartCardShellProps) => (
 			style={{ backgroundColor: `${NVIDIA_GREEN}2e` }}
 			transition={{
 				duration: 5,
-				repeat: Number.POSITIVE_INFINITY,
 				ease: "easeInOut",
+				repeat: Number.POSITIVE_INFINITY,
 			}}
 		/>
 		<div className="relative z-10 flex min-h-0 flex-1 flex-col">{children}</div>

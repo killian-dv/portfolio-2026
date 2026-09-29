@@ -42,9 +42,9 @@ export const useBoardPan = (enabled = true) => {
 	const dragFrameRef = useRef<number | null>(null);
 	const inertiaFrameRef = useRef<number | null>(null);
 	const viewportRef = useRef<ViewportMetrics>({
-		width: 0,
-		height: 0,
 		deviceScale: 1,
+		height: 0,
+		width: 0,
 	});
 	const layoutScaleRef = useRef(1);
 	const enabledRef = useRef(enabled);
@@ -167,9 +167,9 @@ export const useBoardPan = (enabled = true) => {
 		const updateViewport = () => {
 			const width = window.innerWidth;
 			viewportRef.current = {
-				width,
-				height: window.innerHeight,
 				deviceScale: 1,
+				height: window.innerHeight,
+				width,
 			};
 			layoutScaleRef.current = getBoardCanvasLayoutScale(width);
 			positionRef.current = clampPosition(
@@ -237,7 +237,10 @@ export const useBoardPan = (enabled = true) => {
 			}
 
 			if (event.touches.length === 1) {
-				const touch = event.touches[0];
+				const [touch] = event.touches;
+				if (!touch) {
+					return;
+				}
 				startDrag(touch.clientX, touch.clientY);
 			}
 		};
@@ -269,7 +272,10 @@ export const useBoardPan = (enabled = true) => {
 			}
 
 			if (event.touches.length === 1 && dragRef.current.isDragging) {
-				const touch = event.touches[0];
+				const [touch] = event.touches;
+				if (!touch) {
+					return;
+				}
 				moveDrag(touch.clientX, touch.clientY);
 			}
 		};
@@ -304,14 +310,18 @@ export const useBoardPan = (enabled = true) => {
 	}, []);
 
 	return {
-		transformRef,
-		isInteractive: enabled,
 		handleMouseDown: (event: React.MouseEvent<HTMLDivElement>) => {
 			if (!enabled) {
 				return;
 			}
 
 			startDrag(event.clientX, event.clientY);
+		},
+		handleMouseLeave: () => {
+			if (!enabled) {
+				return;
+			}
+			endDrag();
 		},
 		handleMouseMove: (event: React.MouseEvent<HTMLDivElement>) => {
 			if (!enabled) {
@@ -325,11 +335,7 @@ export const useBoardPan = (enabled = true) => {
 			}
 			endDrag();
 		},
-		handleMouseLeave: () => {
-			if (!enabled) {
-				return;
-			}
-			endDrag();
-		},
+		isInteractive: enabled,
+		transformRef,
 	};
 };

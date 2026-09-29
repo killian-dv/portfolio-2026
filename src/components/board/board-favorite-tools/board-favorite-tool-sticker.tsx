@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import type { MouseEvent } from "react";
+import { type MouseEvent, useCallback } from "react";
 
 import {
 	BOARD_FAVORITE_TOOL_SPRING,
@@ -35,6 +35,14 @@ export const BoardFavoriteToolSticker = ({
 
 	const isDarkSticker = tool.stickerVariant === "dark";
 
+	const handleMouseDown = useCallback(
+		(event: MouseEvent) => {
+			stopBoardPan(event);
+			onMouseDown(event);
+		},
+		[onMouseDown, stopBoardPan]
+	);
+
 	return (
 		<motion.button
 			animate={{ scale: isHovered && isInteractive ? 1.08 : 1 }}
@@ -44,19 +52,16 @@ export const BoardFavoriteToolSticker = ({
 				"focus-visible:ring-2 focus-visible:ring-black/15 focus-visible:ring-offset-2",
 				isHovered ? "z-30" : "z-10"
 			)}
-			onMouseDown={(event) => {
-				stopBoardPan(event);
-				onMouseDown(event);
-			}}
+			onMouseDown={handleMouseDown}
 			onMouseEnter={handlePointerEnter}
 			onMouseLeave={handlePointerLeave}
 			ref={stickerRef}
 			style={{
+				height: BOARD_FAVORITE_TOOL_STICKER_SIZE_PX,
 				left: tool.x,
+				rotate: isInteractive ? rotate : tool.rotation,
 				top: tool.y,
 				width: BOARD_FAVORITE_TOOL_STICKER_SIZE_PX,
-				height: BOARD_FAVORITE_TOOL_STICKER_SIZE_PX,
-				rotate: isInteractive ? rotate : tool.rotation,
 			}}
 			transition={BOARD_FAVORITE_TOOL_SPRING}
 			type="button"

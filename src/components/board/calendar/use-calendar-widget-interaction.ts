@@ -39,9 +39,9 @@ export const useCalendarWidgetInteraction = () => {
 			month: "long",
 		}).format(now);
 		return {
-			weekday,
-			month,
 			day: now.getDate(),
+			month,
+			weekday,
 		};
 	}, [now]);
 

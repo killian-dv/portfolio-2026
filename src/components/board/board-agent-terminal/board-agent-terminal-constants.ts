@@ -15,10 +15,10 @@ export const AGENT_TERMINAL_SESSION_HOLD_MS = 2200;
 export const AGENT_TERMINAL_SESSION_TRANSITION_MS = 320;
 
 export const AGENT_TERMINAL_CARD_SPRING = {
-	type: "spring" as const,
-	stiffness: 340,
 	damping: 32,
 	mass: 0.82,
+	stiffness: 340,
+	type: "spring" as const,
 };
 
 export const getLineRevealDelayMs = (

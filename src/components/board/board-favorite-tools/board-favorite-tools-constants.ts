@@ -15,20 +15,20 @@ export const BOARD_FAVORITE_TOOL_MAGNETIC_DEAD_ZONE_PX = 16;
 export const BOARD_FAVORITE_TOOL_ANNOTATION_Z_INDEX = 80;
 
 export const BOARD_FAVORITE_TOOL_SPRING = {
-	type: "spring" as const,
-	stiffness: 320,
 	damping: 26,
 	mass: 0.75,
+	stiffness: 320,
+	type: "spring" as const,
 };
 
 export const BOARD_FAVORITE_TOOL_MAGNETIC_SPRING = {
-	stiffness: 220,
 	damping: 18,
 	mass: 0.55,
+	stiffness: 220,
 };
 
 export const BOARD_FAVORITE_TOOL_ZONE_SPRING = {
-	stiffness: 180,
 	damping: 28,
 	mass: 0.9,
+	stiffness: 180,
 };

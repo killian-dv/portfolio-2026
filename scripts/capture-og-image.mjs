@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const output = join(root, "public/og-image.png");
 const url = process.env.OG_CAPTURE_URL ?? "http://127.0.0.1:4173";
-const viewport = { width: 1200, height: 630 };
+const viewport = { height: 630, width: 1200 };
 const PREVIEW_START_TIMEOUT_MS = 60_000;
 const SERVER_POLL_INTERVAL_MS = 500;
 
@@ -28,18 +28,27 @@ const isReachable = async (targetUrl) => {
 
 const waitForServer = async (
 	targetUrl,
-	{ timeoutMs = PREVIEW_START_TIMEOUT_MS, intervalMs = SERVER_POLL_INTERVAL_MS } = {}
+	{
+		timeoutMs = PREVIEW_START_TIMEOUT_MS,
+		intervalMs = SERVER_POLL_INTERVAL_MS,
+	} = {}
 ) => {
 	const deadline = Date.now() + timeoutMs;
 
-	while (Date.now() < deadline) {
+	const poll = async () => {
 		if (await isReachable(targetUrl)) {
 			return;
 		}
+		if (Date.now() >= deadline) {
+			throw new Error(
+				`Server at ${targetUrl} not reachable within ${timeoutMs}ms`
+			);
+		}
 		await wait(intervalMs);
-	}
+		await poll();
+	};
 
-	throw new Error(`Server at ${targetUrl} not reachable within ${timeoutMs}ms`);
+	await poll();
 };
 
 const startPreview = async () => {
@@ -48,8 +57,8 @@ const startPreview = async () => {
 		["run", "preview", "--", "--port", "4173", "--host", "127.0.0.1"],
 		{
 			cwd: root,
-			stdio: "ignore",
 			env: { ...process.env, FORCE_COLOR: "0" },
+			stdio: "ignore",
 		}
 	);
 
@@ -98,7 +107,7 @@ const browser = await chromium.launch();
 
 try {
 	const page = await browser.newPage({ viewport });
-	await page.goto(url, { waitUntil: "networkidle", timeout: 60_000 });
+	await page.goto(url, { timeout: 60_000, waitUntil: "networkidle" });
 	await page.waitForSelector('[aria-label="Portfolio board"]', {
 		timeout: 30_000,
 	});
